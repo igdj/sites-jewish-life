@@ -1,0 +1,63 @@
+{% extends 'AppBundle:Default:base.html.twig' %}
+{% block head%}
+    <script>
+    function toggleEntry (selector)
+    {
+        $( selector ).toggle();
+        var display = $( selector ).css('display');
+        if ('block' == display) {
+            $( selector ).parent().find('.glyphicon-collapse-down').each (function() {
+                $( this ).removeClass('glyphicon-collapse-down');
+                $( this ).addClass('glyphicon-collapse-up');
+            });
+        } else {
+            $( selector ).parent().find('.glyphicon-collapse-up').each (function() {
+                $( this ).removeClass('glyphicon-collapse-up');
+                $( this ).addClass('glyphicon-collapse-down');
+            });
+
+        }
+    }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list-unstyled">
+            {% for site in sites %}
+                <li style="border-bottom: 1px solid black">
+                    <h3>
+                        <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;"><span style="display: inline-block; min-width: 1.2em">{{ site.getMarker() }}</span> {{ site.title[app.request.locale] }}
+                            <span class="small glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+                        </a>
+                    </h3>
+                    <div id="description-{{ site.id }}" class="description" style="display: none">
+                        <p>
+                            <span class="glyphicon glyphicon-map-marker color-spot" aria-hidden="true" style="padding-right: 2px"></span>
+                            <a href="{{ path('home') }}#{{ site.id }}" title="{{ 'Show on map'|trans }}">
+                                {{ site.streetLocalized(app.request.locale) }}
+                            </a>
+                            {% if site.url is not empty %}
+                                <br /><span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ site.url }}" target="_blank">{{ site.url|prettifyurl }}</a>
+                            {% endif %}
+                        </p>
+                        <p>{{ site.description[app.request.locale]|nl2br }}</p>
+                        {% if site.additional is not null and site.additional['dasjuedischehamburg'] is not empty and app.request.locale == 'de' %}
+                            <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="http://dasjuedischehamburg.de/inhalt/{{ site.additional['dasjuedischehamburg'] }}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>
+                        {% endif %}
+                    </div>
+                </li>
+            {% else %}
+                <li>Es wurden keine Orte gefunden</li>
+            {% endfor %}
+            </ul>
+            <script>
+                var hash = window.location.hash.substring(1);
+                if ('' != hash) {
+                    toggleEntry('#description-'+ hash);
+                }
+            </script>
+        </div>
+    </div><!-- .row -->
+{% endblock %}

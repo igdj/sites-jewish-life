@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700,700italic&subset=latin,latin-ext);
+
+$font-stack-sans: 'Roboto Condensed', Arial, sans-serif;
+
+$color-color-dark: #011A45;
+$color-color-medium: #99A0B4;
+$color-color-spot: #d42132;
+
+$color-gray-dark: #9B9B9B;
+$color-gray-medium: #C0C0C0;
+$color-gray-light: #E0DFE0;
+
+/* see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss */
+$screen-sm-size: 768px;
+
+html, body, #map {
+    height: 100%;
+}
+
+body {
+    font-family: $font-stack-sans;
+
+	a {
+		color: $color-color-medium;
+	}
+
+	/* override bootstrap navbar */
+	#nav-top.navbar-default {
+		margin-bottom: 0;
+
+		a {
+			color: white;
+		}
+		background-color: $color-color-dark;
+		border: none;
+		border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+
+		.navbar-brand {
+			float: left;
+			font-size: 14px;
+			height: 50px;
+			line-height: 20px;
+			padding: 15px;
+			padding-top: 5px;
+		}
+
+		.navbar-nav > .active a {
+			background-color: $color-color-spot;
+		}
+	}
+
+	.color-spot {
+		color: $color-color-spot;
+	}
+
+	.color-gray-medium {
+		color: $color-gray-medium;
+	}
+}

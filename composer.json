@@ -1,0 +1,48 @@
+{
+    "config": {
+        "platform": {
+            "php": "5.4.45"
+        }
+    },
+
+    "require": {
+        "symfony/framework-bundle": "^2.8",
+        "symfony/yaml": "^2.8",
+        "symfony/console": "^2.8",
+
+        "sensio/framework-extra-bundle": "@stable",
+        "symfony/twig-bundle": "@stable",
+
+        "symfony/monolog-bundle": "@stable",
+        "symfony/validator": "^2.8",
+        "symfony/property-access": "^2.8",
+
+        "doctrine/doctrine-bundle": "@stable",
+        "doctrine/orm": "^2.5",
+        "stof/doctrine-extensions-bundle": "@stable",
+
+        "jms/i18n-routing-bundle": "@stable",
+        "jms/translation-bundle": "@stable",
+
+        "cocur/slugify": "@stable",
+
+        "symfony/dom-crawler": "^2.8",
+        "symfony/css-selector": "^2.8",
+
+        "symfony/assetic-bundle": "@stable",
+        "leafo/scssphp": "@stable",
+        "knplabs/knp-menu-bundle": "@stable",
+
+        "symfony/web-profiler-bundle": "@stable",
+        "symfony/debug-bundle": "@stable",
+
+        "ddeboer/data-import": "@stable",
+        "phpoffice/phpexcel": "@stable"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "AppBundle\\": "src/AppBundle/"
+        }
+    }
+}

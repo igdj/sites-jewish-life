@@ -1,0 +1,2 @@
+<b><a href="{{ path('places') }}#{{ site.id }}">{{ site.title[app.request.locale] }}</a></b><br />
+{{ site.description[app.request.locale]|nl2br|truncate_html(200)|raw }} <a href="{{ path('places') }}#{{ site.id }}">{{ 'read on'|trans }}</a>

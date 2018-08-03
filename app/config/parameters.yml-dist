@@ -1,0 +1,10 @@
+parameters:
+    kernel.secret: SOME-SECRET
+    database.host:     127.0.0.1
+    database.port:     ~
+    database.name:     sites_jewish_life
+    database.user:     root
+    database.password: ~
+    database.charset:   utf8mb4
+    jms_i18n_routing.hosts.de:  localhost
+    jms_i18n_routing.hosts.en:  127.0.0.1

@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="{{ app.request.getLocale() }}"
+      prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+        {% if pageTitle is defined %}
+            {{ pageTitle }} |
+        {% endif %}
+        {{ 'Places of Jewish Life in the Grindel'|trans }}
+        </title>
+
+        <!--<link rel="stylesheet" href="{{ app.request.basepath }}/css/normalize.css" />
+
+        <script src="{{ app.request.basepath }}/js/modernizr.js"></script>
+        -->
+        <script src="{{ app.request.basepath }}/js/jquery-2.2.3.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <!-- Optional theme -->
+        <!--
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+        -->
+
+        {% stylesheets filter="scssphp" output="css/app.css"
+            "assets/scss/base.scss"
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <style>
+        @media print {
+            /* http://drupal.stackexchange.com/a/59908*/
+            a[href]:after {
+                content: none;
+            }
+        }
+
+        /*
+        @media (max-width: 767px)
+          body {
+            padding: 0;
+          }
+        }
+        */
+        </style>
+        {% block head %}{% endblock %}
+    </head>
+
+    <body role="document" class="route-{{ app.request.get('_route') | replace({'_' : '-'}) }}">
+        <!-- Static navbar -->
+        <nav id="nav-top" class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://www.igdj-hh.de/" target="_blank">
+                        <img src="{{ app.request.basepath }}/img/igdj.png" style="margin-top: -5px; margin-left: -5px; height: 44px; width: auto;" alt="{{ 'Institute for the History of the German Jews'|trans }}" />
+                    </a>
+                    <a class="navbar-brand" style="padding-top: 15px" href="{{ path('home') }}">{{ "Places of Jewish Life in the Grindel"|trans|nl2br }}</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    {{ knp_menu_render('AppBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div><!--/.container-fluid -->
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
