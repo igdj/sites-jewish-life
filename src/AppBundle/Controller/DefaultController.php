@@ -29,5 +29,4 @@ class DefaultController extends Controller
         return $this->render('AppBundle:Default:home.html.twig',
                              [ 'sites' => $sites ]);
     }
-
 }

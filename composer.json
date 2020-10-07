@@ -1,40 +1,53 @@
 {
     "config": {
         "platform": {
-            "php": "5.4.45"
+            "php": "7.2.9"
         }
     },
 
     "require": {
-        "symfony/framework-bundle": "^2.8",
-        "symfony/yaml": "^2.8",
-        "symfony/console": "^2.8",
+        "symfony/config": "^3.4",
+        "symfony/finder": "^3.4",
+        "symfony/filesystem": "^3.4",
+        "symfony/yaml": "^3.4",
+        "symfony/expression-language": "^3.4",
+        "symfony/console": "^3.4",
+        "symfony/framework-bundle": "^3.4",
+
+        "symfony/http-foundation": "^3.4",
+        "symfony/event-dispatcher": "^3.4",
+        "symfony/cache": "^3.4",
+        "symfony/routing": "^3.4",
+
+        "jms/i18n-routing-bundle": "^2.0",
+        "jms/translation-bundle": "^1.4",
 
         "sensio/framework-extra-bundle": "@stable",
+        "symfony/templating": "^3.4",
         "symfony/twig-bundle": "@stable",
 
-        "symfony/monolog-bundle": "@stable",
-        "symfony/validator": "^2.8",
-        "symfony/property-access": "^2.8",
+        "symfony/validator": "^3.4",
+        "symfony/property-access": "^3.4",
 
-        "doctrine/doctrine-bundle": "@stable",
+        "symfony/monolog-bundle": "^3.3",
+        "symfony/monolog-bridge": "^3.4",
+        "knplabs/knp-menu-bundle": "^2.2",
+        "symfony/asset": "^3.4",
+        "symfony/assetic-bundle": "^2.8",
+        "leafo/scssphp": "@stable",
+
+        "doctrine/doctrine-bundle": "^1.8",
         "doctrine/orm": "^2.5",
         "stof/doctrine-extensions-bundle": "@stable",
 
-        "jms/i18n-routing-bundle": "@stable",
-        "jms/translation-bundle": "@stable",
 
-        "cocur/slugify": "@stable",
+        "cocur/slugify": "^3.1",
 
-        "symfony/dom-crawler": "^2.8",
-        "symfony/css-selector": "^2.8",
+        "symfony/dom-crawler": "^3.4",
+        "symfony/css-selector": "^3.4",
 
-        "symfony/assetic-bundle": "@stable",
-        "leafo/scssphp": "@stable",
-        "knplabs/knp-menu-bundle": "@stable",
-
-        "symfony/web-profiler-bundle": "@stable",
-        "symfony/debug-bundle": "@stable",
+        "symfony/web-profiler-bundle": "^3.4",
+        "symfony/debug-bundle": "^3.4",
 
         "ddeboer/data-import": "@stable",
         "phpoffice/phpexcel": "@stable"

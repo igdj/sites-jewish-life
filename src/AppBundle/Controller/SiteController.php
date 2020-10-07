@@ -23,5 +23,4 @@ class SiteController extends Controller
         return $this->render('AppBundle:Site:index.html.twig',
                              [ 'sites' => $sites ]);
     }
-
 }
