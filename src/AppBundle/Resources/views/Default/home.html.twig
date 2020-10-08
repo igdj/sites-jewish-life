@@ -1,23 +1,26 @@
 {% extends 'AppBundle:Default:base.html.twig' %}
 {% block head %}
-    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-0.7.7/leaflet.css" />
-    <script src="{{ app.request.basepath }}/vendor/leaflet-0.7.7/leaflet.js"></script>
+    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.css" />
+    <script src="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.js"></script>
 
-    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet.label/leaflet.label.css" />
-    <script src="{{ app.request.basepath }}/vendor/leaflet.label/leaflet.label.js"></script>
     <style>
     .my-label {
         color: white;
         position: absolute;
-        z-index: -1;
+        /* z-index: -1; */
         background: none;
         border: none;
+    }
+
+    .leaflet-tooltip.my-label {
+        box-shadow: none;
     }
 
     .my-label:before,
     .my-label:after {
         border: none;
     }
+}
     </style>
 {% endblock %}
 
@@ -76,7 +79,7 @@
             {# markerProperties['title'] = {{ site.title['de']|json_encode|raw }}; #}
             var marker = L.circleMarker([ {{ site.latitude }}, {{ site.longitude }} ],
                                         markerProperties)
-                .bindLabel('{{ site.getMarker() }}', { noHide: true, offset: [-9,-11], className: "my-label" })
+                .bindTooltip('{{ site.getMarker() }}', { permanent: true, direction: 'center', opacity: 1, offset: [0,0], className: "my-label" })
                 .addTo(map)
                 .bindPopup({{ site.popup|json_encode|raw }})
                 ;
