@@ -9,6 +9,27 @@ use Symfony\Component\Routing\RouteCollectionBuilder;
 // see https://github.com/ikoene/symfony-micro
 class MicroKernel extends Kernel
 {
+    /*
+     * Set an Environment Variable in Apache Configuration
+     *   SetEnv APP_ENVIRONMENT prod
+     * for production setting instead of having www/app.php and www/app_dev.php
+     * This approach is described int
+     *   https://www.pmg.com/blog/symfony-no-app-dev/
+     */
+    public static function fromEnvironment()
+    {
+        $env = getenv('APP_ENVIRONMENT');
+        if (false === $env) {
+            $env = 'dev';
+            $debug = true;
+        }
+        else {
+            $debug = filter_var(getenv('APP_DEBUG'), FILTER_VALIDATE_BOOLEAN);
+        }
+
+        return new self($env, $debug);
+    }
+
     use MicroKernelTrait;
 
     /*
