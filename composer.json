@@ -38,8 +38,8 @@
         "stof/doctrine-extensions-bundle": "@stable",
 
         "cocur/slugify": "^3.2",
-        "twig/twig": "^2.11",
-        "twig/extensions": "^1.5",
+        "twig/twig": "^2.13",
+        "twig/string-extra": "^3.0",
 
         "symfony/dom-crawler": "^4.4",
         "symfony/css-selector": "^4.4",

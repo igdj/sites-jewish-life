@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db2d99116f8313acccaf9e09dc35ef48",
+    "content-hash": "9d58828b83ba6f9e96c6dc2bd591914d",
     "packages": [
         {
             "name": "armin/scssphp-bundle",
@@ -6559,42 +6559,41 @@
             "time": "2021-06-23T19:06:53+00:00"
         },
         {
-            "name": "twig/extensions",
-            "version": "v1.5.4",
+            "name": "twig/string-extra",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twigphp/Twig-extensions.git",
-                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202"
+                "url": "https://github.com/twigphp/string-extra.git",
+                "reference": "b98a7cee2a44cf69c88a978834394bd17b694957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/57873c8b0c1be51caa47df2cdb824490beb16202",
-                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202",
+                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/b98a7cee2a44cf69c88a978834394bd17b694957",
+                "reference": "b98a7cee2a44cf69c88a978834394bd17b694957",
                 "shasum": ""
             },
             "require": {
-                "twig/twig": "^1.27|^2.0"
+                "php": ">=7.2.5",
+                "symfony/string": "^5.0",
+                "symfony/translation-contracts": "^1.1|^2",
+                "twig/twig": "^2.4|^3.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^3.4",
-                "symfony/translation": "^2.7|^3.4"
-            },
-            "suggest": {
-                "symfony/translation": "Allow the time_diff output to be translated"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Twig_Extensions_": "lib/"
-                },
                 "psr-4": {
-                    "Twig\\Extensions\\": "src/"
-                }
+                    "Twig\\Extra\\String\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6603,20 +6602,33 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
-            "description": "Common additional features for Twig that do not directly belong in core",
+            "description": "A Twig extension for Symfony String",
+            "homepage": "https://twig.symfony.com",
             "keywords": [
-                "i18n",
-                "text"
+                "html",
+                "string",
+                "twig",
+                "unicode"
             ],
             "support": {
-                "issues": "https://github.com/twigphp/Twig-extensions/issues",
-                "source": "https://github.com/twigphp/Twig-extensions/tree/master"
+                "source": "https://github.com/twigphp/string-extra/tree/v3.3.1"
             },
-            "abandoned": true,
-            "time": "2018-12-05T18:34:18+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-12T07:45:40+00:00"
         },
         {
             "name": "twig/twig",
