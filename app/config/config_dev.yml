@@ -3,7 +3,7 @@ imports:
 
 framework:
     profiler:
-        enabled: false # true by default
+        enabled: true # true by default
         only_exceptions: false
 
 web_profiler:

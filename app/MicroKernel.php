@@ -65,6 +65,7 @@ class MicroKernel extends Kernel
             // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
+            // own code
             new AppBundle\AppBundle(),
         );
 
