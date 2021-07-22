@@ -17,6 +17,8 @@ framework:
 twig:
     globals:
         slugify: "@cocur_slugify"
+    exception_controller: null
+    strict_variables: false # TODO: make safe for "%kernel.debug%"
         
 # Doctrine Configuration
 doctrine:
