@@ -9,7 +9,7 @@ parameters:
 
     
 framework:
-    secret: %kernel.secret%
+    secret: '%kernel.secret%'
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
     validation: ~
     templating:
@@ -34,7 +34,7 @@ doctrine:
         options:
                 1002: "SET NAMES '%database.charset%' COLLATE '%database.charset%_unicode_ci'"
         default_table_options:
-            charset: %database.charset%
+            charset: '%database.charset%'
             collate: '%database.charset%_unicode_ci'
             engine:  MyISAM     # InnoDB
     orm:
@@ -61,8 +61,8 @@ jms_i18n_routing:
     # strategy: prefix_except_default
     strategy: custom
     hosts:
-        de: %jms_i18n_routing.hosts.de%
-        en: %jms_i18n_routing.hosts.en%
+        de: '%jms_i18n_routing.hosts.de%'
+        en: '%jms_i18n_routing.hosts.en%'
     redirect_to_host: true
     
 knp_menu:

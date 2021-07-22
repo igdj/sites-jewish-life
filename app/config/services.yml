@@ -1,5 +1,10 @@
 # app/config/services.yml
 services:
+    # explicit commands registration
+    # see https://stackoverflow.com/a/49136150
+    AppBundle\Command\:
+        resource: '%kernel.project_dir%/src/AppBundle/Command/*'
+        tags: ['console.command']    
     app.twig_extension:
         class: AppBundle\Twig\AppExtension
         arguments: [ "@translator" ]
