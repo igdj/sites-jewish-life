@@ -5,31 +5,49 @@
 namespace AppBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Knp\Menu\ItemInterface;
 
-class Builder implements ContainerAwareInterface
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
+class Builder
 {
-    use ContainerAwareTrait;
+    private $factory;
+    private $translator;
+    private $requestStack;
 
-    public function mainMenu(FactoryInterface $factory, array $options)
+    /**
+     * @param FactoryInterface $factory
+     * @param TranslatorInterface $translator
+     * @param RequestStack $requestStack
+     *
+     * Add any other dependency you need
+     */
+    public function __construct(FactoryInterface $factory,
+                                TranslatorInterface $translator,
+                                RequestStack $requestStack)
+    {
+        $this->factory = $factory;
+        $this->translator = $translator;
+        $this->requestStack = $requestStack;
+    }
+
+    public function createMainMenu(array $options)
     {
         // translation will soon handled by template
         // see https://github.com/KnpLabs/KnpMenuBundle/pull/280
-        $translator = $this->container->get('translator');
 
-        $menu = $factory->createItem('root');
+        $menu = $this->factory->createItem('root');
         $menu->setChildrenAttributes(['id' => 'menu-top-footer', 'class' => 'nav navbar-nav']);
 
         // add menu items
         $menu->addChild('home',
-                        [ 'label' => $translator->trans('Map'), 'route' => 'home' ]);
+                        [ 'label' => $this->translator->trans('Map'), 'route' => 'home' ]);
         $menu->addChild('site',
-                        ['label' => $translator->trans('Places'), 'route' => 'places']);
+                        ['label' => $this->translator->trans('Places'), 'route' => 'places']);
         $menu->addChild('about',
-                        ['label' => $translator->trans('About'), 'route' => 'about']);
+                        ['label' => $this->translator->trans('About'), 'route' => 'about']);
 
         return $menu;
     }
-
 }

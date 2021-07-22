@@ -13,3 +13,9 @@ services:
     AppBundle\:
         resource: '%kernel.project_dir%/src/AppBundle'
         exclude: '%kernel.project_dir%/src/AppBundle/{Entity,Migrations,Tests}'
+
+    AppBundle\Menu\Builder:
+        arguments: [ "@knp_menu.factory", "@translator.default", "@request_stack", "@router"  ]
+        tags:
+            # The alias is what is used to retrieve the menu
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }

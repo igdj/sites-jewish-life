@@ -21,7 +21,6 @@
         "jms/i18n-routing-bundle": "^3.0",
         "jms/translation-bundle": "^1.4",
 
-        "symfony/templating": "^4.4",
         "symfony/twig-bundle": "@stable",
 
         "symfony/validator": "^4.4",

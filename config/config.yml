@@ -12,10 +12,7 @@ framework:
     secret: '%kernel.secret%'
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
     validation: ~
-    templating:
-        engines: ['twig']
     translator: { fallbacks: ['%locale%'] }
-
 
 twig:
     globals:

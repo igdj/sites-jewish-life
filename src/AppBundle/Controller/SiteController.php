@@ -17,10 +17,10 @@ class SiteController extends Controller
     {
         $sites = $this->getDoctrine()
                 ->getRepository('\AppBundle\Entity\Site')
-                ->findBy(array(/* 'status' => [ 0, 1 ] */),
-                         array('id' => 'ASC'));
+                ->findBy([/* 'status' => [ 0, 1 ] */],
+                         ['id' => 'ASC']);
 
-        return $this->render('AppBundle:Site:index.html.twig',
+        return $this->render('@App/Site/index.html.twig',
                              [ 'sites' => $sites ]);
     }
 }

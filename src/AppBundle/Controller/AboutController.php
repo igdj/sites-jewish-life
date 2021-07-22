@@ -19,7 +19,7 @@ class AboutController extends Controller
     public function aboutAction(Request $request)
     {
         $locale = $request->getLocale();
-        return $this->render('AppBundle:Default:sitetext-about'
+        return $this->render('@App/Default/sitetext-about'
                              . ('de' == $locale ? '.' . $locale : '')
                              . '.html.twig');
     }

@@ -17,16 +17,15 @@ class DefaultController extends Controller
     {
         $sites = $this->getDoctrine()
                 ->getRepository('\AppBundle\Entity\Site')
-                ->findBy(array(/* 'status' => [ 0, 1 ] */),
-                         array('id' => 'ASC'));
+                ->findBy([/* 'status' => [ 0, 1 ] */],
+                         ['id' => 'ASC']);
 
-        $templating = $this->container->get('templating');
         foreach ($sites as $site) {
-            $site->popup = $templating->render('AppBundle:Default:popup.html.twig',
-                                                [ 'site' => $site ]);
+            $site->popup = $this->renderView('@App/Default/popup.html.twig',
+                                             [ 'site' => $site ]);
         }
 
-        return $this->render('AppBundle:Default:home.html.twig',
+        return $this->render('@App/Default/home.html.twig',
                              [ 'sites' => $sites ]);
     }
 }
