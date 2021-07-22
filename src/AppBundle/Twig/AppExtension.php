@@ -17,13 +17,13 @@ services:
 
 namespace AppBundle\Twig;
 
-class AppExtension extends \Twig_Extension
+class AppExtension extends \Twig\Extension\AbstractExtension
 {
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('truncate_html', [$this, 'truncateHtmlFilter']),
-            new \Twig_SimpleFilter('prettifyurl',[$this, 'prettifyurlFilter']),
+            new \Twig\TwigFilter('truncate_html', [$this, 'truncateHtmlFilter']),
+            new \Twig\TwigFilter('prettifyurl',[$this, 'prettifyurlFilter']),
         ];
     }
 
