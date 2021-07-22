@@ -16,7 +16,7 @@ class SiteController extends Controller
     public function indexAction()
     {
         $sites = $this->getDoctrine()
-                ->getRepository('AppBundle:Site')
+                ->getRepository('\AppBundle\Entity\Site')
                 ->findBy(array(/* 'status' => [ 0, 1 ] */),
                          array('id' => 'ASC'));
 

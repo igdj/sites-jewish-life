@@ -49,7 +49,7 @@ class ImportCommand extends Command
         $reader->setHeaderRowNumber(0);
         $count = 0;
 
-        $siteRepository = $this->em->getRepository('AppBundle:Site');
+        $siteRepository = $this->em->getRepository('\AppBundle\Entity\Site');
 
         foreach ($reader as $row) {
             $unique_values = array_unique(array_values($row));
