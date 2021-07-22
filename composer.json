@@ -38,7 +38,7 @@
         "symfony/monolog-bridge": "^4.4",
         "knplabs/knp-menu-bundle": "^3.0",
         "symfony/asset": "^4.4",
-        "symfony/assetic-bundle": "dev-master as 2.8.3",
+        "sanpi/assetic-bundle": "^2.11",
         "leafo/scssphp": "@stable",
 
         "doctrine/doctrine-bundle": "^1.10",

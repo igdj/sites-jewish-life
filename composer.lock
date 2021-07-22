@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ba8cb9abf75e718b88874e2caf0beb8",
+    "content-hash": "7c153e05ba5adccfe6ccf35494670365",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2021,87 +2021,6 @@
             "time": "2020-11-29T17:04:51+00:00"
         },
         {
-            "name": "kriswallsmith/assetic",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.1",
-                "symfony/process": "~2.1|~3.0"
-            },
-            "conflict": {
-                "twig/twig": "<1.27"
-            },
-            "require-dev": {
-                "leafo/lessphp": "^0.3.7",
-                "leafo/scssphp": "~0.1",
-                "meenie/javascript-packer": "^1.1",
-                "mrclay/minify": "<2.3",
-                "natxet/cssmin": "3.0.4",
-                "patchwork/jsqueeze": "~1.0|~2.0",
-                "phpunit/phpunit": "~4.8 || ^5.6",
-                "psr/log": "~1.0",
-                "ptachoire/cssembed": "~1.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "twig/twig": "~1.23|~2.0",
-                "yfix/packager": "dev-master"
-            },
-            "suggest": {
-                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
-                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
-                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
-                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
-                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
-                "twig/twig": "Assetic provides the integration with the Twig templating engine"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Assetic": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Asset Management for PHP",
-            "homepage": "https://github.com/kriswallsmith/assetic",
-            "keywords": [
-                "assets",
-                "compression",
-                "minification"
-            ],
-            "support": {
-                "issues": "https://github.com/kriswallsmith/assetic/issues",
-                "source": "https://github.com/kriswallsmith/assetic/tree/master"
-            },
-            "time": "2016-11-11T18:43:20+00:00"
-        },
-        {
             "name": "leafo/scssphp",
             "version": "v0.8.4",
             "source": {
@@ -2517,6 +2436,170 @@
             "time": "2021-05-03T11:20:27+00:00"
         },
         {
+            "name": "sanpi/assetic",
+            "version": "v1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sanpii/assetic.git",
+                "reference": "2a63c71ee05daec059a1f2c291d7eb71669cf562"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sanpii/assetic/zipball/2a63c71ee05daec059a1f2c291d7eb71669cf562",
+                "reference": "2a63c71ee05daec059a1f2c291d7eb71669cf562",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "symfony/process": "^2.7|^3.0|^4.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.34|>=2,<2.4"
+            },
+            "replace": {
+                "kriswallsmith/assetic": "self.version"
+            },
+            "require-dev": {
+                "leafo/lessphp": "^0.5",
+                "leafo/scssphp": "dev-master",
+                "leafo/scssphp-compass": "dev-master",
+                "linkorb/jsmin-php": "^1.0",
+                "meenie/javascript-packer": "^1.1",
+                "mrclay/minify": "^3.0",
+                "natxet/cssmin": "^3.0",
+                "nitra/php-min": "^0.0",
+                "patchwork/jsqueeze": "^2.0",
+                "phpunit/phpunit": "^7.0",
+                "psr/log": "^1.0",
+                "ptachoire/cssembed": "^1.0",
+                "symfony/phpunit-bridge": "^4.0",
+                "twig/twig": "^2.0",
+                "yfix/packager": "dev-master#d358c2a"
+            },
+            "suggest": {
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
+                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/sanpi/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "support": {
+                "issues": "https://github.com/sanpii/assetic/issues",
+                "source": "https://github.com/sanpii/assetic/tree/v1.6.2"
+            },
+            "abandoned": true,
+            "time": "2019-11-29T14:07:38+00:00"
+        },
+        {
+            "name": "sanpi/assetic-bundle",
+            "version": "v2.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sanpii/assetic-bundle.git",
+                "reference": "1dc386397aa68b437567cef9818f430cbc145ce8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sanpii/assetic-bundle/zipball/1dc386397aa68b437567cef9818f430cbc145ce8",
+                "reference": "1dc386397aa68b437567cef9818f430cbc145ce8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sanpi/assetic": "^1.6",
+                "symfony/asset": "~2.3|~3.0|~4.0",
+                "symfony/console": "~2.3|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.3|~3.0|~4.0",
+                "symfony/framework-bundle": "~2.3|~3.0|~4.0",
+                "symfony/http-kernel": "~2.3|~3.0|~4.0",
+                "symfony/templating": "~2.3|~3.0|~4.0",
+                "symfony/yaml": "~2.3|~3.0|~4.0"
+            },
+            "conflict": {
+                "kriswallsmith/spork": "<=0.2",
+                "twig/twig": "<1.34|>=2,<2.4"
+            },
+            "replace": {
+                "symfony/assetic-bundle": "self.version"
+            },
+            "require-dev": {
+                "kriswallsmith/spork": "~0.3",
+                "patchwork/jsqueeze": "~1.0",
+                "phpunit/phpunit": "~7.0",
+                "symfony/css-selector": "~2.3|~3.0|~4.0",
+                "symfony/dom-crawler": "~2.3|~3.0|~4.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
+                "symfony/twig-bundle": "~2.3|~3.0|~4.0"
+            },
+            "suggest": {
+                "kriswallsmith/spork": "to be able to dump assets in parallel",
+                "symfony/twig-bundle": "to use the Twig integration"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\AsseticBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Integrates Assetic into Symfony2",
+            "homepage": "https://github.com/sanpii/AsseticBundle",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "support": {
+                "issues": "https://github.com/sanpii/assetic-bundle/issues",
+                "source": "https://github.com/sanpii/assetic-bundle/tree/master"
+            },
+            "abandoned": true,
+            "time": "2019-11-29T14:10:47+00:00"
+        },
+        {
             "name": "sensio/framework-extra-bundle",
             "version": "v6.1.5",
             "source": {
@@ -2735,79 +2818,6 @@
                 }
             ],
             "time": "2021-05-26T17:39:37+00:00"
-        },
-        {
-            "name": "symfony/assetic-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/burki/assetic-bundle.git",
-                "reference": "3a4524e6361d8ab31b084a547ea58e774e4a99a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/burki/assetic-bundle/zipball/3a4524e6361d8ab31b084a547ea58e774e4a99a8",
-                "reference": "3a4524e6361d8ab31b084a547ea58e774e4a99a8",
-                "shasum": ""
-            },
-            "require": {
-                "kriswallsmith/assetic": "~1.4",
-                "php": ">=5.3.0",
-                "symfony/console": "~2.3|~3.0|~4.0",
-                "symfony/dependency-injection": "~2.3|~3.0|~4.0",
-                "symfony/framework-bundle": "~2.3|~3.0|~4.0",
-                "symfony/yaml": "~2.3|~3.0|~4.0"
-            },
-            "conflict": {
-                "kriswallsmith/spork": "<=0.2",
-                "twig/twig": "<1.27"
-            },
-            "require-dev": {
-                "kriswallsmith/spork": "~0.3",
-                "patchwork/jsqueeze": "~1.0",
-                "symfony/class-loader": "~2.3|~3.0|~4.0",
-                "symfony/css-selector": "~2.3|~3.0|~4.0",
-                "symfony/dom-crawler": "~2.3|~3.0|~4.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
-                "symfony/twig-bundle": "~2.3|~3.0|~4.0"
-            },
-            "suggest": {
-                "kriswallsmith/spork": "to be able to dump assets in parallel",
-                "symfony/twig-bundle": "to use the Twig integration"
-            },
-            "default-branch": true,
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bundle\\AsseticBundle\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Integrates Assetic into Symfony2",
-            "homepage": "https://github.com/symfony/AsseticBundle",
-            "keywords": [
-                "assets",
-                "compression",
-                "minification"
-            ],
-            "support": {
-                "source": "https://github.com/burki/assetic-bundle/tree/master"
-            },
-            "time": "2018-06-02T11:30:46+00:00"
         },
         {
             "name": "symfony/cache",
@@ -5546,20 +5556,20 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.47",
+            "version": "v4.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "b8648cf1d5af12a44a51d07ef9bf980921f15fca"
+                "reference": "7e812c84c3f2dba173d311de6e510edf701685a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/b8648cf1d5af12a44a51d07ef9bf980921f15fca",
-                "reference": "b8648cf1d5af12a44a51d07ef9bf980921f15fca",
+                "url": "https://api.github.com/repos/symfony/process/zipball/7e812c84c3f2dba173d311de6e510edf701685a8",
+                "reference": "7e812c84c3f2dba173d311de6e510edf701685a8",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": ">=7.1.3"
             },
             "type": "library",
             "autoload": {
@@ -5584,10 +5594,10 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Process Component",
+            "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v3.4.47"
+                "source": "https://github.com/symfony/process/tree/v4.4.26"
             },
             "funding": [
                 {
@@ -5603,7 +5613,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-24T10:57:07+00:00"
+            "time": "2021-06-09T14:57:04+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -6927,19 +6937,11 @@
         }
     ],
     "packages-dev": [],
-    "aliases": [
-        {
-            "package": "symfony/assetic-bundle",
-            "version": "9999999-dev",
-            "alias": "2.8.3",
-            "alias_normalized": "2.8.3.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "sensio/framework-extra-bundle": 0,
         "symfony/twig-bundle": 0,
-        "symfony/assetic-bundle": 20,
         "leafo/scssphp": 0,
         "stof/doctrine-extensions-bundle": 0,
         "ddeboer/data-import": 0,
