@@ -4,12 +4,6 @@
             "php": "7.2.9"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/burki/assetic-bundle"
-        }
-    ],
     "require": {
         "symfony/config": "^4.4",
         "symfony/finder": "^4.4",
@@ -27,7 +21,6 @@
         "jms/i18n-routing-bundle": "^3.0",
         "jms/translation-bundle": "^1.4",
 
-        "sensio/framework-extra-bundle": "@stable",
         "symfony/templating": "^4.4",
         "symfony/twig-bundle": "@stable",
 
@@ -38,8 +31,7 @@
         "symfony/monolog-bridge": "^4.4",
         "knplabs/knp-menu-bundle": "^3.0",
         "symfony/asset": "^4.4",
-        "sanpi/assetic-bundle": "^2.11",
-        "leafo/scssphp": "@stable",
+        "armin/scssphp-bundle": "^1.1",
 
         "doctrine/doctrine-bundle": "^1.10",
         "doctrine/orm": "^2.6",

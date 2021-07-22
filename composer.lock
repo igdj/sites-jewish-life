@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c153e05ba5adccfe6ccf35494670365",
+    "content-hash": "db2d99116f8313acccaf9e09dc35ef48",
     "packages": [
+        {
+            "name": "armin/scssphp-bundle",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/a-r-m-i-n/scssphp-bundle.git",
+                "reference": "2c5b1464f1e8616909a57e3cccca4dd41cb04973"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/a-r-m-i-n/scssphp-bundle/zipball/2c5b1464f1e8616909a57e3cccca4dd41cb04973",
+                "reference": "2c5b1464f1e8616909a57e3cccca4dd41cb04973",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2.0",
+                "scssphp/scssphp": "^1.0",
+                "symfony/asset": "^4.0 | ^5.0",
+                "symfony/framework-bundle": "^4.0 | ^5.0",
+                "symfony/twig-bridge": "^4.0 | ^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": "true"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Armin\\ScssphpBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Armin Vieweg",
+                    "email": "armin@v.ieweg.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Symfony bundle to parse scss sources at runtime.",
+            "support": {
+                "issues": "https://github.com/a-r-m-i-n/scssphp-bundle/issues",
+                "source": "https://github.com/a-r-m-i-n/scssphp-bundle/tree/1.1.2"
+            },
+            "time": "2021-02-10T14:03:16+00:00"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.3.0",
@@ -2021,65 +2072,6 @@
             "time": "2020-11-29T17:04:51+00:00"
         },
         {
-            "name": "leafo/scssphp",
-            "version": "v0.8.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafo/scssphp.git",
-                "reference": "b9cdea3e42c3bcb1a9faafd04ccce4e8ec860ad9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/b9cdea3e42c3bcb1a9faafd04ccce4e8ec860ad9",
-                "reference": "b9cdea3e42c3bcb1a9faafd04ccce4e8ec860ad9",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4.0 || ^7"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.6",
-                "squizlabs/php_codesniffer": "~2.5",
-                "twbs/bootstrap": "~4.3",
-                "zurb/foundation": "~6.5"
-            },
-            "bin": [
-                "bin/pscss"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Leafo\\ScssPhp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Leaf Corcoran",
-                    "email": "leafot@gmail.com",
-                    "homepage": "http://leafo.net"
-                }
-            ],
-            "description": "scssphp is a compiler for SCSS written in PHP.",
-            "homepage": "http://leafo.github.io/scssphp/",
-            "keywords": [
-                "css",
-                "less",
-                "sass",
-                "scss",
-                "stylesheet"
-            ],
-            "support": {
-                "issues": "https://github.com/leafo/scssphp/issues",
-                "source": "https://github.com/leafo/scssphp/tree/v0.8.4"
-            },
-            "abandoned": "scssphp/scssphp",
-            "time": "2019-06-18T21:15:44+00:00"
-        },
-        {
             "name": "monolog/monolog",
             "version": "1.26.1",
             "source": {
@@ -2436,142 +2428,45 @@
             "time": "2021-05-03T11:20:27+00:00"
         },
         {
-            "name": "sanpi/assetic",
-            "version": "v1.6.2",
+            "name": "scssphp/scssphp",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sanpii/assetic.git",
-                "reference": "2a63c71ee05daec059a1f2c291d7eb71669cf562"
+                "url": "https://github.com/scssphp/scssphp.git",
+                "reference": "b83594e2323c5d6e80785df3f91b9d1d32aad530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sanpii/assetic/zipball/2a63c71ee05daec059a1f2c291d7eb71669cf562",
-                "reference": "2a63c71ee05daec059a1f2c291d7eb71669cf562",
+                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/b83594e2323c5d6e80785df3f91b9d1d32aad530",
+                "reference": "b83594e2323c5d6e80785df3f91b9d1d32aad530",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.1",
-                "symfony/process": "^2.7|^3.0|^4.0"
-            },
-            "conflict": {
-                "twig/twig": "<1.34|>=2,<2.4"
-            },
-            "replace": {
-                "kriswallsmith/assetic": "self.version"
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "leafo/lessphp": "^0.5",
-                "leafo/scssphp": "dev-master",
-                "leafo/scssphp-compass": "dev-master",
-                "linkorb/jsmin-php": "^1.0",
-                "meenie/javascript-packer": "^1.1",
-                "mrclay/minify": "^3.0",
-                "natxet/cssmin": "^3.0",
-                "nitra/php-min": "^0.0",
-                "patchwork/jsqueeze": "^2.0",
-                "phpunit/phpunit": "^7.0",
-                "psr/log": "^1.0",
-                "ptachoire/cssembed": "^1.0",
-                "symfony/phpunit-bridge": "^4.0",
-                "twig/twig": "^2.0",
-                "yfix/packager": "dev-master#d358c2a"
+                "bamarni/composer-bin-plugin": "^1.4",
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.3 || ^9.4",
+                "sass/sass-spec": "*",
+                "squizlabs/php_codesniffer": "~3.5",
+                "symfony/phpunit-bridge": "^5.1",
+                "twbs/bootstrap": "~5.0",
+                "twbs/bootstrap4": "4.6.0",
+                "zurb/foundation": "~6.5"
             },
             "suggest": {
-                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
-                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
-                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
-                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
-                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
-                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+                "ext-iconv": "Can be used as fallback when ext-mbstring is not available",
+                "ext-mbstring": "For best performance, mbstring should be installed as it is faster than ext-iconv"
             },
+            "bin": [
+                "bin/pscss"
+            ],
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Assetic": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Asset Management for PHP",
-            "homepage": "https://github.com/sanpi/assetic",
-            "keywords": [
-                "assets",
-                "compression",
-                "minification"
-            ],
-            "support": {
-                "issues": "https://github.com/sanpii/assetic/issues",
-                "source": "https://github.com/sanpii/assetic/tree/v1.6.2"
-            },
-            "abandoned": true,
-            "time": "2019-11-29T14:07:38+00:00"
-        },
-        {
-            "name": "sanpi/assetic-bundle",
-            "version": "v2.11.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sanpii/assetic-bundle.git",
-                "reference": "1dc386397aa68b437567cef9818f430cbc145ce8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sanpii/assetic-bundle/zipball/1dc386397aa68b437567cef9818f430cbc145ce8",
-                "reference": "1dc386397aa68b437567cef9818f430cbc145ce8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "sanpi/assetic": "^1.6",
-                "symfony/asset": "~2.3|~3.0|~4.0",
-                "symfony/console": "~2.3|~3.0|~4.0",
-                "symfony/dependency-injection": "~2.3|~3.0|~4.0",
-                "symfony/framework-bundle": "~2.3|~3.0|~4.0",
-                "symfony/http-kernel": "~2.3|~3.0|~4.0",
-                "symfony/templating": "~2.3|~3.0|~4.0",
-                "symfony/yaml": "~2.3|~3.0|~4.0"
-            },
-            "conflict": {
-                "kriswallsmith/spork": "<=0.2",
-                "twig/twig": "<1.34|>=2,<2.4"
-            },
-            "replace": {
-                "symfony/assetic-bundle": "self.version"
-            },
-            "require-dev": {
-                "kriswallsmith/spork": "~0.3",
-                "patchwork/jsqueeze": "~1.0",
-                "phpunit/phpunit": "~7.0",
-                "symfony/css-selector": "~2.3|~3.0|~4.0",
-                "symfony/dom-crawler": "~2.3|~3.0|~4.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
-                "symfony/twig-bundle": "~2.3|~3.0|~4.0"
-            },
-            "suggest": {
-                "kriswallsmith/spork": "to be able to dump assets in parallel",
-                "symfony/twig-bundle": "to use the Twig integration"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
                 "psr-4": {
-                    "Symfony\\Bundle\\AsseticBundle\\": ""
+                    "ScssPhp\\ScssPhp\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2580,102 +2475,30 @@
             ],
             "authors": [
                 {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Integrates Assetic into Symfony2",
-            "homepage": "https://github.com/sanpii/AsseticBundle",
-            "keywords": [
-                "assets",
-                "compression",
-                "minification"
-            ],
-            "support": {
-                "issues": "https://github.com/sanpii/assetic-bundle/issues",
-                "source": "https://github.com/sanpii/assetic-bundle/tree/master"
-            },
-            "abandoned": true,
-            "time": "2019-11-29T14:10:47+00:00"
-        },
-        {
-            "name": "sensio/framework-extra-bundle",
-            "version": "v6.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "62c5909f49cf74dccdf50a294511cc24be2f969c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/62c5909f49cf74dccdf50a294511cc24be2f969c",
-                "reference": "62c5909f49cf74dccdf50a294511cc24be2f969c",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/annotations": "^1.0",
-                "php": ">=7.2.5",
-                "symfony/config": "^4.4|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/framework-bundle": "^4.4|^5.0",
-                "symfony/http-kernel": "^4.4|^5.0"
-            },
-            "conflict": {
-                "doctrine/doctrine-cache-bundle": "<1.3.1",
-                "doctrine/persistence": "<1.3"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.10|^3.0",
-                "doctrine/doctrine-bundle": "^1.11|^2.0",
-                "doctrine/orm": "^2.5",
-                "symfony/browser-kit": "^4.4|^5.0",
-                "symfony/doctrine-bridge": "^4.4|^5.0",
-                "symfony/dom-crawler": "^4.4|^5.0",
-                "symfony/expression-language": "^4.4|^5.0",
-                "symfony/finder": "^4.4|^5.0",
-                "symfony/monolog-bridge": "^4.0|^5.0",
-                "symfony/monolog-bundle": "^3.2",
-                "symfony/phpunit-bridge": "^4.4.9|^5.0.9",
-                "symfony/security-bundle": "^4.4|^5.0",
-                "symfony/twig-bundle": "^4.4|^5.0",
-                "symfony/yaml": "^4.4|^5.0",
-                "twig/twig": "^1.34|^2.4|^3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sensio\\Bundle\\FrameworkExtraBundle\\": "src/"
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "homepage": "https://github.com/robocoder"
                 },
-                "exclude-from-classmap": [
-                    "/tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Cédric Morin",
+                    "email": "cedric@yterium.com",
+                    "homepage": "https://github.com/Cerdic"
                 }
             ],
-            "description": "This bundle provides a way to configure your controllers with annotations",
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://scssphp.github.io/scssphp/",
             "keywords": [
-                "annotations",
-                "controllers"
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
             ],
             "support": {
-                "issues": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/issues",
-                "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.1.5"
+                "issues": "https://github.com/scssphp/scssphp/issues",
+                "source": "https://github.com/scssphp/scssphp/tree/v1.6.0"
             },
-            "time": "2021-05-31T10:40:46+00:00"
+            "time": "2021-07-02T16:28:10+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -5555,67 +5378,6 @@
             "time": "2021-05-21T13:25:03+00:00"
         },
         {
-            "name": "symfony/process",
-            "version": "v4.4.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "7e812c84c3f2dba173d311de6e510edf701685a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/7e812c84c3f2dba173d311de6e510edf701685a8",
-                "reference": "7e812c84c3f2dba173d311de6e510edf701685a8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Executes commands in sub-processes",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/process/tree/v4.4.26"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2021-06-09T14:57:04+00:00"
-        },
-        {
             "name": "symfony/property-access",
             "version": "v4.4.25",
             "source": {
@@ -6940,9 +6702,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "sensio/framework-extra-bundle": 0,
         "symfony/twig-bundle": 0,
-        "leafo/scssphp": 0,
         "stof/doctrine-extensions-bundle": 0,
         "ddeboer/data-import": 0,
         "phpoffice/phpexcel": 0

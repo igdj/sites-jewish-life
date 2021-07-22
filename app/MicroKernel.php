@@ -39,7 +39,6 @@ class MicroKernel extends Kernel
     {
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
@@ -57,9 +56,8 @@ class MicroKernel extends Kernel
             // not required, but recommended for better extraction
             new JMS\TranslationBundle\JMSTranslationBundle(),
 
-            // asset management
-            // see http://symfony.com/doc/current/cookbook/assetic/asset_management.html
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            // https://github.com/a-r-m-i-n/scssphp-bundle
+            new \Armin\ScssphpBundle\ScssphpBundle(),
 
             // menu
             // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
