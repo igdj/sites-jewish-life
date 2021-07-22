@@ -3,7 +3,7 @@
 // src/AppBundle/Command/ImportCommand.php
 namespace AppBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -11,8 +11,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
-class ImportCommand extends ContainerAwareCommand
+use Doctrine\ORM\EntityManagerInterface;
+
+class ImportCommand extends Command
 {
+    public function __construct(EntityManagerInterface $em, $rootDir)
+    {
+        parent::__construct();
+
+        $this->em = $em;
+        $this->rootDir = $rootDir;
+    }
+
     protected function configure()
     {
         $this
@@ -23,8 +33,7 @@ class ImportCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-        $fname = $this->getContainer()->get('kernel')->getRootDir()
+        $fname = $this->rootDir
                . '/Resources/data/sites.xlsx';
 
         $fs = new Filesystem();
@@ -40,8 +49,7 @@ class ImportCommand extends ContainerAwareCommand
         $reader->setHeaderRowNumber(0);
         $count = 0;
 
-        $entityManager = $this->getContainer()->get('doctrine')->getEntityManager();
-        $siteRepository = $entityManager->getRepository('AppBundle:Site');
+        $siteRepository = $this->em->getRepository('AppBundle:Site');
 
         foreach ($reader as $row) {
             $unique_values = array_unique(array_values($row));
@@ -107,9 +115,9 @@ class ImportCommand extends ContainerAwareCommand
                         // $output->writeln('Skip : ' . $key);
                 }
             }
-            $entityManager->persist($site);
+            $this->em->persist($site);
         }
 
-        $entityManager->flush();
+        $this->em->flush();
     }
 }
