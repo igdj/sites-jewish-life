@@ -21,10 +21,10 @@ class AppExtension extends \Twig_Extension
 {
     public function getFilters()
     {
-        return array(
-            new \Twig_SimpleFilter('truncate_html', array($this, 'truncateHtmlFilter')),
-            new \Twig_SimpleFilter('prettifyurl', array($this, 'prettifyurlFilter')),
-        );
+        return [
+            new \Twig_SimpleFilter('truncate_html', [$this, 'truncateHtmlFilter']),
+            new \Twig_SimpleFilter('prettifyurl',[$this, 'prettifyurlFilter']),
+        ];
     }
 
     public function truncateHtmlFilter($html, $length = 100, $ending = '...')
@@ -55,11 +55,11 @@ class AppExtension extends \Twig_Extension
             return $html;
         }
         $total = mb_strlen($ending);
-        $open_tags = array();
+        $open_tags = [];
         $return = '';
         $finished = false;
         $final_segment = '';
-        $self_closing_elements = array(
+        $self_closing_elements = [
             'area',
             'base',
             'br',
@@ -71,8 +71,8 @@ class AppExtension extends \Twig_Extension
             'link',
             'meta',
             'param'
-            );
-        $inline_containers = array(
+        ];
+        $inline_containers = [
             'a',
             'b',
             'abbr',
@@ -84,7 +84,7 @@ class AppExtension extends \Twig_Extension
             'strong',
             'sub',
             'sup'
-            );
+        ];
         while (!$finished) {
             if (preg_match('/^<(\w+)[^>]*>/', $html, $matches)) { // Does the remaining string start in an opening tag?
                 // If not self-closing, place tag in $open_tags array:

@@ -19,15 +19,15 @@ class Builder implements ContainerAwareInterface
         $translator = $this->container->get('translator');
 
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttributes(array('id' => 'menu-top-footer', 'class' => 'nav navbar-nav'));
+        $menu->setChildrenAttributes(['id' => 'menu-top-footer', 'class' => 'nav navbar-nav']);
 
         // add menu items
         $menu->addChild('home',
-                        array('label' => $translator->trans('Map'), 'route' => 'home'));
+                        [ 'label' => $translator->trans('Map'), 'route' => 'home' ]);
         $menu->addChild('site',
-                        array('label' => $translator->trans('Places'), 'route' => 'places'));
+                        ['label' => $translator->trans('Places'), 'route' => 'places']);
         $menu->addChild('about',
-                        array('label' => $translator->trans('About'), 'route' => 'about'));
+                        ['label' => $translator->trans('About'), 'route' => 'about']);
 
         return $menu;
     }
