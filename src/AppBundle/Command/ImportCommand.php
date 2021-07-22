@@ -34,7 +34,7 @@ class ImportCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $fname = $this->rootDir
-               . '/Resources/data/sites.xlsx';
+               . '/data/sites.xlsx';
 
         $fs = new Filesystem();
 
@@ -119,5 +119,7 @@ class ImportCommand extends Command
         }
 
         $this->em->flush();
+
+        return 0;
     }
 }

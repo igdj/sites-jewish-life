@@ -5,16 +5,16 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  *
  */
-class AboutController extends Controller
+class AboutController extends AbstractController
 {
     /**
-     * @Route("/about")
+     * @Route("/about", name="about")
      */
     public function aboutAction(Request $request)
     {

@@ -5,47 +5,47 @@
         }
     },
     "require": {
-        "symfony/config": "^4.4",
-        "symfony/finder": "^4.4",
-        "symfony/filesystem": "^4.4",
-        "symfony/yaml": "^4.4",
-        "symfony/expression-language": "^4.4",
-        "symfony/console": "^4.4",
-        "symfony/framework-bundle": "^4.4",
+        "symfony/config": "^5.3",
+        "symfony/finder": "^5.3",
+        "symfony/filesystem": "^5.3",
+        "symfony/yaml": "^5.3",
+        "symfony/expression-language": "^5.3",
+        "symfony/console": "^5.3",
+        "symfony/framework-bundle": "^5.3",
 
-        "symfony/http-foundation": "^4.4",
-        "symfony/event-dispatcher": "^4.4",
-        "symfony/cache": "^4.4",
-        "symfony/routing": "^4.4",
+        "symfony/http-foundation": "^5.3",
+        "symfony/event-dispatcher": "^5.3",
+        "symfony/cache": "^5.3",
+        "symfony/routing": "^5.3",
 
-        "symfony/security-core": "^4.4",
         "jms/i18n-routing-bundle": "^3.0",
-        "jms/translation-bundle": "^1.4",
+        "symfony/security-core": "^5.3",
+        "jms/translation-bundle": "^1.6",
 
         "symfony/twig-bundle": "@stable",
 
-        "symfony/validator": "^4.4",
-        "symfony/property-access": "^4.4",
+        "symfony/validator": "^5.3",
+        "symfony/property-access": "^5.3",
 
         "symfony/monolog-bundle": "^3.3",
-        "symfony/monolog-bridge": "^4.4",
+        "symfony/monolog-bridge": "^5.3",
         "knplabs/knp-menu-bundle": "^3.0",
-        "symfony/asset": "^4.4",
+        "symfony/asset": "^5.3",
         "armin/scssphp-bundle": "^1.1",
 
-        "doctrine/doctrine-bundle": "^1.10",
-        "doctrine/orm": "^2.6",
+        "doctrine/doctrine-bundle": "^2.1",
+        "doctrine/orm": "^2.7",
         "stof/doctrine-extensions-bundle": "@stable",
 
         "cocur/slugify": "^4.0",
         "twig/twig": "^3.3",
         "twig/string-extra": "^3.0",
 
-        "symfony/dom-crawler": "^4.4",
-        "symfony/css-selector": "^4.4",
+        "symfony/dom-crawler": "^5.3",
+        "symfony/css-selector": "^5.3",
 
-        "symfony/web-profiler-bundle": "^4.4",
-        "symfony/debug-bundle": "^4.4",
+        "symfony/web-profiler-bundle": "^5.3",
+        "symfony/debug-bundle": "^5.3",
 
         "ddeboer/data-import": "@stable",
         "phpoffice/phpexcel": "@stable"

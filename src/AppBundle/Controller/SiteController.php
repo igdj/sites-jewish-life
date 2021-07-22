@@ -2,16 +2,16 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  *
  */
-class SiteController extends Controller
+class SiteController extends AbstractController
 {
     /**
-     * @Route("/site")
+     * @Route("/places", name="places")
      */
     public function indexAction()
     {

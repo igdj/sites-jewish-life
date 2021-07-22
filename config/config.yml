@@ -13,6 +13,8 @@ framework:
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
     validation: ~
     translator: { fallbacks: ['%locale%'] }
+    router:
+        utf8: true
 
 twig:
     globals:
