@@ -11,18 +11,13 @@
         {{ 'Places of Jewish Life in the Grindel'|trans }}
         </title>
 
-        <script src="{{ app.request.basepath }}/js/jquery-2.2.3.min.js"></script>
+        <script src="{{ app.request.basepath }}/js/jquery-3.3.1.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/bootstrap-3.4.0-dist/css/bootstrap.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-        <!-- Optional theme -->
-        <!--
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-        -->
+        <script src="{{ app.request.basepath }}/vendor/bootstrap-3.4.0-dist/js/bootstrap.min.js"></script>
 
         {#
             triggers scssphp, this one doesn't prepend app.request.basepath
