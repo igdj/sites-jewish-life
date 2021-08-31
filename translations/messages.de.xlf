@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2021-07-22T10:03:13Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+  <file date="2021-08-14T12:42:45Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -27,9 +27,9 @@
         <target>Orte</target>
         <jms:reference-file line="47">\..\..\..\..\..\./src\AppBundle\Menu\Builder.php\</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a6ddcbc53c04fd1e879ad98465ba5bb000d4498e" resname="Places of Jewish Life in the Grindel">
-        <source>Places of Jewish Life in the Grindel</source>
-        <target>Orte jüdischen Lebens am Grindel</target>
+      <trans-unit id="0abc7c391321d8d4b45d97b098725b709cb59b43" resname="Places of Jewish History and the Present in Hamburg">
+        <source>Places of Jewish History and the Present in Hamburg</source>
+        <target state="new">Orte Jüdischer Geschichte und Gegenwart in Hamburg</target>
         <jms:reference-file line="11">\..\..\..\..\..\./src\AppBundle\Resources\views\Default\base.html.twig</jms:reference-file>
         <jms:reference-file line="68">\..\..\..\..\..\./src\AppBundle\Resources\views\Default\base.html.twig</jms:reference-file>
       </trans-unit>

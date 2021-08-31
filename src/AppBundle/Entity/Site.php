@@ -139,6 +139,43 @@ class Site
     }
 
     /**
+     * Gets urls.
+     *
+     * @return array
+     */
+    public function getUrlSeparated()
+    {
+        $urls = [];
+
+        if (!empty($this->url)) {
+            return $urls;
+        }
+
+        return preg_splace('/\s*;\s*/', $this->url);
+    }
+
+    /**
+     * Gets urls.
+     *
+     * @return array
+     */
+    public function getJuedischesHamburgSeparated()
+    {
+        $urls = [];
+
+        if (!array_key_exists('dasjuedischehamburg', $this->additional)) {
+            return $urls;
+        }
+
+        $content = $this->additional['dasjuedischehamburg'];
+        if (empty($content)) {
+            return $urls;
+        }
+
+        return preg_split('/\s*;\s*/', $content);
+    }
+
+    /**
      * Gets localized name.
      *
      * @return string
@@ -151,9 +188,7 @@ class Site
         {
             return $this->streetOverride[$locale];
         }
-        
+
         return $this->street;
     }
-
-
 }

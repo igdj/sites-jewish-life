@@ -37,13 +37,15 @@
                             <a href="{{ path('home') }}#{{ site.id }}" title="{{ 'Show on map'|trans }}">
                                 {{ site.streetLocalized(app.request.locale) }}
                             </a>
+                            {% set urls = site.getUrlsSeparated() %}
                             {% if site.url is not empty %}
-                                <br /><span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ site.url }}" target="_blank">{{ site.url|prettifyurl }}</a>
+                                <br />
+                                {% for url in urls %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
                             {% endif %}
                         </p>
                         <p>{{ site.description[app.request.locale]|nl2br }}</p>
-                        {% if site.additional is not null and site.additional['dasjuedischehamburg'] is not empty and app.request.locale == 'de' %}
-                            <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="http://dasjuedischehamburg.de/inhalt/{{ site.additional['dasjuedischehamburg'] }}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>
+                        {% if app.request.locale == 'de' and site.getJuedischesHamburgSeparated() is not empty  %}
+                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="http://dasjuedischehamburg.de/inhalt/{{ url }}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
                         {% endif %}
                     </div>
                 </li>

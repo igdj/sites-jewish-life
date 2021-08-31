@@ -34,7 +34,7 @@ class ImportCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $fname = $this->rootDir
-               . '/data/sites.xlsx';
+               . '/data/Stadtplan_Erweiterung.xlsx';
 
         $fs = new Filesystem();
 
@@ -89,6 +89,7 @@ class ImportCommand extends Command
                         if ('streetoverride' == $field) {
                             $field = 'streetOverride';
                         }
+
                         $currentValues = $site->{$field};
                         if (is_null($currentValues)) {
                             $currentValues = [];
@@ -108,6 +109,7 @@ class ImportCommand extends Command
                         else if (!is_null($currentValues)) {
                             unset($currentValues[$key]);
                         }
+
                         $site->additional = $currentValues;
                         break;
 
@@ -115,6 +117,7 @@ class ImportCommand extends Command
                         // $output->writeln('Skip : ' . $key);
                 }
             }
+
             $this->em->persist($site);
         }
 

@@ -20,7 +20,6 @@
     .my-label:after {
         border: none;
     }
-}
     </style>
 {% endblock %}
 
@@ -39,41 +38,27 @@
 
             var map = L.map('map');
 
-            // map.setView([ 53.56810009, 9.9862097 ], 13);
-            map.fitBounds([ [ 53.58769, 9.99599  ],
-                            [ 53.5600881, 9.9688 ] ]);
 
-
-            if (true) {
-                /*
-                 * The following Mapbox styles are available to all accounts using a valid access token:
-                 * mapbox://styles/mapbox/streets-v11
-                 * mapbox://styles/mapbox/outdoors-v11
-                 * mapbox://styles/mapbox/light-v10
-                 * mapbox://styles/mapbox/dark-v10
-                 * mapbox://styles/mapbox/satellite-v9
-                 * mapbox://styles/mapbox/satellite-streets-v11
-                 */
-                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                    tileSize: 512,
-                    minZoom: 1,
-                    maxZoom: 16,
-                    zoomOffset: -1,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-                        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                    id: 'mapbox/outdoors-v11', // 'hausverstand/ck9n3jwdp2e6f1imr5ccrf682',
-                    accessToken: 'pk.eyJ1IjoiaGF1c3ZlcnN0YW5kIiwiYSI6ImNpemU2OWJvaTAwNHIyd252b2ptaDV2NjkifQ.FGA8-opghZHquZJKlHSFdg',
-                }).addTo(map);
-            }
-            else {
-                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-                        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-                    id: 'mapbox.streets'
-                }).addTo(map);
-            }
+            /*
+             * The following Mapbox styles are available to all accounts using a valid access token:
+             * mapbox://styles/mapbox/streets-v11
+             * mapbox://styles/mapbox/outdoors-v11
+             * mapbox://styles/mapbox/light-v10
+             * mapbox://styles/mapbox/dark-v10
+             * mapbox://styles/mapbox/satellite-v9
+             * mapbox://styles/mapbox/satellite-streets-v11
+             */
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                tileSize: 512,
+                minZoom: 1,
+                maxZoom: 16,
+                zoomOffset: -1,
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                id: 'mapbox/outdoors-v11', // 'hausverstand/ck9n3jwdp2e6f1imr5ccrf682',
+                accessToken: 'pk.eyJ1IjoiaGF1c3ZlcnN0YW5kIiwiYSI6ImNpemU2OWJvaTAwNHIyd252b2ptaDV2NjkifQ.FGA8-opghZHquZJKlHSFdg',
+            }).addTo(map);
 
             var hash = window.location.hash.substring(1);
 
@@ -86,6 +71,9 @@
                 fillOpacity: 0.8,
             };
 
+            var markers = [];
+            var activeMarker = null;
+
             {% for site in sites %}
             {# markerProperties['title'] = {{ site.title['de']|json_encode|raw }}; #}
             var marker = L.circleMarker([ {{ site.latitude }}, {{ site.longitude }} ],
@@ -96,9 +84,24 @@
                 ;
 
             if ('{{ site.id }}' == hash) {
-                marker.openPopup();
+                activeMarker = marker;
             }
+            markers.push(marker);
             {% endfor %}
+
+            if (activeMarker != null) {
+                map.setView(activeMarker.getLatLng(), 13);
+                activeMarker.openPopup();
+            }
+            else {
+                /*
+                map.fitBounds([ [ 53.58769, 9.99599  ],
+                                [ 53.5600881, 9.9688 ] ]);
+                */
+
+                var group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds());
+            }
             </script>
         </div>
     </div>

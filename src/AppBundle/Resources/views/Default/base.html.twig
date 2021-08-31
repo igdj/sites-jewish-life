@@ -8,7 +8,7 @@
         {% if pageTitle is defined %}
             {{ pageTitle }} |
         {% endif %}
-        {{ 'Places of Jewish Life in the Grindel'|trans }}
+        {{ 'Places of Jewish History and the Present in Hamburg'|trans }}
         </title>
 
         <script src="{{ app.request.basepath }}/js/jquery-3.3.1.min.js"></script>
@@ -60,7 +60,7 @@
                     <a class="navbar-brand" href="http://www.igdj-hh.de/" target="_blank">
                         <img src="{{ app.request.basepath }}/img/igdj.png" style="margin-top: -5px; margin-left: -5px; height: 44px; width: auto;" alt="{{ 'Institute for the History of the German Jews'|trans }}" />
                     </a>
-                    <a class="navbar-brand" style="padding-top: 15px" href="{{ path('home') }}">{{ "Places of Jewish Life in the Grindel"|trans|nl2br }}</a>
+                    <a class="navbar-brand" style="padding-top: 15px" href="{{ path('home') }}">{{ "Places of Jewish History and the Present in Hamburg"|trans|nl2br }}</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     {{ knp_menu_render('main', {'currentClass': 'active'}) }}
