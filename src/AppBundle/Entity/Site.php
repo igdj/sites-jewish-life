@@ -47,7 +47,7 @@ class Site
     /**
      * @var string The title of the item.
      *
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
     public $title;
 
@@ -61,14 +61,14 @@ class Site
     /**
      * @var string Override (german) street.
      *
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
     public $streetOverride;
 
     /**
      * @var string The description of the item.
      *
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
     public $description;
 
@@ -76,14 +76,14 @@ class Site
      * @var string URL of the item.
      *
      * @Assert\Url
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(nullable=true, length=511)
      */
     public $url;
 
     /**
      * @var string Additional info about the item.
      *
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
     public $additional;
 
@@ -135,6 +135,7 @@ class Site
         if (!empty($this->marker)) {
             return $this->marker;
         }
+
         return $this->id;
     }
 
