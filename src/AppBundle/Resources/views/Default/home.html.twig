@@ -75,7 +75,6 @@
             var activeMarker = null;
 
             {% for site in sites %}
-            {# markerProperties['title'] = {{ site.title['de']|json_encode|raw }}; #}
             var marker = L.circleMarker([ {{ site.latitude }}, {{ site.longitude }} ],
                                         markerProperties)
                 .bindTooltip('{{ site.getMarker() }}', { permanent: true, direction: 'center', opacity: 1, offset: [0,0], className: "my-label" })

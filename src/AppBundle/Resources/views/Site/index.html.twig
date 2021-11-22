@@ -27,7 +27,7 @@
             {% for site in sites %}
                 <li style="border-bottom: 1px solid black">
                     <h3>
-                        <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;"><span style="display: inline-block; min-width: 1.2em">{{ site.getMarker() }}</span> {{ site.title[app.request.locale] }}
+                        <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;"><span style="display: inline-block; min-width: 1.2em">{{ site.getMarker() }}</span> {{ site.titleLocalized(app.request.locale) }}
                             <span class="small glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
                         </a>
                     </h3>
@@ -43,9 +43,9 @@
                                 {% for url in urls %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
                             {% endif %}
                         </p>
-                        <p>{{ site.description[app.request.locale]|nl2br }}</p>
+                        <p>{{ site.descriptionLocalized(app.request.locale)|nl2br }}</p>
                         {% if app.request.locale == 'de' and site.getJuedischesHamburgSeparated() is not empty  %}
-                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="http://dasjuedischehamburg.de/inhalt/{{ url }}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
+                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
                         {% endif %}
                     </div>
                 </li>

@@ -112,6 +112,48 @@ class Site
     }
 
     /**
+     * Gets localized title.
+     *
+     * @return string
+     */
+    public function getTitleLocalized($locale = 'de')
+    {
+        if (is_null($this->title)
+            || !is_array($this->title))
+        {
+            return null;
+        }
+
+        if (array_key_exists($locale, $this->title) && !empty($this->title[$locale])) {
+            return $this->title[$locale];
+        }
+
+        // default locale
+        return $this->title['de'];
+    }
+
+    /**
+     * Gets localized description.
+     *
+     * @return string
+     */
+    public function getDescriptionLocalized($locale = 'de')
+    {
+        if (is_null($this->description)
+            || !is_array($this->description))
+        {
+            return null;
+        }
+
+        if (array_key_exists($locale, $this->description) && !empty($this->description[$locale])) {
+            return $this->description[$locale];
+        }
+
+        // default locale
+        return $this->description['de'];
+    }
+
+    /**
      * Sets marker.
      *
      * @param string $marker
