@@ -19,7 +19,8 @@ class AboutController extends AbstractController
     public function aboutAction(Request $request)
     {
         $locale = $request->getLocale();
-        return $this->render('@App/Default/sitetext-about'
+
+        return $this->render('Default/sitetext-about'
                              . ('de' == $locale ? '.' . $locale : '')
                              . '.html.twig');
     }
