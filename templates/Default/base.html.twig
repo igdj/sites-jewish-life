@@ -13,11 +13,13 @@
 
         <script src="{{ app.request.basepath }}/js/jquery-3.6.0.min.js"></script>
 
+        <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/fontawesome-free-5.15.4-web/css/all.min.css">
+
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/bootstrap-3.4.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/bootstrap-5.1.3-dist/css/bootstrap.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="{{ app.request.basepath }}/vendor/bootstrap-3.4.0-dist/js/bootstrap.min.js"></script>
+        <script src="{{ app.request.basepath }}/vendor/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 
         {#
             triggers scssphp, this one doesn't prepend app.request.basepath
@@ -40,24 +42,19 @@
 
     <body role="document" class="route-{{ app.request.get('_route') | replace({'_' : '-'}) }}">
         <!-- Static navbar -->
-        <nav id="nav-top" class="navbar navbar-default">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">{{ 'Toggle navigation'|trans }}</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://www.igdj-hh.de/" target="_blank">
-                        <img src="{{ app.request.basepath }}/img/igdj.png" style="margin-top: -5px; margin-left: -5px; height: 44px; width: auto;" alt="{{ 'Institute for the History of the German Jews'|trans }}" />
-                    </a>
-                    <a class="navbar-brand" style="padding-top: 15px" href="{{ path('home') }}">{{ "Places of Jewish History and the Present in Hamburg"|trans|nl2br }}</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
+                <a class="navbar-brand logo" href="http://www.igdj-hh.de/" target="_blank">
+                    <img src="{{ app.request.basepath }}/img/igdj.png" style="margin-top: -5px; margin-left: -5px; height: 44px; width: auto;" alt="{{ 'Institute for the History of the German Jews'|trans }}" />
+                </a>
+                <a class="navbar-brand home" href="{{ path('home') }}">{{ "Places of Jewish History and the Present in Hamburg"|trans|nl2br }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="{{ 'Toggle navigation'|trans }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
                     {{ knp_menu_render('main', {'currentClass': 'active'}) }}
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
+                </div>
+            </div>
         </nav>
 
         <div class="container-fluid">

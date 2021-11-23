@@ -34,19 +34,39 @@ class Builder
 
     public function createMainMenu(array $options)
     {
-        // translation will soon handled by template
-        // see https://github.com/KnpLabs/KnpMenuBundle/pull/280
-
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttributes(['id' => 'menu-top-footer', 'class' => 'nav navbar-nav']);
+        $menu->setChildrenAttributes([
+            'id' => 'menu-main',
+            'class' => 'nav navbar-nav',
+        ]);
 
         // add menu items
-        $menu->addChild('home',
-                        [ 'label' => $this->translator->trans('Map'), 'route' => 'home' ]);
-        $menu->addChild('site',
-                        ['label' => $this->translator->trans('Places'), 'route' => 'places']);
-        $menu->addChild('about',
-                        ['label' => $this->translator->trans('About'), 'route' => 'about']);
+        $items = [
+            'home' => [
+                'label' => $this->translator->trans('Map'),
+                'route' => 'home',
+            ],
+            'site' => [
+                'label' => $this->translator->trans('Places'),
+                'route' => 'places',
+            ],
+            'about' => [
+                'label' => $this->translator->trans('About'),
+                'route' => 'about',
+            ],
+        ];
+
+        foreach ($items as $key => $item) {
+            $item['attributes'] = [
+                // bootstrap 5
+                'class' => 'nav-item',
+            ];
+
+            $menu->addChild($key, $item);
+
+            // bootstrap 5
+            $menu[$key]->setLinkAttribute('class', 'nav-link');
+        }
 
         return $menu;
     }

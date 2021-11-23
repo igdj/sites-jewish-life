@@ -10,8 +10,8 @@ $color-gray-dark: #9B9B9B;
 $color-gray-medium: #C0C0C0;
 $color-gray-light: #E0DFE0;
 
-/* see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss */
-$screen-sm-size: 768px;
+/* see https://getbootstrap.com/docs/5.0/layout/breakpoints/ */
+$screen-md-size: 768px;
 
 html, body, #map {
     height: 100%;
@@ -25,28 +25,57 @@ body {
 	}
 
 	/* override bootstrap navbar */
-	#nav-top.navbar-default {
+	nav.navbar-dark {
 		margin-bottom: 0;
 
-		a {
-			color: white;
-		}
-		background-color: $color-color-dark;
+		background-color: $color-color-dark !important;
 		border: none;
 		border-radius: 0 !important;
 		-moz-border-radius: 0 !important;
 
-		.navbar-brand {
-			float: left;
-			font-size: 14px;
-			height: 50px;
-			line-height: 20px;
-			padding: 15px;
-			padding-top: 5px;
+		a {
+			color: white !important;
 		}
 
-		.navbar-nav > .active a {
-			background-color: $color-color-spot;
+		button.navbar-toggler {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.navbar-brand {
+			margin-right: 8px;
+			font-size: 14px;
+
+			&.logo {
+			}
+
+			&.home {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+
+		.navbar-nav {
+			@media (min-width: $screen-md-size) {
+				padding-left: 2rem;
+			}
+
+			li {
+				padding-top: 0;
+				padding-bottom: 0;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				min-height: 48px;
+
+				&.active {
+					background-color: $color-color-spot;
+				}
+
+				& > a {
+					font-size: 14px;
+				}
+			}
 		}
 	}
 
@@ -56,5 +85,9 @@ body {
 
 	.color-gray-medium {
 		color: $color-gray-medium;
+	}
+
+	h3 > a {
+		text-decoration: none;
 	}
 }

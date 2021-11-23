@@ -6,14 +6,14 @@
         $( selector ).toggle();
         var display = $( selector ).css('display');
         if ('block' == display) {
-            $( selector ).parent().find('.glyphicon-collapse-down').each (function() {
-                $( this ).removeClass('glyphicon-collapse-down');
-                $( this ).addClass('glyphicon-collapse-up');
+            $( selector ).parent().find('.fa-caret-down').each (function() {
+                $( this ).removeClass('fa-caret-down');
+                $( this ).addClass('fa-caret-up');
             });
         } else {
-            $( selector ).parent().find('.glyphicon-collapse-up').each (function() {
-                $( this ).removeClass('glyphicon-collapse-up');
-                $( this ).addClass('glyphicon-collapse-down');
+            $( selector ).parent().find('.fa-caret-up').each (function() {
+                $( this ).removeClass('fa-caret-up');
+                $( this ).addClass('fa-caret-down');
             });
         }
     }
@@ -28,24 +28,24 @@
                 <li style="border-bottom: 1px solid black">
                     <h3>
                         <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;"><span style="display: inline-block; min-width: 1.2em">{{ site.getMarker() }}</span> {{ site.titleLocalized(app.request.locale) }}
-                            <span class="small glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+                            <span class="small fas fa-caret-down" aria-hidden="true"></span>
                         </a>
                     </h3>
                     <div id="description-{{ site.id }}" class="description" style="display: none">
                         <p>
-                            <span class="glyphicon glyphicon-map-marker color-spot" aria-hidden="true" style="padding-right: 2px"></span>
+                            <span class="fas fa-map-marker color-spot" aria-hidden="true" style="padding-right: 2px"></span>
                             <a href="{{ path('home') }}#{{ site.id }}" title="{{ 'Show on map'|trans }}">
                                 {{ site.streetLocalized(app.request.locale) }}
                             </a>
                             {% set urls = site.getUrlsSeparated() %}
                             {% if site.url is not empty %}
                                 <br />
-                                {% for url in urls %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
+                                {% for url in urls %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
                             {% endif %}
                         </p>
                         <p>{{ site.descriptionLocalized(app.request.locale)|nl2br }}</p>
                         {% if app.request.locale == 'de' and site.getJuedischesHamburgSeparated() is not empty  %}
-                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="glyphicon glyphicon-new-window color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
+                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}" target="_blank">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
                         {% endif %}
                     </div>
                 </li>
