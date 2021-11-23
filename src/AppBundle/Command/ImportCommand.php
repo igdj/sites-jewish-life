@@ -39,7 +39,9 @@ class ImportCommand extends Command
         $fs = new Filesystem();
 
         if (!$fs->exists($fname)) {
-            $output->writeln(sprintf('<error>%s does not exist</error>', $fname));
+            $output->writeln(sprintf('<error>%s does not exist</error>',
+                                     $fname));
+
             return 1;
         }
 
@@ -94,6 +96,7 @@ class ImportCommand extends Command
                         if (is_null($currentValues)) {
                             $currentValues = [];
                         }
+
                         $currentValues[$lang] = $value;
                         $site->{$field} = $currentValues;
                         break;
@@ -101,9 +104,12 @@ class ImportCommand extends Command
                     case 'dasjuedischehamburg':
                         $currentValues = $site->additional;
                         if (!empty($value)) {
+                            $value = preg_replace('#https?://[www\.]*dasjuedischehamburg\.de/inhalt/#', '', $value);
+
                             if (is_null($currentValues)) {
                                 $currentValues = [];
                             }
+
                             $currentValues[$key] = $value;
                         }
                         else if (!is_null($currentValues)) {
