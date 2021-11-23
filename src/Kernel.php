@@ -1,19 +1,21 @@
 <?php
 
+namespace App;
+
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
 // see https://github.com/ikoene/symfony-micro
-class MicroKernel extends Kernel
+class Kernel extends BaseKernel
 {
     /*
      * Set an Environment Variable in Apache Configuration
      *   SetEnv APP_ENVIRONMENT prod
      * for production setting instead of having www/app.php and www/app_dev.php
-     * This approach is described int
+     * This approach is described in
      *   https://www.pmg.com/blog/symfony-no-app-dev/
      */
     public static function fromEnvironment()
@@ -37,39 +39,36 @@ class MicroKernel extends Kernel
      */
     public function registerBundles()
     {
-        $bundles = array(
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+        $bundles = [
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
 
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new \Symfony\Bundle\TwigBundle\TwigBundle(),
 
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             // $slug = $this->get('cocur_slugify')->slugify('Hello World!');
             // see https://github.com/cocur/slugify#user-content-symfony2
-            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new \Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
 
-            new Symfony\Bundle\MonologBundle\MonologBundle(), // required by JMS\TranslationBundle\JMSTranslationBundle
+            new \Symfony\Bundle\MonologBundle\MonologBundle(), // required by JMS\TranslationBundle\JMSTranslationBundle
 
             // translate routes
-            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new \JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             // not required, but recommended for better extraction
-            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new \JMS\TranslationBundle\JMSTranslationBundle(),
 
             // https://github.com/a-r-m-i-n/scssphp-bundle
             new \Armin\ScssphpBundle\ScssphpBundle(),
 
             // menu
             // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-
-            // own code
-            new AppBundle\AppBundle(),
-        );
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+        ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
+            $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
         }
 
         return $bundles;
@@ -78,12 +77,17 @@ class MicroKernel extends Kernel
     // see https://github.com/symfony/symfony-standard/blob/master/app/AppKernel.php
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        return $this->getProjectDir() . '/var/cache/' . $this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return dirname(__DIR__).'/var/logs';
+        return $this->getProjectDir() . '/var/logs';
+    }
+
+    public function getConfigDir()
+    {
+        return $this->getProjectDir().'/config';
     }
 
     /*
@@ -91,8 +95,8 @@ class MicroKernel extends Kernel
      */
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader)
     {
-        $loader->load(__DIR__ . '/../config/config_' . $this->getEnvironment() . '.yml');
-        $loader->load(__DIR__ . '/../config/services.yml');
+        $loader->load($this->getConfigDir() . '/config_' . $this->getEnvironment() . '.yaml');
+        $loader->load($this->getConfigDir() . '/services.yaml');
     }
 
     /*
@@ -118,7 +122,7 @@ class MicroKernel extends Kernel
             );
         }
 
-        // Loading annotated routes from AppBundle
-        $routes->mount('/', $routes->import('@AppBundle/Controller', 'annotation'));
+        // App controllers
+        $routes->mount('/', $routes->import($this->getConfigDir().'/routes.yaml'));
     }
 }

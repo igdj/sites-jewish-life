@@ -1,7 +1,7 @@
 <?php
 
-// src/AppBundle/Command/ImportCommand.php
-namespace AppBundle\Command;
+// src/App/Command/ImportCommand.php
+namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -51,7 +51,7 @@ class ImportCommand extends Command
         $reader->setHeaderRowNumber(0);
         $count = 0;
 
-        $siteRepository = $this->em->getRepository('\AppBundle\Entity\Site');
+        $siteRepository = $this->em->getRepository('\App\Entity\Site');
 
         foreach ($reader as $row) {
             $unique_values = array_unique(array_values($row));
@@ -68,7 +68,7 @@ class ImportCommand extends Command
 
             $site = $siteRepository->findOneById($row['ID']);
             if (is_null($site)) {
-                $site = new \AppBundle\Entity\Site();
+                $site = new \App\Entity\Site();
                 $site->setId($row['ID']);
             }
 

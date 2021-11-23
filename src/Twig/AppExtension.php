@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Twig/AppExtension.php
+// src/Twig/AppExtension.php
 /*
 
 see http://symfony.com/doc/current/cookbook/templating/twig_extension.html
@@ -8,14 +8,14 @@ see http://symfony.com/doc/current/cookbook/templating/twig_extension.html
 
 services:
     app.twig_extension:
-        class: AppBundle\Twig\AppExtension
+        class: App\Twig\AppExtension
         public: false
         tags:
             - { name: twig.extension }
 
 */
 
-namespace AppBundle\Twig;
+namespace App\Twig;
 
 class AppExtension extends \Twig\Extension\AbstractExtension
 {

@@ -1,8 +1,8 @@
 <?php
-// src/AppBundle/Menu/Builder.php
+// src/App/Menu/Builder.php
 
 // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
-namespace AppBundle\Menu;
+namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;

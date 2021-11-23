@@ -1,4 +1,4 @@
-# app/config/services.yml
+# app/config/services.yaml
 services:
     _defaults:
         autowire: true
@@ -10,11 +10,11 @@ services:
     # makes classes in src/App available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     # together with the above _defaults, this is needed for Command-classes to work as in Sf 3.4
-    AppBundle\:
-        resource: '%kernel.project_dir%/src/AppBundle'
-        exclude: '%kernel.project_dir%/src/AppBundle/{Entity,Migrations,Tests}'
+    App\:
+        resource: '%kernel.project_dir%/src'
+        exclude: '%kernel.project_dir%/src/{Entity,Migrations,Tests}'
 
-    AppBundle\Menu\Builder:
+    App\Menu\Builder:
         arguments: [ "@knp_menu.factory", "@translator.default", "@request_stack", "@router"  ]
         tags:
             # The alias is what is used to retrieve the menu

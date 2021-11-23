@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.yml }
+    - { resource: parameters.yaml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -41,6 +41,13 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         auto_mapping: true 
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
 
 stof_doctrine_extensions:
     orm:

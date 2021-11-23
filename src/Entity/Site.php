@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -206,7 +206,7 @@ class Site
     {
         $urls = [];
 
-        if (!array_key_exists('dasjuedischehamburg', $this->additional)) {
+        if (is_null($this->additional) || !array_key_exists('dasjuedischehamburg', $this->additional)) {
             return $urls;
         }
 

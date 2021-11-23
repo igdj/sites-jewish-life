@@ -3,9 +3,8 @@
 use Symfony\Component\HttpFoundation\Request;
 
 $loader = require __DIR__.'/../config/autoload.php';
-require_once __DIR__.'/../app/MicroKernel.php';
 
-$kernel = MicroKernel::fromEnvironment();
+$kernel = \App\Kernel::fromEnvironment();
 
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);

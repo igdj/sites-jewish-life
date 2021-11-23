@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,16 +16,18 @@ class DefaultController extends AbstractController
     public function homeAction()
     {
         $sites = $this->getDoctrine()
-                ->getRepository('\AppBundle\Entity\Site')
+                ->getRepository('\App\Entity\Site')
                 ->findBy([/* 'status' => [ 0, 1 ] */],
                          ['id' => 'ASC']);
 
         foreach ($sites as $site) {
-            $site->popup = $this->renderView('@App/Default/popup.html.twig',
-                                             [ 'site' => $site ]);
+            $site->popup = $this->renderView('Default/popup.html.twig', [
+                'site' => $site,
+            ]);
         }
 
-        return $this->render('@App/Default/home.html.twig',
-                             [ 'sites' => $sites ]);
+        return $this->render('Default/home.html.twig', [
+            'sites' => $sites,
+        ]);
     }
 }
