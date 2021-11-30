@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
-use Symfony\Component\Routing\RouteCollectionBuilder;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 // see https://github.com/ikoene/symfony-micro
 class Kernel extends BaseKernel
 {
+    const CONFIG_EXTS = '.{yaml}';
+
     /*
      * Set an Environment Variable in Apache Configuration
      *   SetEnv APP_ENVIRONMENT prod
@@ -102,27 +104,12 @@ class Kernel extends BaseKernel
     /*
      * {@inheritDoc}
      */
-    protected function configureRoutes(RouteCollectionBuilder $routes)
+    protected function configureRoutes(RoutingConfigurator $routes)
     {
-        if (in_array($this->getEnvironment(), [ 'dev', 'test' ], true)) {
-            $routes->mount('/_wdt', $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml'));
-            $routes->mount(
-                '/_profiler',
-                $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml')
-            );
+        $confDir = $this->getConfigDir();
 
-            // Preview error pages through /_error/{statusCode}
-            //   see http://symfony.com/doc/current/cookbook/controller/error_pages.html
-            // Note: not sure why this is mapped to /_error/_error/{code}.{_format} as can be seen by
-            //   bin/console debug:router | grep error
-            // -> _preview_error  ANY      ANY      ANY    /_error/_error/{code}.{_format}
-            $routes->mount(
-                '/_error',
-                $routes->import('@FrameworkBundle/Resources/config/routing/errors.xml')
-            );
-        }
-
-        // App controllers
-        $routes->mount('/', $routes->import($this->getConfigDir().'/routes.yaml'));
+        $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS);
+        $routes->import($confDir.'/{routes}/'.$this->environment.'/**/*'.self::CONFIG_EXTS);
+        $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS);
     }
 }
