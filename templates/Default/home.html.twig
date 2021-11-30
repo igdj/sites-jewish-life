@@ -1,5 +1,7 @@
 {% extends 'Default/base.html.twig' %}
+
 {% block head %}
+    {# leaflet.js includes #}
     <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.css" />
     <script src="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.js"></script>
 
@@ -25,7 +27,8 @@
 
 {% block body %}
     <div class="row">
-        <div id="map" class="col-sm-12" style="min-height: 360px">
+        <div id="map" class="col-sm-12" style="min-height: 360px"></div>
+
         <script>
             function adjustMapHeight() {
                 $('#map').height(function(index, height) {
@@ -37,7 +40,6 @@
             adjustMapHeight();
 
             var map = L.map('map');
-
 
             /*
              * The following Mapbox styles are available to all accounts using a valid access token:
@@ -62,6 +64,9 @@
 
             var hash = window.location.hash.substring(1);
 
+            var markers = [];
+            var activeMarker = null;
+
             var markerProperties = {
                 radius: 12,
                 fillColor: '#d42132',
@@ -71,13 +76,17 @@
                 fillOpacity: 0.8,
             };
 
-            var markers = [];
-            var activeMarker = null;
-
             {% for site in sites %}
-            var marker = L.circleMarker([ {{ site.latitude }}, {{ site.longitude }} ],
-                                        markerProperties)
-                .bindTooltip('{{ site.getMarker() }}', { permanent: true, direction: 'center', opacity: 1, offset: [0,0], className: "my-label" })
+            var marker = L.circleMarker(
+                    [ {{ site.latitude }}, {{ site.longitude }} ],
+                    markerProperties)
+                .bindTooltip('{{ site.getMarker() }}', {
+                    permanent: true,
+                    direction: 'center',
+                    opacity: 1,
+                    offset: [0, 0],
+                    className: "my-label"
+                })
                 .addTo(map)
                 .bindPopup({{ site.popup|json_encode|raw }})
                 ;
@@ -85,6 +94,7 @@
             if ('{{ site.id }}' == hash) {
                 activeMarker = marker;
             }
+
             markers.push(marker);
             {% endfor %}
 
@@ -93,15 +103,9 @@
                 activeMarker.openPopup();
             }
             else {
-                /*
-                map.fitBounds([ [ 53.58769, 9.99599  ],
-                                [ 53.5600881, 9.9688 ] ]);
-                */
-
                 var group = new L.featureGroup(markers);
                 map.fitBounds(group.getBounds());
             }
-            </script>
-        </div>
+        </script>
     </div>
 {% endblock %}
