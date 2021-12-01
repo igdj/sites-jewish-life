@@ -155,11 +155,18 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             $return .= mb_substr($final_segment, 0, mb_strrpos($final_segment, ' '));
         }
         $return = trim($return);
-        $len = strlen($return);
-        $last_char = substr($return, $len - 1, 1);
+
+        /*
+        // dbu: tried to make utf-8 safe
+        // currently commented out because it strips stuff that could stay
+        $len = mb_strlen($return);
+
+        $last_char = mb_substr($return, $len - 1, 1);
         if (!preg_match('/[a-zA-Z0-9]/', $last_char)) {
-            $return = substr_replace($return, '', $len - 1, 1);
+            $return = mb_substr($return, 0, $len - 1);
         }
+        */
+
         // Add closing tags:
         $closing_tags = array_reverse($open_tags);
         $ending_added = false;
