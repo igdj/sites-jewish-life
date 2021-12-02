@@ -20,14 +20,18 @@ class DefaultController extends AbstractController
                 ->findBy([/* 'status' => [ 0, 1 ] */],
                          ['id' => 'ASC']);
 
+        $features = [];
         foreach ($sites as $site) {
-            $site->popup = $this->renderView('Default/popup.html.twig', [
+            $features[] = [
                 'site' => $site,
-            ]);
+                'popupContent' =>  $this->renderView('Default/popup.html.twig', [
+                    'site' => $site,
+                ]),
+            ];
         }
 
         return $this->render('Default/home.html.twig', [
-            'sites' => $sites,
+            'features' => $features,
         ]);
     }
 }

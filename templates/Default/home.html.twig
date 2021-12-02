@@ -67,6 +67,29 @@
             var markers = [];
             var activeMarker = null;
 
+            var featureCollection = {
+                "type": "FeatureCollection",
+
+                "features": [
+                {% for feature in features %}
+                    {% set site = feature.site %}
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "{{ site.getMarker() }}",
+                            "popupContent": {{ feature.popupContent|json_encode|raw }},
+                            "latitude": {{ site.latitude }},
+                            "longitude": {{ site.longitude }}
+                        },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [ {{ site.longitude }}, {{ site.latitude }}  ]
+                        }
+                    }{% if not loop.last %}, {% endif%}
+                {% endfor %}
+                ]
+            };
+
             var markerProperties = {
                 radius: 12,
                 fillColor: '#d42132',
@@ -76,35 +99,42 @@
                 fillOpacity: 0.8,
             };
 
-            {% for site in sites %}
-            var marker = L.circleMarker(
-                    [ {{ site.latitude }}, {{ site.longitude }} ],
-                    markerProperties)
-                .bindTooltip('{{ site.getMarker() }}', {
-                    permanent: true,
-                    direction: 'center',
-                    opacity: 1,
-                    offset: [0, 0],
-                    className: "my-label"
-                })
-                .addTo(map)
-                .bindPopup({{ site.popup|json_encode|raw }})
-                ;
+            function buildMarker(feature, latlng) {
+                var marker = L.circleMarker(latlng, markerProperties)
+                    .bindTooltip(feature.properties.name, {
+                        permanent: true,
+                        direction: 'center',
+                        opacity: 1,
+                        offset: [0, 0],
+                        className: "my-label"
+                    });
 
-            if ('{{ site.id }}' == hash) {
-                activeMarker = marker;
+                if (hash !== "" && feature.properties.name == hash) {
+                    activeMarker = marker;
+                }
+
+                return marker;
             }
 
-            markers.push(marker);
-            {% endfor %}
+            function buildPopup(feature, layer) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+
+            var featureGroup = new L.geoJson(featureCollection, {
+                onEachFeature: buildPopup,
+                filter: function(feature, layer) {
+                    return true; // TODO: check if active
+                },
+                pointToLayer: buildMarker
+            });
+            featureGroup.addTo(map);
 
             if (activeMarker != null) {
                 map.setView(activeMarker.getLatLng(), 13);
                 activeMarker.openPopup();
             }
             else {
-                var group = new L.featureGroup(markers);
-                map.fitBounds(group.getBounds());
+                map.fitBounds(featureGroup.getBounds());
             }
         </script>
     </div>
