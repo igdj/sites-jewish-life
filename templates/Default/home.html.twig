@@ -5,6 +5,55 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.css" />
     <script src="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.js"></script>
 
+    <script>
+    var baseUrlMarkerImg = '{{ app.request.basepath }}/vendor/leaflet-color-markers/img/';
+
+    var blueIcon = new L.Icon({
+        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-blue.png',
+        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var violetIcon = new L.Icon({
+        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-violet.png',
+        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var blackIcon = new L.Icon({
+        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-black.png',
+        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var yellowIcon = new L.Icon({
+        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-yellow.png',
+        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var orangeIcon = new L.Icon({
+        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-orange.png',
+        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+    </script>
+
     <style>
     .my-label {
         color: white;
@@ -107,7 +156,8 @@
                     {
                         "type": "Feature",
                         "properties": {
-                            "name": "{{ site.getMarker() }}",
+                            "name": "{{ site.titleLocalized(app.request.locale) }}",
+                            "marker": "{{ site.getMarker() }}",
                             "popupContent": {{ feature.popupContent|json_encode|raw }},
                             "latitude": {{ site.latitude }},
                             "longitude": {{ site.longitude }}
@@ -121,31 +171,39 @@
                 ]
             };
 
+            var inactiveIcon = blueIcon;
+            var activeIcon = violetIcon;
+
             var markerProperties = {
-                radius: 12,
-                fillColor: '#d42132',
-                color: '#d42132',
-                weight: 1,
+                icon: inactiveIcon
+            };
+            var tooltipProperties = {
+                /*
+                permanent: false,
+                direction: 'center',
                 opacity: 1,
-                fillOpacity: 0.8,
+                offset: [0, 0],
+                className: "my-label"
+                */
             };
 
             function buildMarker(feature, latlng) {
-                var marker = L.circleMarker(latlng, markerProperties)
-                    .bindTooltip(feature.properties.name, {
-                        permanent: true,
-                        direction: 'center',
-                        opacity: 1,
-                        offset: [0, 0],
-                        className: "my-label"
-                    });
+                var marker = L.marker(latlng, markerProperties)
+                    .bindTooltip(feature.properties.name, tooltipProperties);
 
-                marker.on('popupopen', function (popup) {
-                    console.log("popup opened !", popup);
+                marker.on('click', function(e) {
+                    if (activeMarker != null) {
+                        activeMarker.setIcon(inactiveIcon);
+                    }
+
+                    activeMarker = marker;
+                    activeMarker.setIcon(activeIcon);
+                    map.panTo(activeMarker.getLatLng());
                 });
 
-                if (hash !== "" && feature.properties.name == hash) {
+                if (hash !== "" && feature.properties.marker == hash) {
                     activeMarker = marker;
+                    activeMarker.setIcon(activeIcon);
                 }
 
                 return marker;
@@ -155,7 +213,7 @@
                 var popupProperties = {
                     pane: 'fixed',
                     className: 'popup-fixed',
-                    autoPan: true
+                    autoPan: false
                 };
                 layer.bindPopup(feature.properties.popupContent, popupProperties);
             }
@@ -170,6 +228,7 @@
             featureGroup.addTo(map);
 
             if (activeMarker != null) {
+                activeMarker.setIcon(activeIcon);
                 map.setView(activeMarker.getLatLng(), 13);
                 activeMarker.openPopup();
             }
