@@ -22,6 +22,34 @@
     .my-label:after {
         border: none;
     }
+
+    .popup-fixed {
+        position: fixed;
+        top: auto;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .popup-fixed .leaflet-popup-tip-container {
+        display: none;
+    }
+
+    .popup-fixed .leaflet-popup-content-wrapper {
+        border-radius: 0 !important;
+        padding-bottom: 1em;
+    }
+
+    .popup-fixed  .leaflet-popup-content {
+        margin-top: 24px;
+        width: calc(100% - 16px) !important;
+        padding-right: 16px;
+        max-height: 30vh;
+        overflow: auto;
+    }
     </style>
 {% endblock %}
 
@@ -40,6 +68,9 @@
             adjustMapHeight();
 
             var map = L.map('map');
+
+            var pane = map.createPane('fixed',
+                    document.getElementById('map'));
 
             /*
              * The following Mapbox styles are available to all accounts using a valid access token:
@@ -109,6 +140,10 @@
                         className: "my-label"
                     });
 
+                marker.on('popupopen', function (popup) {
+                    console.log("popup opened !", popup);
+                });
+
                 if (hash !== "" && feature.properties.name == hash) {
                     activeMarker = marker;
                 }
@@ -117,7 +152,12 @@
             }
 
             function buildPopup(feature, layer) {
-                layer.bindPopup(feature.properties.popupContent);
+                var popupProperties = {
+                    pane: 'fixed',
+                    className: 'popup-fixed',
+                    autoPan: true
+                };
+                layer.bindPopup(feature.properties.popupContent, popupProperties);
             }
 
             var featureGroup = new L.geoJson(featureCollection, {

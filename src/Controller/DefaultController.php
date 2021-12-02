@@ -24,7 +24,7 @@ class DefaultController extends AbstractController
         foreach ($sites as $site) {
             $features[] = [
                 'site' => $site,
-                'popupContent' =>  $this->renderView('Default/popup.html.twig', [
+                'popupContent' =>  $this->renderView('Default/content.html.twig', [
                     'site' => $site,
                 ]),
             ];
