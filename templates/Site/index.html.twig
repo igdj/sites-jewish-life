@@ -27,7 +27,7 @@
             {% for site in sites %}
                 <li style="border-bottom: 1px solid black">
                     <h3>
-                        <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;"><span style="display: inline-block; min-width: 1.2em">{{ site.getMarker() }}</span> {{ site.titleLocalized(app.request.locale) }}
+                        <a style="color: inherit" id="{{ site.id }}" href="#" onclick="toggleEntry('#description-{{ site.id }}'); return false;">{{ site.titleLocalized(app.request.locale) }}
                             <span class="small fas fa-caret-down" aria-hidden="true"></span>
                         </a>
                     </h3>

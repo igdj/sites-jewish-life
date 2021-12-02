@@ -36,6 +36,7 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/orm": "^2.7",
         "stof/doctrine-extensions-bundle": "@stable",
+        "scienta/doctrine-json-functions": "4.3",
 
         "cocur/slugify": "^4.0",
         "twig/twig": "^3.3",

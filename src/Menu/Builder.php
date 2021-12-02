@@ -47,7 +47,7 @@ class Builder
                 'route' => 'home',
             ],
             'site' => [
-                'label' => $this->translator->trans('Places'),
+                'label' => $this->translator->trans('A-Z'),
                 'route' => 'places',
             ],
             'about' => [
