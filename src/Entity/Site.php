@@ -38,7 +38,7 @@ class Site
     public $longitude;
 
     /**
-     * @var string The (optional) of the item.
+     * @var string The (optional) marker of the item.
      *
      * @ORM\Column(type="string", nullable=true)
      */
@@ -79,6 +79,13 @@ class Site
      * @ORM\Column(nullable=true, length=511)
      */
     public $url;
+
+    /**
+     * @var string The topic of the item.
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public $topic;
 
     /**
      * @var string Additional info about the item.

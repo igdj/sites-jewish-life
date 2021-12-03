@@ -79,6 +79,7 @@ class ImportCommand extends Command
                     case 'latitude':
                     case 'longitude':
                     case 'url':
+                    case 'topic':
                         $site->{$key} = $value;
                         break;
 

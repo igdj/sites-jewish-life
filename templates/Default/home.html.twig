@@ -5,54 +5,8 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.css" />
     <script src="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.js"></script>
 
-    <script>
-    var baseUrlMarkerImg = '{{ app.request.basepath }}/vendor/leaflet-color-markers/img/';
-
-    var blueIcon = new L.Icon({
-        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-blue.png',
-        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    var violetIcon = new L.Icon({
-        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-violet.png',
-        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    var blackIcon = new L.Icon({
-        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-black.png',
-        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    var yellowIcon = new L.Icon({
-        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-yellow.png',
-        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    var orangeIcon = new L.Icon({
-        iconUrl: baseUrlMarkerImg + 'marker-icon-2x-orange.png',
-        shadowUrl: baseUrlMarkerImg + 'marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-    </script>
+    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers-plain.css">
+    <script src="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers.min.js"></script>
 
     <style>
     .my-label {
@@ -146,6 +100,7 @@
 
             var markers = [];
             var activeMarker = null;
+            var activeMarkerIcon = null;
 
             var featureCollection = {
                 "type": "FeatureCollection",
@@ -160,7 +115,8 @@
                             "marker": "{{ site.getMarker() }}",
                             "popupContent": {{ feature.popupContent|json_encode|raw }},
                             "latitude": {{ site.latitude }},
-                            "longitude": {{ site.longitude }}
+                            "longitude": {{ site.longitude }},
+                            "topic": {{ site.topic|json_encode|raw }}
                         },
                         "geometry": {
                             "type": "Point",
@@ -171,11 +127,7 @@
                 ]
             };
 
-            var inactiveIcon = blueIcon;
-            var activeIcon = violetIcon;
-
             var markerProperties = {
-                icon: inactiveIcon
             };
             var tooltipProperties = {
                 /*
@@ -187,22 +139,81 @@
                 */
             };
 
+            function buildIconName(feature) {
+                var ret = '';
+
+                switch (feature.properties.topic) {
+                    case 'Bildung / Wissenschaft':
+                        ret = 'university';
+                        break;
+
+                    case 'Gedenken':
+                        ret = 'memory';
+                        break;
+
+                    case 'Kultur / Kunst':
+                        ret = 'theater-masks';
+                        break;
+
+                    case 'Religion / Tradition':
+                        ret = 'star-of-david';
+                        break;
+
+                    case 'Soziales':
+                        ret = 'hands-helping';
+                        break;
+
+                    case 'Sport':
+                        ret = 'volleyball-ball';
+                        break;
+
+                    case 'Wirtschaft':
+                        ret = 'tools';
+                        // ret = 'cash-register';
+                        // ret = 'coins';
+                        break;
+                }
+
+                return ret;
+            }
+
             function buildMarker(feature, latlng) {
+                var iconName = buildIconName(feature);
+
+                /*
+                 * markerColor:
+                 *  'red', 'darkred', 'orange', 'green', 'darkgreen',
+                 *  'blue', 'purple', 'darkpurple', 'cadetblue'
+                 */
+                markerProperties.icon = L.AwesomeMarkers.icon({
+                    prefix: 'fa',
+                    icon: iconName,
+                    markerColor: 'darkblue'
+                });
+
+                var activeIcon = L.AwesomeMarkers.icon({
+                    prefix: 'fa',
+                    icon: iconName,
+                    markerColor: 'darkpurple'
+                })
+
                 var marker = L.marker(latlng, markerProperties)
                     .bindTooltip(feature.properties.name, tooltipProperties);
 
                 marker.on('click', function(e) {
                     if (activeMarker != null) {
-                        activeMarker.setIcon(inactiveIcon);
+                        activeMarker.setIcon(activeMarkerInactiveIcon);
                     }
 
                     activeMarker = marker;
+                    activeMarkerInactiveIcon = activeMarker.getIcon();
                     activeMarker.setIcon(activeIcon);
                     map.panTo(activeMarker.getLatLng());
                 });
 
                 if (hash !== "" && feature.properties.marker == hash) {
                     activeMarker = marker;
+                    activeMarkerInactiveIcon = activeMarker.getIcon();
                     activeMarker.setIcon(activeIcon);
                 }
 
