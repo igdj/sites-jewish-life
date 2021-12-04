@@ -21,6 +21,12 @@
         box-shadow: none;
     }
 
+    .filter {
+        width: min-width: 10em;
+        background-color: white;
+        padding: 0.2em;
+    }
+
     .my-label:before,
     .my-label:after {
         border: none;
@@ -41,9 +47,12 @@
         display: none;
     }
 
+    .leaflet-fixed-pane {
+        z-index: 1400; /* on top of Copyright info */
+    }
+
     .popup-fixed .leaflet-popup-content-wrapper {
         border-radius: 0 !important;
-        padding-bottom: 1em;
     }
 
     .popup-fixed  .leaflet-popup-content {
@@ -52,6 +61,24 @@
         padding-right: 16px;
         max-height: 30vh;
         overflow: auto;
+    }
+
+    input {
+        appearance: none;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    input[type="checkbox"] {
+        border: 1px solid #005E96;
+        width: 10px;
+        height: 10px;
+        padding: 0px;
+    }
+
+    input[type="checkbox"]:checked {
+        background: #005E96;
+        background-clip: content-box;
     }
     </style>
 {% endblock %}
@@ -101,6 +128,7 @@
             var markers = [];
             var activeMarker = null;
             var activeMarkerIcon = null;
+            var activeFilter = null;
 
             var featureCollection = {
                 "type": "FeatureCollection",
@@ -229,14 +257,66 @@
                 layer.bindPopup(feature.properties.popupContent, popupProperties);
             }
 
-            var featureGroup = new L.geoJson(featureCollection, {
-                onEachFeature: buildPopup,
-                filter: function(feature, layer) {
-                    return true; // TODO: check if active
-                },
-                pointToLayer: buildMarker
-            });
+            function buildFeatureGroup(featureCollection) {
+                return new L.geoJson(featureCollection, {
+                    onEachFeature: buildPopup,
+                    filter: function(feature, layer) {
+                        if (null === activeFilter) {
+                            return true;
+                        }
+
+                        var iconName = buildIconName(feature);
+
+                        return -1 !== activeFilter.indexOf(iconName);
+                    },
+                    pointToLayer: buildMarker
+                });
+            }
+
+            var featureGroup = buildFeatureGroup(featureCollection);
             featureGroup.addTo(map);
+
+            L.Control.Filter = L.Control.extend({
+                onAdd: function(map) {
+                    var div = L.DomUtil.create('div', 'filter');
+
+                    return div;
+                },
+
+                onRemove: function(map) {
+                    // Nothing to do here
+                }
+            });
+
+            L.control.filter = function(opts) {
+                return new L.Control.Filter(opts);
+            }
+
+            L.control.filter({ position: 'topright' }).addTo(map);
+            $('.filter').html('<form id="filter">'
+                + '<input type="checkbox" id="university" value="university" checked> <label for="university">Bildung / Wissenschaft</label><br />'
+                + '<input type="checkbox" id="memory" value="memory" checked> <label for="memory">Gedenken</label><br />'
+                + '<input type="checkbox" id="theater-masks" value="theater-masks" checked> <label for="theater-masks">Kultur / Kunst</label><br />'
+                + '<input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">Religion / Tradition</label><br />'
+                + '<input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping"> Soziales</label><br />'
+                + '<input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> Sport</label><br />'
+                + '</form>');
+
+            $('#filter').change(function() {
+                activeFilter = []; // clear
+
+                $('#filter input').each(function () {
+                    if (this.checked) {
+                        activeFilter.push($(this).val());
+                    }
+                });
+
+                map.removeLayer(featureGroup);
+
+                // rebuild with activeFilter
+                featureGroup = buildFeatureGroup(featureCollection);
+                featureGroup.addTo(map);
+            });
 
             if (activeMarker != null) {
                 activeMarker.setIcon(activeIcon);
