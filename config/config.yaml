@@ -37,7 +37,9 @@ doctrine:
         default_table_options:
             charset: '%database.charset%'
             collate: '%database.charset%_unicode_ci'
-            engine:  MyISAM     # InnoDB
+            engine:  MyISAM             # InnoDB
+        mapping_types:
+            enum: string
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         auto_mapping: true 
