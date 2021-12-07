@@ -140,7 +140,7 @@
                         "type": "Feature",
                         "properties": {
                             "name": "{{ site.titleLocalized(app.request.locale) }}",
-                            "marker": "{{ site.getMarker() }}",
+                            "marker": "{{ site.getId() }}",
                             "popupContent": {{ feature.popupContent|json_encode|raw }},
                             "latitude": {{ site.latitude }},
                             "longitude": {{ site.longitude }},
@@ -319,7 +319,6 @@
             });
 
             if (activeMarker != null) {
-                activeMarker.setIcon(activeIcon);
                 map.setView(activeMarker.getLatLng(), 13);
                 activeMarker.openPopup();
             }
