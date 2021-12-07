@@ -80,7 +80,7 @@ class ImportCommand extends Command
                     case 'longitude':
                     case 'url':
                     case 'topic':
-                        $site->{$key} = $value;
+                        $site->{$key} = trim($value);
                         break;
 
                     case 'title_de':
@@ -98,7 +98,7 @@ class ImportCommand extends Command
                             $currentValues = [];
                         }
 
-                        $currentValues[$lang] = $value;
+                        $currentValues[$lang] = trim($value);
                         $site->{$field} = $currentValues;
                         break;
 
