@@ -37,7 +37,7 @@
                             <a href="{{ path('home') }}#{{ site.id }}" title="{{ 'Show on map'|trans }}">
                                 {{ site.streetLocalized(app.request.locale) }}
                             </a>
-                            {% set urls = site.getUrlsSeparated() %}
+                            {% set urls = site.getUrlSeparated() %}
                             {% if site.url is not empty %}
                                 <br />
                                 {% for url in urls %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}

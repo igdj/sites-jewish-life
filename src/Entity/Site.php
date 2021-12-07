@@ -195,13 +195,15 @@ class Site
      */
     public function getUrlSeparated()
     {
-        $urls = [];
-
-        if (!empty($this->url)) {
-            return $urls;
+        if (empty($this->url)) {
+            return [];
         }
 
-        return preg_splace('/\s*;\s*/', $this->url);
+        $urls = preg_split('/\s*;\s+/', $this->url);
+
+        $nonempty = array_filter($urls);
+
+        return $nonempty;
     }
 
     /**
@@ -211,15 +213,13 @@ class Site
      */
     public function getJuedischesHamburgSeparated()
     {
-        $urls = [];
-
         if (is_null($this->additional) || !array_key_exists('dasjuedischehamburg', $this->additional)) {
-            return $urls;
+            return [];
         }
 
         $content = $this->additional['dasjuedischehamburg'];
         if (empty($content)) {
-            return $urls;
+            return [];
         }
 
         return preg_split('/\s*;\s*/', $content);
