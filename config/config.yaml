@@ -5,8 +5,6 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    # knp_menu.voter.router.class: Knp\Menu\Matcher\Voter\RegexVoter
-
     
 framework:
     secret: '%kernel.secret%'

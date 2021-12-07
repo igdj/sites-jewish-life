@@ -1,4 +1,4 @@
-# app/config/services.yaml
+# config/services.yaml
 services:
     _defaults:
         autowire: true
