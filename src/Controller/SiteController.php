@@ -39,9 +39,11 @@ class SiteController extends AbstractController
             ;
 
         $query = $qb->getQuery();
+        $sites = $query->getResult();
+        \App\Entity\Site::setRelated($sites);
 
         return $this->render('Site/index.html.twig', [
-            'sites' => $query->getResult(),
+            'sites' => $sites,
         ]);
     }
 }

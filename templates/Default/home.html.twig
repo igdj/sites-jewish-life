@@ -155,8 +155,8 @@
                 ]
             };
 
-            var markerProperties = {
-            };
+            var markerProperties = {};
+
             var tooltipProperties = {
                 /*
                 permanent: false,
@@ -205,6 +205,14 @@
                 return ret;
             }
 
+            function buildActiveIcon(iconName) {
+                return L.AwesomeMarkers.icon({
+                    prefix: 'fa',
+                    icon: iconName,
+                    markerColor: 'darkpurple'
+                });
+            }
+
             function buildMarker(feature, latlng) {
                 var iconName = buildIconName(feature);
 
@@ -219,24 +227,13 @@
                     markerColor: 'darkblue'
                 });
 
-                var activeIcon = L.AwesomeMarkers.icon({
-                    prefix: 'fa',
-                    icon: iconName,
-                    markerColor: 'darkpurple'
-                })
+                var activeIcon = buildActiveIcon(iconName);
 
                 var marker = L.marker(latlng, markerProperties)
                     .bindTooltip(feature.properties.name, tooltipProperties);
 
                 marker.on('click', function(e) {
-                    if (activeMarker != null) {
-                        activeMarker.setIcon(activeMarkerInactiveIcon);
-                    }
-
-                    activeMarker = marker;
-                    activeMarkerInactiveIcon = activeMarker.getIcon();
-                    activeMarker.setIcon(activeIcon);
-                    map.panTo(activeMarker.getLatLng());
+                    activateMarker(marker, activeIcon);
                 });
 
                 if (hash !== "" && feature.properties.marker == hash) {
@@ -246,6 +243,17 @@
                 }
 
                 return marker;
+            }
+
+            function activateMarker(marker, activeIcon) {
+                if (activeMarker != null) {
+                    activeMarker.setIcon(activeMarkerInactiveIcon);
+                }
+
+                activeMarker = marker;
+                activeMarkerInactiveIcon = activeMarker.getIcon();
+                activeMarker.setIcon(activeIcon);
+                map.panTo(activeMarker.getLatLng());
             }
 
             function buildPopup(feature, layer) {
@@ -317,6 +325,17 @@
                 featureGroup = buildFeatureGroup(featureCollection);
                 featureGroup.addTo(map);
             });
+
+            function activateSite(id) {
+                featureGroup.eachLayer(function (layer) {
+                    if (layer.feature.properties.marker == id) {
+                        layer.openPopup();
+
+                        var iconName = buildIconName(layer.feature);
+                        activateMarker(layer, buildActiveIcon(iconName));
+                    }
+                });
+            }
 
             if (activeMarker != null) {
                 map.setView(activeMarker.getLatLng(), 13);

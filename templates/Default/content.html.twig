@@ -13,6 +13,13 @@
                                 {% for url in urls %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
                             {% endif %}
                         </p>
+                        {% if site.related is not empty %}
+                        <p>{{ 'See also'|trans }}:
+                            {% for related in site.related %}
+                                <a href="#{{ related.id }}" onclick="activateSite('{{ related.id }}')">{{ related.titleLocalized(app.request.locale) }}</a>{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        {% endif %}
                         {% if app.request.locale == 'de' and site.getJuedischesHamburg() is not empty  %}
                             {% for url in site.getJuedischesHamburg() %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}" target="_blank">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
                         {% endif %}

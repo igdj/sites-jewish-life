@@ -15,6 +15,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Site
 {
+    public static function setRelated(&$sites)
+    {
+        $sitesById = [];
+        foreach ($sites as $site) {
+            $sitesById[$site->getId()] = $site;
+        }
+
+        foreach ($sites as $site) {
+            foreach ($site->getRelatedIds() as $id) {
+                if (array_key_exists($id, $sitesById)) {
+                    $site->related[] = $sitesById[$id];
+                }
+            }
+        }
+    }
+
     /**
      * @var int
      *
@@ -88,11 +104,17 @@ class Site
     public $topic;
 
     /**
-     * @var string Additional info about the item.
+     * @var array Additional info about the item.
      *
      * @ORM\Column(type="json", nullable=true)
      */
     public $additional;
+
+    /**
+     * @var array Related Site.
+     *
+     */
+    public $related = [];
 
     /**
      * Sets id.
@@ -218,6 +240,21 @@ class Site
         }
 
         return $this->additional['dasjuedischehamburg'];
+    }
+
+    /**
+     * Gets ids.
+     *
+     * @return array
+     */
+    public function getRelatedIds()
+    {
+        if (is_null($this->additional) || !array_key_exists('related', $this->additional)) {
+            return [];
+        }
+
+        // don't return own id amongst related
+        return array_diff($this->additional['related'], [ $this->id ]);
     }
 
     /**

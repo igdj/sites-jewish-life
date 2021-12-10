@@ -19,6 +19,7 @@ class DefaultController extends AbstractController
                 ->getRepository('\App\Entity\Site')
                 ->findBy([/* 'status' => [ 0, 1 ] */],
                          ['id' => 'ASC']);
+        \App\Entity\Site::setRelated($sites);
 
         $features = [];
         foreach ($sites as $site) {
