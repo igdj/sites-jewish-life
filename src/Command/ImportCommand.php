@@ -105,13 +105,13 @@ class ImportCommand extends Command
                     case 'dasjuedischehamburg':
                         $currentValues = $site->additional;
                         if (!empty($value)) {
-                            $value = preg_replace('#https?://[www\.]*dasjuedischehamburg\.de/inhalt/#', '', $value);
-
                             if (is_null($currentValues)) {
                                 $currentValues = [];
                             }
 
-                            $currentValues[$key] = $value;
+                            $value = preg_replace('#https?://[www\.]*dasjuedischehamburg\.de/inhalt/#', '', $value);
+
+                            $currentValues[$key] =  preg_split('/\s*;\s*/', $value);
                         }
                         else if (!is_null($currentValues)) {
                             unset($currentValues[$key]);

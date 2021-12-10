@@ -44,8 +44,8 @@
                             {% endif %}
                         </p>
                         <p>{{ site.descriptionLocalized(app.request.locale)|nl2br }}</p>
-                        {% if app.request.locale == 'de' and site.getJuedischesHamburgSeparated() is not empty  %}
-                            {% for url in site.getJuedischesHamburgSeparated() %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}" target="_blank">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
+                        {% if app.request.locale == 'de' and site.getJuedischesHamburg() is not empty  %}
+                            {% for url in site.getJuedischesHamburg() %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{% if url starts with 'http' %}{{ url }}{% else %}https://dasjuedischehamburg.de/inhalt/{{ url }}{% endif %}" target="_blank">Weitere Informationen im Nachschlagewerk „Das J&uuml;dische Hamburg“</a>{% endfor %}
                         {% endif %}
                     </div>
                 </li>

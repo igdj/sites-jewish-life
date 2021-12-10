@@ -207,22 +207,17 @@ class Site
     }
 
     /**
-     * Gets urls.
+     * Gets slugs.
      *
      * @return array
      */
-    public function getJuedischesHamburgSeparated()
+    public function getJuedischesHamburg()
     {
         if (is_null($this->additional) || !array_key_exists('dasjuedischehamburg', $this->additional)) {
             return [];
         }
 
-        $content = $this->additional['dasjuedischehamburg'];
-        if (empty($content)) {
-            return [];
-        }
-
-        return preg_split('/\s*;\s*/', $content);
+        return $this->additional['dasjuedischehamburg'];
     }
 
     /**
