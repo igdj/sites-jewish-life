@@ -302,12 +302,13 @@
 
             L.control.filter({ position: 'topright' }).addTo(map);
             $('.filter').html('<form id="filter">'
-                + '<input type="checkbox" id="university" value="university" checked> <label for="university">Bildung / Wissenschaft</label><br />'
-                + '<input type="checkbox" id="memory" value="memory" checked> <label for="memory">Gedenken</label><br />'
-                + '<input type="checkbox" id="theater-masks" value="theater-masks" checked> <label for="theater-masks">Kultur / Kunst</label><br />'
-                + '<input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">Religion / Tradition</label><br />'
-                + '<input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping"> Soziales</label><br />'
-                + '<input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> Sport</label><br />'
+                + '<input type="checkbox" id="university" value="university" checked> <label for="university">{{ 'Learning / Scholarship'|trans }}</label><br />'
+                + '<input type="checkbox" id="memory" value="memory" checked> <label for="memory">{{ 'Memory'|trans }}</label><br />'
+                + '<input type="checkbox" id="theater-masks" value="theater-masks" checked> <label for="theater-masks">{{ 'Culture / Arts'|trans }}</label><br />'
+                + '<input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">{{ 'Religion / Tradition'|trans }}</label><br />'
+                + '<input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping">{{ 'Social Issues'|trans }}</label><br />'
+                + '<input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> {{ 'Sport'|trans }}</label><br />'
+                + '<input type="checkbox" id="volleyball-ball" value="tools" checked> <label for="tools">{{ 'Economy'|trans }}</label><br />'
                 + '</form>');
 
             $('#filter').change(function() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2021-12-10T10:01:46Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+  <file date="2021-12-12T18:28:46Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,7 +8,7 @@
     <body>
       <trans-unit id="50d6325b81bf418b56ac8cd5ef03616ee71437d6" resname="A-Z">
         <source>A-Z</source>
-        <target state="new">A-Z</target>
+        <target>A-Z</target>
         <jms:reference-file line="50">\..\..\..\..\..\./src\Menu\Builder.php\</jms:reference-file>
       </trans-unit>
       <trans-unit id="6b21fb791ac05170893860c248401cd24a59b732" resname="About">
@@ -17,15 +17,35 @@
         <jms:reference-file line="54">\..\..\..\..\..\./src\Menu\Builder.php\</jms:reference-file>
         <jms:reference-file line="5">\..\..\..\..\..\./templates\Default\sitetext-about.html.twig\</jms:reference-file>
       </trans-unit>
+      <trans-unit id="f67a0658a74a1e6e2e3a46b75a9d7e70f45653af" resname="Culture / Arts">
+        <source>Culture / Arts</source>
+        <target state="new">Kultur / Kunst</target>
+        <jms:reference-file line="307">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7e8548c30fef17f02e9ba61afa6fce5d38cdc309" resname="Economy">
+        <source>Economy</source>
+        <target>Wirtschaft</target>
+        <jms:reference-file line="311">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
+      </trans-unit>
       <trans-unit id="97c20e9ee98b40e4c76b73b7186c7fe341baf247" resname="Institute for the History of the German Jews">
         <source>Institute for the History of the German Jews</source>
         <target>Institut für die Geschichte der deutschen Juden</target>
         <jms:reference-file line="48">\..\..\..\..\..\./templates\Default\base.html.twig\</jms:reference-file>
       </trans-unit>
+      <trans-unit id="84725e0c618db096ab21bc41c8f69291c368506d" resname="Learning / Scholarship">
+        <source>Learning / Scholarship</source>
+        <target>Bildung / Wissenschaft</target>
+        <jms:reference-file line="305">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
+      </trans-unit>
       <trans-unit id="ab478f3efc840eebab919dff1b9512286f70c10c" resname="Map">
         <source>Map</source>
         <target>Karte</target>
         <jms:reference-file line="46">\..\..\..\..\..\./src\Menu\Builder.php\</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="89c8a2851d1755cf87365b4a7c55e5551cf878c6" resname="Memory">
+        <source>Memory</source>
+        <target>Gedenken</target>
+        <jms:reference-file line="306">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
       </trans-unit>
       <trans-unit id="b6c74d4c152a9f9cb08bc0e0985fa4f79535744a" resname="No places were found">
         <source>No places were found</source>
@@ -38,15 +58,30 @@
         <jms:reference-file line="11">\..\..\..\..\..\./templates\Default\base.html.twig\</jms:reference-file>
         <jms:reference-file line="50">\..\..\..\..\..\./templates\Default\base.html.twig\</jms:reference-file>
       </trans-unit>
+      <trans-unit id="c9737b564f2f2dce8e4c2e37afcae9a6b69c6abc" resname="Religion / Tradition">
+        <source>Religion / Tradition</source>
+        <target>Religion / Tradition</target>
+        <jms:reference-file line="308">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
+      </trans-unit>
       <trans-unit id="2d8243a2c0e464492c9d563c4f92c56ae3421bcc" resname="See also">
         <source>See also</source>
-        <target state="new">Siehe auch</target>
-        <jms:reference-file line="17">\..\..\..\..\..\./templates\Default\content.html.twig\</jms:reference-file>
+        <target>Siehe auch</target>
+        <jms:reference-file line="22">\..\..\..\..\..\./templates\Default\content.html.twig\</jms:reference-file>
       </trans-unit>
       <trans-unit id="5ed4f4c1d1e38901fdd4c8481b349b28fe5d95fb" resname="Show on map">
         <source>Show on map</source>
         <target>Auf der Karte anzeigen</target>
         <jms:reference-file line="37">\..\..\..\..\..\./templates\Site\index.html.twig\</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="086a5c938a9d512220613522ff8fcba2134376d2" resname="Social Issues">
+        <source>Social Issues</source>
+        <target>Soziales</target>
+        <jms:reference-file line="309">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1855c2e357023dd4f4d4eb827506658f22907ca7" resname="Sport">
+        <source>Sport</source>
+        <target>Sport</target>
+        <jms:reference-file line="310">\..\..\..\..\..\./templates\Default\home.html.twig\</jms:reference-file>
       </trans-unit>
       <trans-unit id="1ec0b00d7e4a7ebd7e91c21e91a99ece12fa858a" resname="Toggle navigation">
         <source>Toggle navigation</source>
