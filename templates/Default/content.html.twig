@@ -2,10 +2,20 @@
                         {{ site.titleLocalized(app.request.locale) }}
                     </h3>
                     <div>
+                        {% set media = site.mediaLocalized(app.request.locale) %}
+                        {% if media is not empty %}
+                            {% for img in media %}
+                                <figure style="float: right; max-width: 320px">
+                                    <img src="{{ img.url }}" style="width: 100%; height: auto" />
+                                    <figcaption>{{ img.caption }}</figcaption>
+                                </figure>
+                            {% endfor %}
+                        {% endif %}
+
                         <p>
                            {{ site.streetLocalized(app.request.locale) }}
                         </p>
-                        <p>
+                        <p style="padding-right: 8px">
                             {{ site.descriptionLocalized(app.request.locale)|nl2br }}
                             {% set keydocuments = site.keydocumentsLocalized(app.request.locale) %}
                             {% if keydocuments is not empty %}

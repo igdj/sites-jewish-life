@@ -251,6 +251,28 @@ class Site
     }
 
     /**
+     * Gets media info.
+     *
+     * @return array
+     */
+    public function getMediaLocalized($locale = 'de')
+    {
+        if (is_null($this->additional) || !array_key_exists('media', $this->additional)) {
+            return [];
+        }
+
+        $ret = [];
+
+        foreach ($this->additional['media'] as $info) {
+            if (array_key_exists($locale, $info) && !empty($info[$locale])) {
+                $ret[] = $info[$locale];
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
      * Gets slugs.
      *
      * @return array

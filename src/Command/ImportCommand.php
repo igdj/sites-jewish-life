@@ -144,6 +144,42 @@ class ImportCommand extends Command
                         $site->additional = $currentValues;
                         break;
 
+                    case 'rights_1_de':
+                        $key = 'media';
+                        $currentValues = $site->additional;
+                        if (!empty($value)) {
+                            if (is_null($currentValues)) {
+                                $currentValues = [];
+                            }
+
+                            $mediaPath = '/web/media/';
+                            $fname = sprintf('ID_%s.jpg', $row['ID']);
+                            if (!file_exists($this->rootDir . $mediaPath . $fname)) {
+                                die($fname . ' does not exist');
+                            }
+                            else {
+                                $media = [];
+                                $media[] = [
+                                    'de' => [
+                                        'url' => 'media/' . $fname,
+                                        'caption' => $value,
+                                    ],
+                                    'en' => [
+                                        'url' => 'media/' . $fname,
+                                        'caption' => $row['rights_1_eng'],
+                                    ],
+                                ];
+
+                                $currentValues[$key] = $media;
+                            }
+                        }
+                        else if (!is_null($currentValues)) {
+                            unset($currentValues[$key]);
+                        }
+
+                        $site->additional = $currentValues;
+                        break;
+
                     default:
                         // $output->writeln('Skip : ' . $key);
                 }
