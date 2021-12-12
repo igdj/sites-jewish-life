@@ -13,6 +13,16 @@ framework:
     translator: { fallbacks: ['%locale%'] }
     router:
         utf8: true
+    http_client:
+        default_options:
+            verify_host: false
+            verify_peer: false
+        scoped_clients:
+            # see: https://symfony.com/doc/current/reference/configuration/framework.html#reference-http-client-scoped-clients
+            de.client:
+                base_uri: 'https://juedische-geschichte-online.net/'
+            en.client:
+                base_uri: 'https://jewish-history-online.net/'
 
 twig:
     globals:

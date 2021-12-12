@@ -7,8 +7,13 @@
                         </p>
                         <p>
                             {{ site.descriptionLocalized(app.request.locale)|nl2br }}
+                            {% set keydocuments = site.keydocumentsLocalized(app.request.locale) %}
+                            {% if keydocuments is not empty %}
+                                <br />
+                                {% for info in keydocuments %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ info.url }}" target="_blank">{{ info.creator }}, {{ info.name }}</a>{% endfor %}
+                            {% endif %}
                             {% set urls = site.getUrlSeparated() %}
-                            {% if site.url is not empty %}
+                            {% if urls is not empty %}
                                 <br />
                                 {% for url in urls %} <span class="fas fa-external-link-alt color-gray-medium" aria-hidden="true" style="padding-right: 2px"></span> <a href="{{ url }}" target="_blank">{{ url|prettifyurl }}</a>{% endfor %}
                             {% endif %}

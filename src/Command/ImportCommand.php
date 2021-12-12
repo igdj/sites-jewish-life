@@ -11,15 +11,28 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
 use Doctrine\ORM\EntityManagerInterface;
 
 class ImportCommand extends Command
 {
-    public function __construct(EntityManagerInterface $em, $rootDir)
+    protected $em;
+    protected $rootDir;
+    protected $httpClients = [];
+
+    public function __construct(EntityManagerInterface $em,
+                                HttpClientInterface $deClient,
+                                HttpClientInterface $enClient,
+                                $rootDir)
     {
         parent::__construct();
 
         $this->em = $em;
+        $this->httpClients = [
+            'de' => $deClient,
+            'en' => $enClient,
+        ];
         $this->rootDir = $rootDir;
     }
 
@@ -104,6 +117,7 @@ class ImportCommand extends Command
 
                     case 'dasjuedischehamburg':
                     case 'related':
+                    case 'keydocuments':
                         $currentValues = $site->additional;
                         if (!empty($value)) {
                             if (is_null($currentValues)) {
@@ -113,10 +127,13 @@ class ImportCommand extends Command
                             if ($key == 'related') {
                                 $currentValues[$key] =  preg_split('/\s*,\s*/', $value);
                             }
+                            else if ($key == 'keydocuments') {
+                                $currentValues[$key] = $this->buildKeydocuments(preg_split('/\s*;\s*/', $value));
+                            }
                             else {
                                 $value = preg_replace('#https?://[www\.]*dasjuedischehamburg\.de/inhalt/#', '', $value);
 
-                                $currentValues[$key] =  preg_split('/\s*;\s*/', $value);
+                                $currentValues[$key] = preg_split('/\s*;\s*/', $value);
                             }
 
                         }
@@ -138,5 +155,70 @@ class ImportCommand extends Command
         $this->em->flush();
 
         return 0;
+    }
+
+    private function buildKeydocuments($uids)
+    {
+        static $articleInfo = [];
+
+        $prefixes = [
+            'de' => [
+                'article' => 'beitrag',
+                'source' => 'quelle',
+            ],
+        ];
+
+        $ret = [];
+
+        foreach ($uids as $uid) {
+            if (array_key_exists($uid, $articleInfo)) {
+                $ret[] = $articleInfo[$uid];
+                continue;
+            }
+
+            $info = [];
+
+            if (preg_match('/^jgo\:((article|source)\-\d+)$/', $uid, $matches)) {
+                foreach ([ 'de', 'en' ] as $locale) {
+                    $pathParts = [
+                        array_key_exists($locale, $prefixes)
+                        && array_key_exists($matches[2], $prefixes[$locale])
+                        ?  $prefixes[$locale][$matches[2]]
+                        :  $matches[2],
+                        $matches[0],
+                    ];
+
+                    $path = '/' . join('/', $pathParts);
+                    $apiResponse = $this->httpClients[$locale]->request('GET', $path . '.jsonld');
+
+                    $schema = json_decode($apiResponse->getContent(), true);
+                    if (false === $schema) {
+                        die('Lookup for ' . $url . ' failed');
+                    }
+
+                    if (array_key_exists('author', $schema)) {
+                        $creator = array_key_exists('name', $schema['author'])
+                            ? $schema['author']['name']
+                            : join(', ', array_map(function ($author) { return $author['name']; }, $schema['author']));
+                    }
+                    else {
+                        $creator = $schema['creator'];
+                    }
+
+                    $info[$locale] = [
+                        'name' => $schema['name'],
+                        'creator' => $creator,
+                        'url' => str_replace('.jsonld', '', $apiResponse->getInfo('url')),
+                    ];
+                }
+
+                $ret[] = $articleInfo[$uid] = $info;
+            }
+            else {
+                die('Invalid keydocuments uid: ' . $uid);
+            }
+        }
+
+        return $ret;
     }
 }

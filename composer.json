@@ -49,7 +49,8 @@
         "symfony/debug-bundle": "^5.4",
 
         "ddeboer/data-import": "@stable",
-        "phpoffice/phpexcel": "@stable"
+        "phpoffice/phpexcel": "@stable",
+        "symfony/http-client": "^5.4"
     },
     "autoload": {
         "psr-4": {

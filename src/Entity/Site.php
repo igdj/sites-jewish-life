@@ -229,6 +229,28 @@ class Site
     }
 
     /**
+     * Gets article info.
+     *
+     * @return array
+     */
+    public function getKeydocumentsLocalized($locale = 'de')
+    {
+        if (is_null($this->additional) || !array_key_exists('keydocuments', $this->additional)) {
+            return [];
+        }
+
+        $ret = [];
+
+        foreach ($this->additional['keydocuments'] as $info) {
+            if (array_key_exists($locale, $info) && !empty($info[$locale])) {
+                $ret[] = $info[$locale];
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
      * Gets slugs.
      *
      * @return array
