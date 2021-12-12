@@ -25,7 +25,7 @@ class SiteController extends AbstractController
                                       $request->getLocale());
         }
         else {
-            $sortExpression = sprintf("COALESCE(JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s')), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de'))",
+            $sortExpression = sprintf("CONCAT(COALESCE(JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s')), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de'))), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de')))",
                                       $request->getLocale());
         }
 
