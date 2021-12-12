@@ -161,11 +161,11 @@ class ImportCommand extends Command
                                 $media = [];
                                 $media[] = [
                                     'de' => [
-                                        'url' => 'media/' . $fname,
+                                        'url' => '/media/' . $fname,
                                         'caption' => $value,
                                     ],
                                     'en' => [
-                                        'url' => 'media/' . $fname,
+                                        'url' => '/media/' . $fname,
                                         'caption' => $row['rights_1_eng'],
                                     ],
                                 ];
