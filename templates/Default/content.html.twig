@@ -16,7 +16,7 @@
                            {{ site.streetLocalized(app.request.locale) }}
                         </p>
                         <p style="padding-right: 8px">
-                            {{ site.descriptionLocalized(app.request.locale)|nl2br }}
+                            {{ site.descriptionLocalized(app.request.locale)|nl2br }}{% if site.author is not empty %} ({{ site.author }}){% endif %}
                             {% set keydocuments = site.keydocumentsLocalized(app.request.locale) %}
                             {% if keydocuments is not empty %}
                                 <br />

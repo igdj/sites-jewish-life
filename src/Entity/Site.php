@@ -89,6 +89,13 @@ class Site
     public $description;
 
     /**
+     * @var string The author of the description.
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public $author;
+
+    /**
      * @var string URL of the item.
      *
      * @Assert\Url

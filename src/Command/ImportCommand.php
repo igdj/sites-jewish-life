@@ -91,6 +91,7 @@ class ImportCommand extends Command
                     case 'street':
                     case 'latitude':
                     case 'longitude':
+                    case 'author':
                     case 'url':
                     case 'topic':
                         $site->{$key} = trim($value);
