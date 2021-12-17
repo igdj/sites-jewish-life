@@ -31,7 +31,8 @@
                         {% if site.related is not empty %}
                         <p>{{ 'See also'|trans }}:
                             {% for related in site.related %}
-                                <a href="#{{ related.id }}" onclick="activateSite('{{ related.id }}')">{{ related.titleLocalized(app.request.locale) }}</a>{% if not loop.last %}, {% endif %}
+                                {% set street = related.streetLocalized(app.request.locale) %}
+                                <a href="#{{ related.id }}" onclick="activateSite('{{ related.id }}')">{{ related.titleLocalized(app.request.locale) }}</a>{% if street is not empty %} ({{ street }}){% endif %}{% if not loop.last %}, {% endif %}
                             {% endfor %}
                         </p>
                         {% endif %}
