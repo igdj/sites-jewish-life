@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
@@ -24,6 +25,7 @@ class ImportCommand extends Command
     public function __construct(EntityManagerInterface $em,
                                 HttpClientInterface $deClient,
                                 HttpClientInterface $enClient,
+                                HttpClientInterface $dasjuedischehamburgClient,
                                 $rootDir)
     {
         parent::__construct();
@@ -32,6 +34,7 @@ class ImportCommand extends Command
         $this->httpClients = [
             'de' => $deClient,
             'en' => $enClient,
+            'dasjuedischehamburg' => $dasjuedischehamburgClient,
         ];
         $this->rootDir = $rootDir;
     }
@@ -134,7 +137,7 @@ class ImportCommand extends Command
                             else {
                                 $value = preg_replace('#https?://[www\.]*dasjuedischehamburg\.de/inhalt/#', '', $value);
 
-                                $currentValues[$key] = preg_split('/\s*;\s*/', $value);
+                                $currentValues[$key] = $this->buildJuedischeHamburg(preg_split('/\s*;\s*/', $value));
                             }
 
                         }
@@ -254,6 +257,35 @@ class ImportCommand extends Command
             else {
                 die('Invalid keydocuments uid: ' . $uid);
             }
+        }
+
+        return $ret;
+    }
+
+    private function buildJuedischeHamburg($slugs)
+    {
+        static $articleInfo = [];
+
+        $ret = [];
+
+        foreach ($slugs as $slug) {
+            if (array_key_exists($slug, $articleInfo)) {
+                $ret[] = $articleInfo[$slug];
+                continue;
+            }
+
+            $path = $slug;
+            $htmlResponse = $this->httpClients['dasjuedischehamburg']->request('GET', $path);
+
+            $crawler = new Crawler($htmlResponse->getContent());
+            $name = $crawler->filter('h1.title')->text();
+
+            $info = [
+                'name' =>$name,
+                'url' => $htmlResponse->getInfo('url'),
+            ];
+
+            $ret[] = $articleInfo[$slug] = $info;
         }
 
         return $ret;

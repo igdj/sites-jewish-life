@@ -23,6 +23,8 @@ framework:
                 base_uri: 'https://juedische-geschichte-online.net/'
             en.client:
                 base_uri: 'https://jewish-history-online.net/'
+            dasjuedischehamburg.client:
+                base_uri: 'https://dasjuedischehamburg.de/inhalt/'
 
 twig:
     globals:
