@@ -112,4 +112,9 @@ body {
 			}
 		}
 	}
+
+	.sl-wrapper {
+		z-index: 2000; /* on top of popup content */
+		background-color: white;
+	}
 }

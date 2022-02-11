@@ -262,7 +262,18 @@
                     className: 'popup-fixed',
                     autoPan: false
                 };
-                layer.bindPopup(feature.properties.popupContent, popupProperties);
+
+                layer.bindPopup(feature.properties.popupContent, popupProperties)
+                    .on('popupopen', function (popup) {
+                        // console.log("popup opened !", popup);
+                        var selector = 'figure.figure-' + feature.properties.marker + ' a';
+                        var lightbox = $(selector).simpleLightbox({
+                            nav: false,
+                            showCounter: false,
+                            alertError: false,
+                            overlayOpacity: 1
+                        });
+                    });
             }
 
             function buildFeatureGroup(featureCollection) {

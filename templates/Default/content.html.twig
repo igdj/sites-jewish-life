@@ -5,8 +5,10 @@
                         {% set media = site.mediaLocalized(app.request.locale) %}
                         {% if media is not empty %}
                             {% for img in media %}
-                                <figure>
-                                    <img src="{{ app.request.basepath }}{{ img.url }}" />
+                                <figure class="figure-{{ site.id }}">
+                                    <a href="{{ app.request.basepath }}{{ img.url }}" data-toggle="lightbox">
+                                        <img src="{{ app.request.basepath }}{{ img.url }}" />
+                                    </a>
                                     <figcaption>{{ img.caption|converturls }}</figcaption>
                                 </figure>
                             {% endfor %}
