@@ -183,6 +183,9 @@ class AppExtension extends \Twig\Extension\AbstractExtension
         return $return;
     }
 
+    /**
+     * Chop of protocol as well as / for root path
+     */
     public function prettifyurlFilter($url)
     {
         $parsed = parse_url($url);
@@ -190,6 +193,9 @@ class AppExtension extends \Twig\Extension\AbstractExtension
         return $parsed['host'] . (!empty($parsed['path']) && '/' !== $parsed['path'] ? $parsed['path'] : '');
     }
 
+    /**
+     * Return the name of the extension
+     */
     public function getName()
     {
         return 'app_extension';
