@@ -66,6 +66,9 @@ class Kernel extends BaseKernel
             // menu
             // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
+            // converturls filter
+            new \Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -5,9 +5,9 @@
                         {% set media = site.mediaLocalized(app.request.locale) %}
                         {% if media is not empty %}
                             {% for img in media %}
-                                <figure style="float: right; max-width: 320px">
-                                    <img src="{{ app.request.basepath }}{{ img.url }}" style="width: 100%; height: auto" />
-                                    <figcaption>{{ img.caption }}</figcaption>
+                                <figure>
+                                    <img src="{{ app.request.basepath }}{{ img.url }}" />
+                                    <figcaption>{{ img.caption|converturls }}</figcaption>
                                 </figure>
                             {% endfor %}
                         {% endif %}

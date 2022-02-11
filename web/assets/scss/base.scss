@@ -90,4 +90,26 @@ body {
 	h3 > a {
 		text-decoration: none;
 	}
+
+	figure {
+		display: table;
+		margin-left: 8px;
+		float: right;
+
+		img {
+			display: block;
+			max-height: 160px;
+			width: auto;
+		}
+
+		figcaption {
+			display: table-caption;
+			caption-side: bottom;
+			/* text-align: center; */
+			a {
+				/* break long commons urls */
+				overflow-wrap: anywhere;
+			}
+		}
+	}
 }

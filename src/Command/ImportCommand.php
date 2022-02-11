@@ -151,31 +151,46 @@ class ImportCommand extends Command
                     case 'rights_1_de':
                         $key = 'media';
                         $currentValues = $site->additional;
+
                         if (!empty($value)) {
                             if (is_null($currentValues)) {
                                 $currentValues = [];
                             }
 
                             $mediaPath = '/web/media/';
-                            $fname = sprintf('ID_%s.jpg', $row['ID']);
-                            if (!file_exists($this->rootDir . $mediaPath . $fname)) {
-                                die($fname . ' does not exist');
-                            }
-                            else {
-                                $media = [];
+                            $media = [];
+
+                            $captions = preg_split('/\s*;\s*/', $value);
+                            $captions_en = preg_split('/\s*;\s*/', $row['rights_1_eng']);
+
+                            for ($i = 0; $i < count($captions); $i++) {
+                                $append = '';
+                                if (1 == $i) {
+                                    $append = 'b';
+                                }
+                                else if ($i > 1) {
+                                    die('TODO: Handle multiple images in ' . $row['ID']);
+                                }
+
+                                $fname = sprintf('ID_%s%s.jpg',
+                                                 $row['ID'], $append);
+                                if (!file_exists($this->rootDir . $mediaPath . $fname)) {
+                                    die($fname . ' does not exist');
+                                }
+
                                 $media[] = [
                                     'de' => [
                                         'url' => '/media/' . $fname,
-                                        'caption' => $value,
+                                        'caption' => $captions[$i],
                                     ],
                                     'en' => [
                                         'url' => '/media/' . $fname,
-                                        'caption' => $row['rights_1_eng'],
+                                        'caption' => $captions_en[$i],
                                     ],
                                 ];
-
-                                $currentValues[$key] = $media;
                             }
+
+                            $currentValues[$key] = $media;
                         }
                         else if (!is_null($currentValues)) {
                             unset($currentValues[$key]);

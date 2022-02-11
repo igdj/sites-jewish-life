@@ -4,6 +4,14 @@
             "php": "7.2.9"
         }
     },
+
+    "repositories": [
+        {
+            "url": "https://github.com/burki/LiipUrlAutoConverterBundle.git",
+            "type": "vcs"
+        }
+    ],
+
     "require": {
         "symfony/config": "^5.4",
         "symfony/finder": "^5.4",
@@ -41,6 +49,7 @@
         "cocur/slugify": "^4.0",
         "twig/twig": "^3.3",
         "twig/string-extra": "^3.0",
+        "liip/url-auto-converter-bundle": "dev-master",
 
         "symfony/dom-crawler": "^5.4",
         "symfony/css-selector": "^5.4",
