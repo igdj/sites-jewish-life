@@ -108,6 +108,7 @@ body {
 			/* text-align: center; */
 			a {
 				/* break long commons urls */
+				word-break: break-all; /* for Safari */
 				overflow-wrap: anywhere;
 			}
 		}
