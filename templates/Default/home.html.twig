@@ -213,6 +213,12 @@
                 });
             }
 
+            function isTouchDevice() {
+                return (('ontouchstart' in window)
+                     || (navigator.MaxTouchPoints > 0)
+                     || (navigator.msMaxTouchPoints > 0));
+            }
+
             function buildMarker(feature, latlng) {
                 var iconName = buildIconName(feature);
 
@@ -229,8 +235,12 @@
 
                 var activeIcon = buildActiveIcon(iconName);
 
-                var marker = L.marker(latlng, markerProperties)
+                var marker = L.marker(latlng, markerProperties);
+
+                if (!isTouchDevice()) {
+                    marker
                     .bindTooltip(feature.properties.name, tooltipProperties);
+                }
 
                 marker.on('click', function(e) {
                     activateMarker(marker, activeIcon);
@@ -265,7 +275,7 @@
 
                 layer.bindPopup(feature.properties.popupContent, popupProperties)
                     .on('popupopen', function (popup) {
-                        // console.log("popup opened !", popup);
+                        // set lightbox
                         var selector = 'figure.figure-' + feature.properties.marker + ' a';
                         var lightbox = $(selector).simpleLightbox({
                             nav: false,
