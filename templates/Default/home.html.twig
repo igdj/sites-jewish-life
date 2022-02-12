@@ -1,9 +1,9 @@
 {% extends 'Default/base.html.twig' %}
 
 {% block head %}
-    {# leaflet.js includes #}
-    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.css" />
-    <script src="{{ app.request.basepath }}/vendor/leaflet-1.7.1/leaflet.js"></script>
+    {# leaflet.js includes, 1.6.x due to https://github.com/Leaflet/Leaflet/issues/7255 #}
+    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.css" />
+    <script src="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.js"></script>
 
     <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers-plain.css">
     <script src="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers.min.js"></script>
@@ -319,7 +319,7 @@
                 + '<input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">{{ 'Religion / Tradition'|trans }}</label><br />'
                 + '<input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping">{{ 'Social Issues'|trans }}</label><br />'
                 + '<input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> {{ 'Sport'|trans }}</label><br />'
-                + '<input type="checkbox" id="volleyball-ball" value="tools" checked> <label for="tools">{{ 'Economy'|trans }}</label><br />'
+                + '<input type="checkbox" id="tools" value="tools" checked> <label for="tools">{{ 'Economy'|trans }}</label><br />'
                 + '</form>');
 
             $('#filter').change(function() {
