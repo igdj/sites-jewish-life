@@ -119,3 +119,9 @@ body {
 		background-color: white;
 	}
 }
+
+/* leaflet overrides */
+.leaflet-container {
+	font-family: $font-stack-sans;
+	font-size: inherit;
+}

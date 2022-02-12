@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/simple-lightbox/simple-lightbox.min.css">
         <script src="{{ app.request.basepath }}/vendor/simple-lightbox/simple-lightbox.jquery.min.js"></script>
 
+        {% block head %}{% endblock %}
+
         {#
             triggers scssphp, this one doesn't prepend app.request.basepath
             since it overrides \Symfony\Bridge\Twig\Extension\AssetExtension
@@ -41,14 +43,13 @@
             }
         }
         </style>
-        {% block head %}{% endblock %}
     </head>
 
     <body role="document" class="route-{{ app.request.get('_route') | replace({'_' : '-'}) }}">
         <!-- Static navbar -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="http://www.igdj-hh.de/" target="_blank">
+                <a class="navbar-brand logo d-none d-sm-block" href="http://www.igdj-hh.de/" target="_blank">
                     <img src="{{ app.request.basepath }}/img/igdj.png" style="margin-top: -5px; margin-left: -5px; height: 44px; width: auto;" alt="{{ 'Institute for the History of the German Jews'|trans }}" />
                 </a>
                 <a class="navbar-brand home" href="{{ path('home') }}">{{ "Places of Jewish History and the Present in Hamburg"|trans|nl2br }}</a>
