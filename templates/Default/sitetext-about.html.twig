@@ -1,22 +1,74 @@
 {% extends 'Default/base.html.twig' %}
 {% block body %}
     <div class="row">
-        <div class="col-sm-12">
-            <h2>{{ 'About'|trans }}</h2>
-            <p>This online presentation is based on the printed map published in 2009 by the <a href="http://www.hamburg.de/kulturbehoerde/">Hamburg Office of Cultural Affairs, Sports and the Media</a>, reissued in 2016 on the anniversary of the <a href="http://www.igdj-hh.de/home-175.html">Institute for the History of the German Jews</a></p>
-            <p>The texts are based on the entries from <a href="http://www.dasjuedischehamburg.de/">„Das Jüdische Hamburg“</a>, the map „Jüdische Orte“ as well as „Jüdisches Leben in Hamburg. Ein Stadtführer“ by Frank Kürschner-Pelkmann (Hamburg 1997) and were compiled with the support of Jonas Stier.</p>
+        <div class="col-sm-12" style="margin-top: 2em">
+            <h2>The City Map</h2>
+            <p>The aim of this bilingual (<a href="{{ path('about', { '_locale': 'de' }) }}">German</a> / English) city map, which is reissued in cooperation with the <a href="https://www.hamburg.de/bkm/" target="_blank">Hamburg Authority for Culture and Media</a> and in collaboration with various individual researchers, is to present as wide a range of places as possible in the entire Hamburg city area of today, thus highlighting the diversity of the Jewish past in the Hamburg area, where three congregations (Altona, Hamburg, Wandsbek) as well as a Sephardic and an Ashkenazic community once existed. In addition to these historical sites, the plan also includes contemporary sites. Since the focus is on places of Jewish life, pure memorial sites are included only sporadically; this content is provided by the <a href="https://gedenkstaetten-in-hamburg.de/en/" target="_blank">Portal Memorials in Hamburg</a>, which is also the continuing address for a comprehensive overview of Hamburg’s memorial sites. In addition to the documentation and geographical marking of the sites, whenever possible links to further content, especially to the IGdJ’s own online projects (i. e. <a href="https://jewish-history-online.net/" target="_blank">Key Documents</a> and <a href="https://www.dasjuedischehamburg.de/" target="_blank">Jewish Hamburg</a>), are provided. Information on the places presented is taken from these online resources, from the analogue respective the previous versions of this city map as well as from the relevant literature. Corresponding references can be found with each entry, the entries taken from the printed map, published by the Authority for Culture and Media are marked. Sometimes links with further information, such as opening hours, can be found.</p>
 
-            <h3>Sponsors of the printed edition</h3>
+            <h3>“Jewish Places”</h3>
+            <p>A map of Jewish places is by definition a difficult undertaking, for what makes a place “Jewish”? Outside the religious sphere, Jewish places in most cases do not differ in appearance from non-Jewish places, or they are even identical. The focus was therefore on the use of the places: who used this place and what for? Nevertheless, uncertainties naturally remain, because those who worked, lived or acted at the places presented did not necessarily define themselves as Jews, or their (Jewish) self-image did not necessarily shape the place. Furthermore, we have deliberately decided to include places that can hardly be defined as "Jewish," precisely in order to illustrate the impossibility of drawing clear boundaries and to show that Jews not only live(d) and act(ed) throughout Hamburg’s urban space, but that they were and are active in a wide variety of areas and their biographies are inseparably interwoven with the city’s history.</p>
+
+            <h3>Historic residential areas</h3>
+            <h4>Altona</h4>
+            <p>Since the early 17th century, Ashkenazi families were settled in Altona as so-called Schutzjuden. In 1642, they were granted their first privilege by King Christian IV. These well-funded privileges were extended again and again until 1842, when Altona’s Jews were granted citizenship. The relatively tolerant religious policy as well as the immediate neighborhood of Hamburg made Altona an attractive place to live. Altona was also home to the chief rabbinate, which was responsible for Hamburg’s Jews from 1671. With the migration of congregation members to Hamburg and the end of the triple congregation AHW in 1812, the Altona congregation lost its importance. It became (financially) dependent on the Hamburg congregation, partly due to the influx of Eastern European Jews since the late 19th century. Under National Socialist rule, Altona was incorporated in 1937 under the Greater Hamburg Act. (Read more: <a href="https://www.dasjuedischehamburg.de/inhalt/hochdeutsche-israelitengemeinde-zu-altona-hig" target="_blank">High German Israelite Congregation of Altona (HIG) | The Jewish Hamburg</a>)</p>
+
+            <h4>Old Town / New Town</h4>
+            <p>Today’s city center of Hamburg formed the historically first residential area of Hamburg’s Jews. At first, Sephardic Jews, the so-called Portuguese, settled in the Altstadt [Old Town] between Rödingsmarkt, Bohnenstraße, Mühlebrücke and Alter Wall since the late 16th century. They usually came as Christian merchants, doctors or bankers to the Hanseatic City, where some later on returned to the Jewish faith of their ancestors on the Iberian Peninsula.</p>
+            <p>The so-called Ashkenazi or High German Jews had been resident in Hamburg since the 17th century and from the 18th century formed the majority within the Jewish population. They settled in the Neustadt [New Town], an area that had only been redeveloped by a city expansion between 1616 and 1628. The city’s goal was to settle the Jews in a limited area west of the Großneumarkt, thus also preventing the living-together of Christians and Jews. Numerous Jewish institutions such as synagogues, schools, orphanages, residential homes or business premises were established there over the centuries. At the turn of the 19th and 20th centuries, the Neustadt [New Town ]lost its importance as the former most important center of Jewish life in Hamburg. The Great Fire of 1842, reconstructions and finally the bombing raids in the Second World War destroyed a large part of the historic sites, so that today only isolated traces of this heritage remain.</p>
+
+            <h4>Harburg</h4>
+            <p>Jewish families settled in Harburg since the early 17th century, in the 19th century the number of congregation members grew, playing an active role especially in economic life. The congregation maintained its own cemetery and synagogue. As a result of the Greater Hamburg Law of 1937, it was incorporated into the Jewish Religious Association Hamburg. (Read more: <a href="https://www.dasjuedischehamburg.de/inhalt/harburg-wilhelmsburg-synagogengemeinde" target="_blank">Harburg-Wilhelmsburg, Synagogue Community | The Jewish Hamburg</a>)</p>
+
+            <h4>Grindelviertel</h4>
+            <p>With the lifting of the gates by the new Hamburg constitution in 1860, the Grindelviertel emerged as the main residential area for Hamburg Jews from the turn of the 19th to the 20th century. Institutions that had previously existed in Neustadt [New Town] moved to the Grindel or were newly founded there. A diverse infrastructure consisting of stores for daily needs, foundations for free housing, schools, social, cultural and religious institutions developed. The central location was the Bornplatz synagogue, built in 1906 by Semmy Engel and Ernst Friedheim. After 1933, the Grindelviertel also became a place of incipient persecution and extermination: synagogues were desecrated and destroyed, stores boycotted, deportations organized and handled, Jewish houses established. The lodge house on Hartungstraße was one of the last places of Jewish self-government. The reestablishment of the Jewish congregation at Rothenbaumchaussee, the building of the synagogue at Hohe Weide, the establishment of a retirement home at Schäferkampsallee or the reopening of the former Talmud Tora School as the Joseph Carlebach Bildungshaus also locate Jewish history after 1945 in the Grindelviertel and its neighborhood. (Read more: <a href="https://www.dasjuedischehamburg.de/inhalt/grindelviertel" target="_blank">Grindelviertel | The Jewish Hamburg</a>)</p>
+
+            <h4>Wandsbek</h4>
+            <p>It is possible that the first Jewish families settled in Wandsbek as early as the 1580s; there is documentary evidence of an influx of Altona Schutzjuden in 1621. The congregation had belonged to the triple congregation AHW since 1671. After shrinking considerably in the 18th century, it was able to develop a certain infrastructure (synagogue, school, new cemetery) in the 19th century. With the incorporation into the Jewish Religious Association of Hamburg forced by the National Socialists in 1938, the Wandsbek congregation ceased to exist as an independent corporate entity. (Read more: <a href="https://www.dasjuedischehamburg.de/inhalt/wandsbek-j%C3%BCdische-gemeinde" target="_blank">Wandsbek, Jewish Community | The Jewish Hamburg</a>)</p>
+
+            <h3>Categories</h3>
+            <p>In order to provide better orientation, but also to show the wide range of locations, their historical and current purposes, each entry is assigned a certain category. Using the filter option in the menu box at the top right, categories can be deactivated or activated according to personal interests.</p>
+
+            <h4>Learning / Scholarship</h4>
+            <p>This category generally includes places of research, teaching and learning, especially institutions of the Jewish school system from traditional religious institutions to reform educational schools, but also libraries or meeting places of Jewish student associations.</p>
+
+            <h4>Commemoration</h4>
+            <p>This category includes places that are primarily or exclusively dedicated to the commemoration of the city’s Jewish past or to the memory of the persecution and extermination of Hamburg’s Jews. Above all, these are various memorials and monuments; historical places of Jewish life that today also have a commemorative function are included here only in exceptional cases; as a rule, they have been assigned to other categories. In a narrower sense, the places presented here are not "Jewish places", since in the present they primarily fulfill a function for the majority society and less for the Jewish community. These entries usually originate from the context of the Portal “<a href="https://gedenkstaetten-in-hamburg.de/en/" target="_blank">Memorials in Hamburg</a>”, published by the Stiftung Hamburger Gedenkstätten und Lernorte.</p>
+
+            <h4>Culture / Art</h4>
+            <p>In addition to the few inner-Jewish cultural places, such as the lodge house, this category primarily includes those places where Jews have been active. The definition of “Jewish place” is particularly vague in this category, all the more since the question of what “Jewish art” or “Jewish culture” also arises.</p>
+
+            <h4>Religion / Tradition</h4>
+            <p>This category includes all places that are related to lived religiosity or the practice of religious traditions; in addition to synagogues and prayer rooms, these include cloister institutes, mikvehs and cemeteries.</p>
+
+            <h4>Sports</h4>
+            <p>This category includes sports facilities as well as offices of Jewish sports clubs.</p>
+
+            <h4>Social</h4>
+            <p>This category includes all places that can be located in the area of welfare, living together / community and care. These places include the numerous residential institutions as well as orphanages and poorhouses, medical care facilities, retirement homes or hakhshara training centers.</p>
+
+            <h4>Economy</h4>
+            <p>Places of economic activity primarily reflect life and work of outstanding entrepreneurial personalities who founded their own companies or held relevant positions in companies. In addition, individual stores and businesses that were run by Jewish owners are presented. The so-called Judenbörse at Elbstraße, a street market that existed until the early 20th century, is an example of Jewish small-scale trade.</p>
+
+            <h3>Sources and Acknowledgements</h3>
+            <p>The texts are based on:</p>
+
             <ul>
-                <li><a href="https://marketing.hamburg.de/">Hamburg Marketing GmbH</a></li>
-                <li><a href="http://www.hamburg-tourism.de/">Hamburg Tourismus GmbH</a></li>
-                <li><a href="http://www.toepfer-stiftung.de/">Alfred Toepfer Stiftung F.V.S</a></li>
-                <li><a href="http://www.weichmann-stiftung.de/">Herbert und Elsbeth Weichmann-Stiftung</a></li>
-                <li><a href="https://www.hk24.de/">Handelskammer Hamburg</a></li>
+            <li>Online source edition “Key Documents of German-Jewish History,” ed. by IGdJ, online at: <a href="https://jewish-history-online.net" target="_blank">https://jewish-history-online.net</a></li>
+            <li>Online reference work “Das jüdische Hamburg,” ed. by IGdJ, online at: <a href="https://dasjuedischehamburg.de/" target="_blank">https://dasjuedischehamburg.de</a></li>
+            <li>Hendrik Althoff, Das jüdische Zentrum Hamburgs. Jüdisches Leben in der Hamburger Alt- und Neustadt vom 16. bis ins frühe 20. Jahrhundert, Hamburg 2020 [unpublished].</li>
+            <li>Jüdisches Hamburg, ed. by Landeszentrale für Politische Bildung in Hamburg / Referat für Christlich-Jüdischen Dialog der Ev.-Luth. Kirche in Norddeutschland beim Zentrum für Mission und Ökumene – Nordkirche weltweit, Hamburg 2021.</li>
+            <li>Arno Herzig [ed.], Die Juden in Hamburg 1590 bis 1990. Wissenschaftliche Beiträge der Universität Hamburg zur Ausstellung „Vierhundert Jahre Juden in Hamburg“, Hamburg 1991.</li>
+            <li>Irmgard Stein, Jüdische Baudenkmäler in Hamburg, Hamburg 1984, <a href="http://igdj-hh.de/files/IGDJ/pdf/hamburger-beitraege/irmgard-stein_juedische-baudenkmaeler-hamburg.pdf" target="_blank">http://igdj-hh.de/files/IGDJ/pdf/hamburger-beitraege/irmgard-stein_juedische-baudenkmaeler-hamburg.pdf</a>.</li>
+            <li>Michael Studemund-Halévy / Anna Menny, Ort und Erinnerung. Ein historischer Streifzug durch das jüdische Hamburg von 1930, Hamburg 2013.</li>
             </ul>
 
-            <h3>Online Presentation</h3>
-            <p>This web-site is published by the Institute for the History of the German Jews.</p>
+            <p>Excerpts have been linked to the original article wherever possible. In addition, there are extensive references to further online offerings of the IGdJ.</p>
+
+            <p>The original printed map was published in 2009 by the <a href="https://www.hamburg.de/bkm/" target="_blank">Authority for Culture, Sports and Media, Hamburg</a> and subsequently reissued in 2016 to mark the anniversary of the <a href="http://www.igdj-hh.de/IGDJ-home.html" target="_blank">Institute for the History of German Jews</a>, then accompanied for the first time by an online version.</p>
+            <p>We thank Hendrik Althoff for allowing us to use texts from his study “Das jüdische Zentrum Hamburgs” for the city map.</p>
+            <p>We thank Katrin Kessler, Frauke Steinhäuser, Angela Schwarz and Sonja Zoder for providing important information and texts on individual locations. We thank Iris Groschek and the Portal “Memorials in Hamburg” for providing the texts on the memorial sites. We would like to thank the Hamburg Authority of Culture and Media for providing the drawings and texts from the printed city map. The copyright for the drawings is held by: Silvie Bohmhard (<a href="https://silviebomhard.de/">silviebomhard.de</a>).</p>
+            <p>We are grateful to Daniel Burckhardt and Tabea Henn for their technival and editorial support in the making of this digital map.</p>
+            <p>And last, but not least, we would like to thank the <a href="https://h-w-s.org/" target="_blank">Hamburgische Wissenschaftliche Stiftung</a> and the <a href="https://www.hamburg.de/bwfgb/" target="_blank">Authority of Science, Research, Equality and Districts</a> for their financial support.</p>
 
             <h3>Imprint</h3>
             <p>Institute for the History of the German Jews<br />
@@ -24,19 +76,26 @@
             20144 Hamburg</p>
             <p>Phone: +49 40 – 42 838-2617<br />
             Fax: +49 40 – 44 808-66</p>
-            <p>E-Mail: kontakt@igdj-hh.de</p>
+            <p>E-Mail: kontakt@igdj-hh.de<br />
+            Internet: <a href="http://igdj-hh.de/" target="_blank">www.igdj-hh.de</a></p>
             <p>The Institute is a foundation under civil law under the auspices of the Free Hanseatic City of Hamburg. </ P>
             <p>Authorized persons:<br />
             Director: Dr. Kim Wünschmann<br />
             Deputy Director: PD Dr. Andreas Brämer</p>
             <p>Responsible for the content:<br />
-            Dr. Anna Menny<br />
-            PD Dr. Andreas Brämer</p>
+            PD Dr. Andreas Brämer, Dr. Anna Menny</p>
+            <p>Technical support and Design:<br />
+            Daniel Burckhardt</p>
             <p>Judicial authority:<br />
             Justizverwaltungsamt Stiftungsangelegenheiten<br />
             Drehbahn 36, 20354 Hamburg</p>
 
-            <p>Technical realization: Daniel Burckhardt</p>
+            <h3>Data Protection</h3>
+            <p>This is an online-service of the Institute for the History of German Jews (IGdJ). The  <a href="http://igdj-hh.de/impressum.html" target="_blank">general data protection declaration of the IGdJ</a> applies to the processing of all personal data arising in the course of the operation of this site.</p>
+
+            <h3>Liability for Links</h3>
+            <p>Our site contains links to external websites, over which we have no influence. Therefore we can not guarantee any liability for this external content. The respective provider or operator of the websites is always responsible for the content of these pages. The linked pages were inspected for possible violations of law at the time of the placing of the link. Illegal contents were not apparent when the link was created. Continuous monitoring of the contents of the linked web pages is not plausible where there is no actual indication of an infringement of the law. Upon notification of violations, we will remove such links immediately.</p>
+
         </div>
     </div>
 {% endblock %}
