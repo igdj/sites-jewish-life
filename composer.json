@@ -57,9 +57,9 @@
         "symfony/web-profiler-bundle": "^5.4",
         "symfony/debug-bundle": "^5.4",
 
-        "ddeboer/data-import": "@stable",
-        "phpoffice/phpexcel": "@stable",
-        "symfony/http-client": "^5.4"
+        "symfony/http-client": "^5.4",
+
+        "box/spout": "^3.3"
     },
     "autoload": {
         "psr-4": {
