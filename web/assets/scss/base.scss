@@ -55,25 +55,36 @@ body {
 			}
 		}
 
-		.navbar-nav {
-			@media (min-width: $screen-md-size) {
-				padding-left: 2rem;
-			}
-
+		.navbar-nav, #menu-lang {
 			li {
 				padding-top: 0;
 				padding-bottom: 0;
+				min-height: 48px;
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				min-height: 48px;
+				& > a {
+					font-size: 14px;
+				}
 
 				&.active {
 					background-color: $color-color-spot;
 				}
+			}
+		}
 
-				& > a {
-					font-size: 14px;
+		.navbar-nav {
+			@media (min-width: $screen-md-size) {
+				padding-left: 2rem;
+			}
+		}
+
+		#menu-lang {
+			li {
+				& > a.nav-link {
+					text-transform: uppercase;
+					padding-left: 8px;
+					padding-right: 8px;
 				}
 			}
 		}

@@ -59,6 +59,20 @@
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     {{ knp_menu_render('main', {'currentClass': 'active'}) }}
                 </div>
+                {% if locales|length > 1 and app.request.attributes.get("_route") is not null %}
+                <ul id="menu-lang" class="nav d-none d-md-flex">
+                {% for locale in locales %}
+                    <li class="nav-item {% if locale == app.request.locale %} active{% endif %}">
+                        {% if route_params_locale_switch is defined and route_params_locale_switch is not empty and route_params_locale_switch[locale] is defined %}
+                            {% set route_params = route_params_locale_switch[locale] %}
+                        {% else %}
+                            {% set route_params = app.request.attributes.get('_route_params')|merge(app.request.query.all) %}
+                        {% endif %}
+                        <a class="nav-link" href="{{ path(app.request.attributes.get('_route'), route_params|merge({"_locale": locale})) }}" title="{{ locale|locale_name(locale) }}">{{ locale }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
             </div>
         </nav>
 
