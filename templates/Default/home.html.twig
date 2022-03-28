@@ -79,8 +79,30 @@
     }
 
     input[type="checkbox"]:checked {
-        background: #005E96;
+        background-color: #005E96;
         background-clip: content-box;
+    }
+
+    #university:checked {
+        background-color: #00263C;
+    }
+    #memory:checked {
+        background-color: #00385A;
+    }
+    #theater-masks:checked {
+        background-color: #004B78;
+    }
+    #star-of-david:checked {
+        background-color: #005E96;
+    }
+    #hands-helping:checked {
+        background-color: #337EAB;
+    }
+    #volleyball-ball:checked {
+        background-color: #669EC0;
+    }
+    #tools:checked {
+        background-color: #99BFD5;
     }
     </style>
 {% endblock %}
@@ -131,6 +153,15 @@
             var activeMarker = null;
             var activeMarkerIcon = null;
             var activeFilter = null;
+            var markerColors = {
+                university: '#00263C',
+                memory: '#00385A',
+                'theater-masks': '#004B78',
+                'star-of-david': '#005E96',
+                'hands-helping': '#337EAB',
+                'volleyball-ball': '#669EC0',
+                'tools': '#99BFD5'
+            };
 
             var featureCollection = {
                 "type": "FeatureCollection",
@@ -217,7 +248,7 @@
             function buildActiveIcon(iconName, iconShape) {
                 return L.ExtraMarkers.icon({
                     prefix: 'fa',
-                    icon: iconName,
+                    icon: 'fa-' + iconName,
                     svg: true,
                     markerColor: '#d42132',
                     shape: iconShape
@@ -231,7 +262,7 @@
             }
 
             function buildMarker(feature, latlng) {
-                var iconName = 'fa-' + buildIconName(feature);
+                var iconName = buildIconName(feature);
                 var iconShape = buildIconShape(feature);
 
                 /*
@@ -242,9 +273,9 @@
                  */
                 markerProperties.icon = L.ExtraMarkers.icon({
                     prefix: 'fa',
-                    icon: iconName,
+                    icon: 'fa-' + iconName,
                     svg: true,
-                    markerColor: '#005e96',
+                    markerColor: markerColors[iconName],
                     shape: iconShape
                 });
 
