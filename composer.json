@@ -37,14 +37,14 @@
         "symfony/validator": "^5.4",
         "symfony/property-access": "^5.4",
 
-        "symfony/monolog-bundle": "^3.3",
+        "symfony/monolog-bundle": "^3.7",
         "symfony/monolog-bridge": "^5.4",
         "knplabs/knp-menu-bundle": "^3.1",
         "symfony/asset": "^5.4",
-        "armin/scssphp-bundle": "^1.1",
+        "armin/scssphp-bundle": "^1.2",
 
-        "doctrine/doctrine-bundle": "^2.1",
-        "doctrine/orm": "^2.7",
+        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/orm": "^2.11",
         "stof/doctrine-extensions-bundle": "@stable",
         "scienta/doctrine-json-functions": "4.3",
 
@@ -63,6 +63,7 @@
 
         "box/spout": "^3.3"
     },
+
     "autoload": {
         "psr-4": {
             "App\\": "src/"
