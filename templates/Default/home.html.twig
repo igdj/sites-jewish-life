@@ -310,6 +310,8 @@
                 activeMarkerInactiveIcon = activeMarker.getIcon();
                 activeMarker.setIcon(activeIcon);
                 map.panTo(activeMarker.getLatLng());
+
+                window.location.hash = '#' + marker.feature.properties.marker;
             }
 
             function buildPopup(feature, layer) {
