@@ -5,8 +5,10 @@
     <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.css" />
     <script src="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.js"></script>
 
-    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers-plain.css">
-    <script src="{{ app.request.basepath }}/vendor/leaflet-awesome-markers/leaflet.awesome-markers.min.js"></script>
+
+    {# https://github.com/coryasilva/Leaflet.ExtraMarkers #}
+    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-extra-markers/css/leaflet.extra-markers.min.css" />
+    <script src="{{ app.request.basepath }}/vendor/leaflet-extra-markers/js/leaflet.extra-markers.min.js"></script>
 
     <style>
     .my-label {
@@ -206,10 +208,11 @@
             }
 
             function buildActiveIcon(iconName) {
-                return L.AwesomeMarkers.icon({
+                return L.ExtraMarkers.icon({
                     prefix: 'fa',
                     icon: iconName,
-                    markerColor: 'darkpurple'
+                    svg: true,
+                    markerColor: '#d42132'
                 });
             }
 
@@ -220,17 +223,19 @@
             }
 
             function buildMarker(feature, latlng) {
-                var iconName = buildIconName(feature);
+                var iconName = 'fa-' + buildIconName(feature);
 
                 /*
                  * markerColor:
-                 *  'red', 'darkred', 'orange', 'green', 'darkgreen',
-                 *  'blue', 'purple', 'darkpurple', 'cadetblue'
+                 *  'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet',
+                 *  'pink', 'green-dark', 'green', 'green-light', 'black', 'white',
+                 *  or color hex code if svg is true
                  */
-                markerProperties.icon = L.AwesomeMarkers.icon({
+                markerProperties.icon = L.ExtraMarkers.icon({
                     prefix: 'fa',
                     icon: iconName,
-                    markerColor: 'darkblue'
+                    svg: true,
+                    markerColor: '#005e96'
                 });
 
                 var activeIcon = buildActiveIcon(iconName);
