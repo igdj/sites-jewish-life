@@ -119,6 +119,12 @@ class ImportCommand extends Command
                             $site->{$key} = trim($value);
                             break;
 
+                        case 'physical':
+                            if (isset($value) && (bool)$value) {
+                                $site->setFlags(\App\Entity\Site::FLAG_PHYSICAL);
+                            }
+                            break;
+
                         case 'title_de':
                         case 'description_de':
                         case 'title_en':

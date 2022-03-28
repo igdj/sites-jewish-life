@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Site
 {
+    public const FLAG_PHYSICAL = 0x01;
+
     public static function setRelated(&$sites)
     {
         $sitesById = [];
@@ -124,6 +126,13 @@ class Site
     public $related = [];
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $flags = 0;
+
+    /**
      * Sets id.
      *
      * @param int $id
@@ -215,6 +224,20 @@ class Site
         }
 
         return $this->id;
+    }
+
+    /**
+     * Sets flags.
+     *
+     * @param int $falgs
+     *
+     * @return $this
+     */
+    public function setFlags($flags)
+    {
+        $this->flags = $flags;
+
+        return $this;
     }
 
     /**
@@ -323,5 +346,15 @@ class Site
         }
 
         return $this->street;
+    }
+
+    /**
+     * Check if it is a physical location.
+     *
+     * @return bool
+     */
+    public function isPhysical()
+    {
+        return 0 <> ($this->flags & self::FLAG_PHYSICAL);
     }
 }

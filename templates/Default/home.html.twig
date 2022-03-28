@@ -146,7 +146,8 @@
                             "popupContent": {{ feature.popupContent|json_encode|raw }},
                             "latitude": {{ site.latitude }},
                             "longitude": {{ site.longitude }},
-                            "topic": {{ site.topic|json_encode|raw }}
+                            "topic": {{ site.topic|json_encode|raw }},
+                            "isPhysical": {{ site.isPhysical()|json_encode|raw }}
                         },
                         "geometry": {
                             "type": "Point",
@@ -207,12 +208,19 @@
                 return ret;
             }
 
-            function buildActiveIcon(iconName) {
+            function buildIconShape(feature) {
+                return feature.properties.isPhysical
+                    ? 'square'
+                    : 'circle';
+            }
+
+            function buildActiveIcon(iconName, iconShape) {
                 return L.ExtraMarkers.icon({
                     prefix: 'fa',
                     icon: iconName,
                     svg: true,
-                    markerColor: '#d42132'
+                    markerColor: '#d42132',
+                    shape: iconShape
                 });
             }
 
@@ -224,6 +232,7 @@
 
             function buildMarker(feature, latlng) {
                 var iconName = 'fa-' + buildIconName(feature);
+                var iconShape = buildIconShape(feature);
 
                 /*
                  * markerColor:
@@ -235,10 +244,11 @@
                     prefix: 'fa',
                     icon: iconName,
                     svg: true,
-                    markerColor: '#005e96'
+                    markerColor: '#005e96',
+                    shape: iconShape
                 });
 
-                var activeIcon = buildActiveIcon(iconName);
+                var activeIcon = buildActiveIcon(iconName, iconShape);
 
                 var marker = L.marker(latlng, markerProperties);
 
@@ -359,7 +369,8 @@
                         layer.openPopup();
 
                         var iconName = buildIconName(layer.feature);
-                        activateMarker(layer, buildActiveIcon(iconName));
+                        var iconShape = buildIconShape(layer.feature);
+                        activateMarker(layer, buildActiveIcon(iconName, iconShape));
                     }
                 });
             }
