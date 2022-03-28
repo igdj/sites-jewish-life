@@ -45,6 +45,7 @@ class Kernel extends BaseKernel
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
 
             new \Symfony\Bundle\TwigBundle\TwigBundle(),
+            new \Twig\Extra\TwigExtraBundle\TwigExtraBundle(),
 
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),

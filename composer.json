@@ -31,6 +31,8 @@
         "jms/translation-bundle": "^1.6",
 
         "symfony/twig-bundle": "@stable",
+        "twig/intl-extra": "^3.3",
+        "twig/extra-bundle": "^3.3",
 
         "symfony/validator": "^5.4",
         "symfony/property-access": "^5.4",
