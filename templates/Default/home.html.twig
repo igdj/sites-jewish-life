@@ -83,6 +83,7 @@
         background-clip: content-box;
     }
 
+    {#
     #university:checked {
         background-color: #00263C;
     }
@@ -104,6 +105,7 @@
     #tools:checked {
         background-color: #99BFD5;
     }
+    #}
     </style>
 {% endblock %}
 
@@ -275,7 +277,7 @@
                     prefix: 'fa',
                     icon: 'fa-' + iconName,
                     svg: true,
-                    markerColor: markerColors[iconName],
+                    markerColor: '#005E96', // markerColors[iconName],
                     shape: iconShape
                 });
 
