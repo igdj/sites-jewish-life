@@ -65,24 +65,6 @@
         overflow: auto;
     }
 
-    input {
-        appearance: none;
-        display: inline-block;
-        vertical-align: baseline;
-    }
-
-    input[type="checkbox"] {
-        border: 1px solid #005E96;
-        width: 12px;
-        height: 13px;
-        padding: 0px;
-    }
-
-    input[type="checkbox"]:checked {
-        background-color: #005E96;
-        background-clip: content-box;
-    }
-
     {#
     #university:checked {
         background-color: #00263C;
@@ -373,13 +355,13 @@
 
             L.control.filter({ position: 'topright' }).addTo(map);
             $('.filter').html('<form id="filter">'
-                + '<input type="checkbox" id="university" value="university" checked> <label for="university">{{ 'Learning / Scholarship'|trans }}</label><br />'
-                + '<input type="checkbox" id="memory" value="memory" checked> <label for="memory">{{ 'Commemoration'|trans }}</label><br />'
-                + '<input type="checkbox" id="theater-masks" value="theater-masks" checked> <label for="theater-masks">{{ 'Culture / Arts'|trans }}</label><br />'
-                + '<input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">{{ 'Religion / Tradition'|trans }}</label><br />'
-                + '<input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping">{{ 'Social'|trans }}</label><br />'
-                + '<input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> {{ 'Sports'|trans }}</label><br />'
-                + '<input type="checkbox" id="tools" value="tools" checked> <label for="tools">{{ 'Economy'|trans }}</label><br />'
+                + '<div class="fac fac-checkbox fac-university"><span></span><input type="checkbox" id="university" value="university" checked> <label for="university">{{ 'Learning / Scholarship'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-memory"><span></span><input type="checkbox" id="memory" value="memory" checked> <label for="memory">{{ 'Commemoration'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-theater-masks"><span></span><input type="checkbox" id="theater-masks" value="theater-masks" checked> <label for="theater-masks">{{ 'Culture / Arts'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-star-of-david"><span></span><input type="checkbox" id="star-of-david" value="star-of-david" checked> <label for="star-of-david">{{ 'Religion / Tradition'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-hands-helping"><span></span><input type="checkbox" id="hands-helping" value="hands-helping" checked> <label for="hands-helping">{{ 'Social'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-volleyball-ball"><span></span><input type="checkbox" id="volleyball-ball" value="volleyball-ball" checked> <label for="volleyball-ball"> {{ 'Sports'|trans }}</label></div><br />'
+                + '<div class="fac fac-checkbox fac-tools"><span></span><input type="checkbox" id="tools" value="tools" checked> <label for="tools">{{ 'Economy'|trans }}</label></div>'
                 + '</form>');
 
             $('#filter').change(function() {

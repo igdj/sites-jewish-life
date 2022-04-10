@@ -136,4 +136,107 @@ body {
 .leaflet-container {
 	font-family: $font-stack-sans;
 	font-size: inherit;
+
+	/* styled checkboxes, see https://github.com/maxweldsouza/font-awesome-controls/blob/master/fac.less */
+	.fac {
+		user-select: none;
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		label {
+			margin: 0em 0.2em 0em 0em;
+			padding-left: 1.5em;
+			cursor: pointer;
+			font-weight: inherit;
+		}
+
+		> input + label::before {
+			transition: opacity 0.2s ease-in-out;
+		}
+
+		> input + label::before, > span::after {
+			position: absolute;
+			left: 0;
+			top: 2px;
+			width: 20px;
+			text-align: center;
+			font-family: "Font Awesome 5 Free";
+			font-weight: 900;
+			font-size: 13px;
+			line-height: 18px;
+			border: 1px solid #005E96;
+			border-radius: 2px;
+			color: white;
+		}
+
+		input {
+			display: none;
+		}
+	}
+
+	.fac-checkbox {
+		> input + label:before {
+			opacity: 1;
+		}
+	}
+
+	.fac-checkbox, .fac {
+		> input:checked + label:before {
+			opacity: 0;
+		}
+	}
+
+	/********* Controls ***********/
+	.fac-checkbox {
+		> span::after {
+			background-color: #005E96;
+		}
+
+		> input[type=checkbox] + label::before {
+			background-color: white;
+		}
+	}
+
+	.fac.fac-university {
+		> input + label::before, > span::after {
+			content: "\f19c";
+		}
+	}
+
+	.fac.fac-memory {
+		> input + label::before, > span::after {
+			content: "\f538";
+		}
+	}
+
+	.fac.fac-theater-masks {
+		> input + label::before, > span::after {
+			content: "\f630";
+		}
+	}
+
+	.fac.fac-star-of-david {
+		> input + label::before, > span::after {
+			content: "\f69a";
+		}
+	}
+
+	.fac.fac-hands-helping {
+		> input + label::before, > span::after {
+			content: "\f4c4";
+		}
+	}
+
+	.fac.fac-volleyball-ball {
+		> input + label::before, > span::after {
+			content: "\f45f";
+		}
+	}
+
+	.fac.fac-tools {
+		> input + label::before, > span::after {
+			content: "\f7d9";
+		}
+	}
 }
