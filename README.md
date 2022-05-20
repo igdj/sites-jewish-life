@@ -1,4 +1,9 @@
+Update entries
+
+    ./bin/console sites:import
+
 Convert to JPG and scale down images
+    cd web/media
 
     mogrify -format jpg *.png
 
@@ -14,5 +19,6 @@ Update schema
 
 If you get errors due to var not being writable, adjust directory permissions as
 described in https://symfony.com/doc/3.4/setup/file_permissions.html
+
 - sudo setfacl -R -m u:www-data:rwX /path/to/var
 - sudo setfacl -dR -m u:www-data:rwX /path/to/var
