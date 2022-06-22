@@ -1,4 +1,49 @@
-Update entries
+Web-site https://jewish-history-online.net/city-map/
+====================================================
+
+In a fitting directory (e.g. `/var/www`), clone the project
+
+    git clone https://github.com/burki/sites-jewish-life.git
+
+Install dependencies
+
+    cd sites-jewish-life
+    composer install
+
+Create database
+
+    mysqladmin -u root -p create sites_jewish_life
+
+and create a database user with proper rights, e.g.
+
+    mysql -u root -p sites_jewish_life
+
+Create a user and grant the needed privileges
+
+    CREATE USER 'sites_jewish_life'@'localhost' IDENTIFIED BY 'YOUR_PASSWORD';
+    GRANT ALL ON sites_jewish_life.* TO 'sites_jewish_life'@'localhost';
+
+Create your local settings
+
+    cp config/parameters.yaml-dist config/parameters.yaml
+
+In `config/parameters.yaml`, adjust the database settings as by the
+database, user and password set above:
+    `database.name` / `database.user` / `database.password`)
+
+Make `bin/console` executable
+
+    chmod u+x ./bin/console
+
+Alternatively, you can prepend to `./bin/console` in what follows
+
+    php ./bin/console help
+
+Create the database tables
+
+    ./bin/console doctrine:schema:create
+
+Import/Update entries
 
     ./bin/console sites:import
 
