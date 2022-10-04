@@ -94,7 +94,6 @@ class ImportCommand extends Command
                     $row[$key] = array_key_exists($i, $values) ? trim($values[$i]) : null;
                 }
 
-
                 if (empty($row['ID'])) {
                     continue;
                 }
