@@ -1,14 +1,14 @@
 {
     "config": {
         "platform": {
-            "php": "7.2.9"
+            "php": "7.3.0"
         }
     },
 
     "repositories": [
         {
-            "url": "https://github.com/burki/LiipUrlAutoConverterBundle.git",
-            "type": "vcs"
+            "type": "vcs",
+            "url": "https://github.com/burki/LiipUrlAutoConverterBundle.git"
         }
     ],
 
