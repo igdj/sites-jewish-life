@@ -28,7 +28,7 @@
 
         "jms/i18n-routing-bundle": "^3.0",
         "symfony/security-core": "^5.4",
-        "jms/translation-bundle": "^1.6",
+        "jms/translation-bundle": "^1.7",
 
         "symfony/twig-bundle": "@stable",
         "twig/intl-extra": "^3.3",
