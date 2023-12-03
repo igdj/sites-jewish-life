@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\ORM\EntityManagerInterface;
+
 /**
  *
  */
@@ -14,10 +16,9 @@ class SiteController extends AbstractController
     /**
      * @Route("/places", name="places")
      */
-    public function indexAction(Request $request)
+    public function indexAction(EntityManagerInterface $em, Request $request)
     {
-        $qb = $this->getDoctrine()
-                ->getManager()
+        $qb = $em
                 ->createQueryBuilder();
 
         if ('de' == $request->getLocale()) {

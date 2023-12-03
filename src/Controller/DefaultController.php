@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\ORM\EntityManagerInterface;
+
 /**
  *
  */
@@ -13,9 +15,9 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function homeAction()
+    public function homeAction(EntityManagerInterface $em)
     {
-        $sites = $this->getDoctrine()
+        $sites = $em
                 ->getRepository('\App\Entity\Site')
                 ->findBy([/* 'status' => [ 0, 1 ] */],
                          ['id' => 'ASC']);

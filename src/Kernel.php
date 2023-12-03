@@ -39,7 +39,7 @@ class Kernel extends BaseKernel
     /*
      * {@inheritDoc}
      */
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         $bundles = [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -81,12 +81,12 @@ class Kernel extends BaseKernel
     }
 
     // see https://github.com/symfony/symfony-standard/blob/master/app/AppKernel.php
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         return $this->getProjectDir() . '/var/cache/' . $this->getEnvironment();
     }
 
-    public function getLogDir()
+    public function getLogDir(): string
     {
         return $this->getProjectDir() . '/var/logs';
     }
