@@ -1,7 +1,7 @@
 {
     "config": {
         "platform": {
-            "php": "7.3.0"
+            "php": "7.4.0"
         }
     },
 
@@ -13,6 +13,8 @@
     ],
 
     "require": {
+        "php": "^7.4|^8.1",
+
         "symfony/config": "^5.4",
         "symfony/finder": "^5.4",
         "symfony/filesystem": "^5.4",
@@ -26,9 +28,9 @@
         "symfony/cache": "^5.4",
         "symfony/routing": "^5.4",
 
-        "jms/i18n-routing-bundle": "^3.0",
+        "gjuric/i18n-routing-bundle": "^3.0",
         "symfony/security-core": "^5.4",
-        "jms/translation-bundle": "^1.7",
+        "jms/translation-bundle": "^2.0",
 
         "symfony/twig-bundle": "@stable",
         "twig/intl-extra": "^3.3",
@@ -44,6 +46,7 @@
         "armin/scssphp-bundle": "^1.2",
 
         "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/annotations": "^1.6",
         "doctrine/orm": "^2.11",
         "stof/doctrine-extensions-bundle": "@stable",
         "scienta/doctrine-json-functions": "4.3",
