@@ -17,6 +17,12 @@ framework:
         logging: false
     router:
         utf8: true
+    php_errors:
+        log: true # Not setting the "framework.php_errors.log" config option is deprecated. It will default to "true" in 7.0
+    handle_all_throwables: false # Not setting the "framework.handle_all_throwables" config option is deprecated. It will default to "true" in 7.0
+    http_method_override: false # Not setting the "framework.http_method_override" config option is deprecated. It will default to "false" in 7.0
+    validation:
+        email_validation_mode: 'html5' # Not setting the "framework.validation.email_validation_mode" config option is deprecated. It will default to "html5" in 7.0
     http_client:
         default_options:
             verify_host: false
@@ -57,7 +63,8 @@ doctrine:
             enum: string
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
-        auto_mapping: true 
+        auto_mapping: true
+        enable_lazy_ghost_objects: true # Not setting "enable_lazy_ghost_objects" to true is deprecated
         mappings:
             App:
                 is_bundle: false
