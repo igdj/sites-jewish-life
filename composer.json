@@ -28,7 +28,7 @@
         "symfony/cache": "^6.4",
         "symfony/routing": "^6.4",
 
-        "gjuric/i18n-routing-bundle": "^3.0",
+        "gjuric/i18n-routing-bundle": "3.2.2",
         "symfony/security-core": "^6.4",
         "jms/translation-bundle": "^2.0",
 
