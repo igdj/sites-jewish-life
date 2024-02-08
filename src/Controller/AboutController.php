@@ -13,9 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AboutController extends AbstractController
 {
-    /**
-     * @Route("/about", name="about")
-     */
+    #[Route(path: '/about', name: 'about')]
     public function aboutAction(Request $request)
     {
         $locale = $request->getLocale();

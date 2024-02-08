@@ -12,9 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class DefaultController extends AbstractController
 {
-    /**
-     * @Route("/", name="home")
-     */
+    #[Route(path: '/', name: 'home')]
     public function homeAction(EntityManagerInterface $em)
     {
         $sites = $em
