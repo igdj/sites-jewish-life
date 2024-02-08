@@ -10,8 +10,11 @@ parameters:
     
 framework:
     secret: '%kernel.secret%'
+    annotations:
+        enabled: false
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
-    validation: ~
+    validation:
+        email_validation_mode: 'html5' # Not setting the "framework.validation.email_validation_mode" config option is deprecated. It will default to "html5" in 7.0
     translator:
         fallbacks: ['%fallback_locale%']
         logging: false
@@ -19,10 +22,9 @@ framework:
         utf8: true
     php_errors:
         log: true # Not setting the "framework.php_errors.log" config option is deprecated. It will default to "true" in 7.0
+
     handle_all_throwables: false # Not setting the "framework.handle_all_throwables" config option is deprecated. It will default to "true" in 7.0
     http_method_override: false # Not setting the "framework.http_method_override" config option is deprecated. It will default to "false" in 7.0
-    validation:
-        email_validation_mode: 'html5' # Not setting the "framework.validation.email_validation_mode" config option is deprecated. It will default to "html5" in 7.0
     http_client:
         default_options:
             verify_host: false
