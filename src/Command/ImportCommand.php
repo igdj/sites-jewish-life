@@ -1,6 +1,6 @@
 <?php
 
-// src/App/Command/ImportCommand.php
+// src/Command/ImportCommand.php
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -41,7 +41,7 @@ class ImportCommand extends Command
         $this->rootDir = $rootDir;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('sites:import')
@@ -49,7 +49,7 @@ class ImportCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $fname = $this->rootDir
                . '/data/Stadtplan_Erweiterung.xlsx';
