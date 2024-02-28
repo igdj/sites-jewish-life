@@ -19,7 +19,7 @@ namespace App\Twig;
 
 class AppExtension extends \Twig\Extension\AbstractExtension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new \Twig\TwigFilter('truncate_html', [$this, 'truncateHtmlFilter']),
