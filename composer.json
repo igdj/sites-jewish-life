@@ -72,11 +72,7 @@
 
         "symfony/http-client": "^7.0",
 
-        "box/spout": "^3.3"
-    },
-
-    "conflict": {
-        "cocur/slugify": "4.5.0"
+        "openspout/openspout": "^4.0"
     },
 
     "autoload": {

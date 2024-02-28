@@ -16,7 +16,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
+use OpenSpout\Reader\Common\Creator\ReaderFactory;
+
 
 class ImportCommand extends Command
 {
@@ -63,7 +64,7 @@ class ImportCommand extends Command
             return 1;
         }
 
-        $reader = ReaderEntityFactory::createReaderFromFile($fname);
+        $reader = ReaderFactory::createFromFile($fname);
 
         $reader->open($fname);
 
@@ -275,7 +276,7 @@ class ImportCommand extends Command
 
                     $schema = json_decode($apiResponse->getContent(), true);
                     if (false === $schema) {
-                        die('Lookup for ' . $url . ' failed');
+                        die('Lookup for ' . $path . '.jsonld' . ' failed');
                     }
 
                     if (array_key_exists('author', $schema)) {
