@@ -1,5 +1,5 @@
-Web-site https://jewish-history-online.net/city-map/
-====================================================
+Web-site https://keydocuments.net/city-map/
+===========================================
 
 In a fitting directory (e.g. `/var/www`), clone the project
 
@@ -48,6 +48,7 @@ Import/Update entries
     ./bin/console sites:import
 
 Convert to JPG and scale down images
+
     cd web/media
 
     mogrify -format jpg *.png
@@ -63,7 +64,7 @@ Update schema
     ./bin/console doctrine:schema:update --force
 
 If you get errors due to var not being writable, adjust directory permissions as
-described in https://symfony.com/doc/3.4/setup/file_permissions.html
+described in https://symfony.com/doc/7.2/setup/file_permissions.html
 
 - sudo setfacl -R -m u:www-data:rwX /path/to/var
 - sudo setfacl -dR -m u:www-data:rwX /path/to/var
