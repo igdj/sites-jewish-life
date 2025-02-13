@@ -67,7 +67,7 @@ Convert to JPG and scale down images
 
 Translate routes
 
-    ./bin/console translation:extract de --dir=./src/ --dir=./templates/ --output-dir=./translations --enable-extractor=jms_i18n_routing
+    ./bin/console jms:translation:extract de --dir=./src/ --dir=./templates/ --output-dir=./translations --enable-extractor=jms_i18n_routing
 
 Update schema
 

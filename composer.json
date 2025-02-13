@@ -20,6 +20,9 @@
     ],
     "require": {
         "php": "^8.2",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-intl": "*",
 
         "symfony/config": "^7.2",
         "symfony/finder": "^7.2",
@@ -52,11 +55,10 @@
         "symfony/asset": "^7.2",
         "armin/scssphp-bundle": "dev-master",
 
-        "doctrine/doctrine-bundle": "^2.5",
-        "doctrine/annotations": "^1.6",
-        "doctrine/orm": "^2.11",
+        "doctrine/doctrine-bundle": "^2.12",
+        "doctrine/orm": "^3.0",
         "stof/doctrine-extensions-bundle": "@stable",
-        "scienta/doctrine-json-functions": "4.3",
+        "scienta/doctrine-json-functions": "6.3",
 
         "cocur/slugify": "^4.0",
         "liip/url-auto-converter-bundle": "dev-master",
@@ -70,6 +72,9 @@
         "symfony/http-client": "^7.2",
 
         "openspout/openspout": "^4.0"
+    },
+    "require-dev": {
+        "doctrine/annotations": "^2.0"
     },
     "autoload": {
         "psr-4": {
