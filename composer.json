@@ -13,10 +13,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/burki/scssphp-bundle"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/burki/JMSTranslationBundle"
         }
     ],
 
@@ -38,7 +34,7 @@
 
         "gjuric/i18n-routing-bundle": "^3.2",
         "symfony/security-core": "^7.2",
-        "jms/translation-bundle": "dev-master",
+        "jms/translation-bundle": "^2.6",
 
         "symfony/twig-bundle": "@stable",
         "twig/string-extra": "^3.20",
