@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "149ada9dbc966f88b8f49a3377cf2d73",
+    "content-hash": "b7c7bdd48ba934b1dd37206a984eeea7",
     "packages": [
         {
             "name": "armin/scssphp-bundle",
@@ -6958,14 +6958,14 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "armin/scssphp-bundle": 20,
         "liip/url-auto-converter-bundle": 20,
         "stof/doctrine-extensions-bundle": 0,
         "symfony/twig-bundle": 0
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
