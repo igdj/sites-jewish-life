@@ -1,6 +1,16 @@
 Web-site https://keydocuments.net/city-map/
 ===========================================
 
+For credits, see https://keydocuments.net/city-map/about
+
+Third Party Code
+----------------
+This projects builds on numerous third-party projects under a variety of
+Open Source Licenses. Please check `composer.json` for these dependencies.
+
+Installation
+------------
+
 In a fitting directory (e.g. `/var/www`), clone the project
 
     git clone https://github.com/burki/sites-jewish-life.git
@@ -29,7 +39,7 @@ Create your local settings
 
 In `config/parameters.yaml`, adjust the database settings as by the
 database, user and password set above:
-    `database.name` / `database.user` / `database.password`)
+    `database.name` / `database.user` / `database.password`
 
 Make `bin/console` executable
 
