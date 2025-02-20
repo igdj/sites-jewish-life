@@ -1,6 +1,7 @@
 <?php
 
 // src/Command/ImportCommand.php
+
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -11,13 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-
 use Doctrine\ORM\EntityManagerInterface;
-
 use OpenSpout\Reader\Common\Creator\ReaderFactory;
-
 
 class ImportCommand extends Command
 {
@@ -25,12 +22,13 @@ class ImportCommand extends Command
     protected $rootDir;
     protected $httpClients = [];
 
-    public function __construct(EntityManagerInterface $em,
-                                HttpClientInterface $deClient,
-                                HttpClientInterface $enClient,
-                                HttpClientInterface $dasjuedischehamburgClient,
-                                $rootDir)
-    {
+    public function __construct(
+        EntityManagerInterface $em,
+        HttpClientInterface $deClient,
+        HttpClientInterface $enClient,
+        HttpClientInterface $dasjuedischehamburgClient,
+        $rootDir
+    ) {
         parent::__construct();
 
         $this->em = $em;
@@ -58,8 +56,10 @@ class ImportCommand extends Command
         $fs = new Filesystem();
 
         if (!$fs->exists($fname)) {
-            $output->writeln(sprintf('<error>%s does not exist</error>',
-                                     $fname));
+            $output->writeln(sprintf(
+                '<error>%s does not exist</error>',
+                $fname
+            ));
 
             return 1;
         }
@@ -120,7 +120,7 @@ class ImportCommand extends Command
                             break;
 
                         case 'physical':
-                            if (isset($value) && (bool)$value) {
+                            if (isset($value) && (bool) $value) {
                                 $site->setFlags(\App\Entity\Site::FLAG_PHYSICAL);
                             }
                             break;
@@ -130,7 +130,7 @@ class ImportCommand extends Command
                         case 'title_en':
                         case 'description_en':
                         case 'streetoverride_en':
-                            list($field, $lang) = explode('_', $key, 2);
+                            [$field, $lang] = explode('_', $key, 2);
                             if ('streetoverride' == $field) {
                                 $field = 'streetOverride';
                             }
@@ -197,8 +197,11 @@ class ImportCommand extends Command
                                         die('TODO: Handle multiple images in ' . $row['ID']);
                                     }
 
-                                    $fname = sprintf('ID_%s%s.jpg',
-                                                     $row['ID'], $append);
+                                    $fname = sprintf(
+                                        'ID_%s%s.jpg',
+                                        $row['ID'],
+                                        $append
+                                    );
                                     if (!file_exists($this->rootDir . $mediaPath . $fname)) {
                                         die($fname . ' does not exist');
                                     }
@@ -266,8 +269,8 @@ class ImportCommand extends Command
                     $pathParts = [
                         array_key_exists($locale, $prefixes)
                         && array_key_exists($matches[2], $prefixes[$locale])
-                        ?  $prefixes[$locale][$matches[2]]
-                        :  $matches[2],
+                        ? $prefixes[$locale][$matches[2]]
+                        : $matches[2],
                         $matches[0],
                     ];
 
@@ -324,7 +327,7 @@ class ImportCommand extends Command
             $name = $crawler->filter('h1.title')->text();
 
             $info = [
-                'name' =>$name,
+                'name' => $name,
                 'url' => $htmlResponse->getInfo('url'),
             ];
 

@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 
-$loader = require __DIR__.'/../config/autoload.php';
+$loader = require __DIR__ . '/../config/autoload.php';
 
 $kernel = \App\Kernel::fromEnvironment();
 

@@ -39,5 +39,8 @@
 # Composer PHAR
 /composer.phar
 
+# php-cs-fixer
+.php-cs-fixer.cache
+
 # Backup en
 */Entity/*~

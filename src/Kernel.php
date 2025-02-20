@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 // see https://github.com/ikoene/symfony-micro
 class Kernel extends BaseKernel
 {
+    use MicroKernelTrait;
     const CONFIG_EXTS = '.{yaml}';
 
     /*
@@ -33,8 +34,6 @@ class Kernel extends BaseKernel
 
         return new self($env, $debug);
     }
-
-    use MicroKernelTrait;
 
     /*
      * {@inheritDoc}
@@ -93,7 +92,7 @@ class Kernel extends BaseKernel
 
     public function getConfigDir()
     {
-        return $this->getProjectDir().'/config';
+        return $this->getProjectDir() . '/config';
     }
 
     /*
@@ -112,8 +111,8 @@ class Kernel extends BaseKernel
     {
         $confDir = $this->getConfigDir();
 
-        $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS);
-        $routes->import($confDir.'/{routes}/'.$this->environment.'/**/*'.self::CONFIG_EXTS);
-        $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
     }
 }

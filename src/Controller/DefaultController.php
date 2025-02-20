@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -17,8 +16,13 @@ class DefaultController extends AbstractController
     {
         $sites = $em
                 ->getRepository('\App\Entity\Site')
-                ->findBy([/* 'status' => [ 0, 1 ] */],
-                         ['id' => 'ASC']);
+                ->findBy(
+                    [
+                        /* 'status' => [ 0, 1 ] */
+                    ],
+                    ['id' => 'ASC']
+                );
+
         \App\Entity\Site::setRelated($sites);
 
         $features = [];

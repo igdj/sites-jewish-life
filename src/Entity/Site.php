@@ -150,8 +150,7 @@ class Site
     public function getTitleLocalized($locale = 'de')
     {
         if (is_null($this->title)
-            || !is_array($this->title))
-        {
+            || !is_array($this->title)) {
             return null;
         }
 
@@ -171,8 +170,7 @@ class Site
     public function getDescriptionLocalized($locale = 'de')
     {
         if (is_null($this->description)
-            || !is_array($this->description))
-        {
+            || !is_array($this->description)) {
             return null;
         }
 
@@ -326,8 +324,7 @@ class Site
     {
         if (!is_null($this->streetOverride)
             && is_array($this->streetOverride)
-            && !empty($this->streetOverride[$locale]))
-        {
+            && !empty($this->streetOverride[$locale])) {
             return $this->streetOverride[$locale];
         }
 

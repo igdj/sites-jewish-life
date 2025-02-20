@@ -1,12 +1,13 @@
 <?php
+
 // src/Menu/Builder.php
 
 // see http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
+
 namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -23,10 +24,11 @@ class Builder
      *
      * Add any other dependency you need
      */
-    public function __construct(FactoryInterface $factory,
-                                TranslatorInterface $translator,
-                                RequestStack $requestStack)
-    {
+    public function __construct(
+        FactoryInterface $factory,
+        TranslatorInterface $translator,
+        RequestStack $requestStack
+    ) {
         $this->factory = $factory;
         $this->translator = $translator;
         $this->requestStack = $requestStack;

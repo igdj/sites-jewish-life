@@ -1,4 +1,5 @@
 <?php
+
 // src/Twig/AppExtension.php
 /*
 
@@ -23,7 +24,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
     {
         return [
             new \Twig\TwigFilter('truncate_html', [$this, 'truncateHtmlFilter']),
-            new \Twig\TwigFilter('prettifyurl',[$this, 'prettifyurlFilter']),
+            new \Twig\TwigFilter('prettifyurl', [$this, 'prettifyurlFilter']),
         ];
     }
 
@@ -70,7 +71,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             'input',
             'link',
             'meta',
-            'param'
+            'param',
         ];
         $inline_containers = [
             'a',
@@ -83,7 +84,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             'span',
             'strong',
             'sub',
-            'sup'
+            'sup',
         ];
         while (!$finished) {
             if (preg_match('/^<(\w+)[^>]*>/', $html, $matches)) { // Does the remaining string start in an opening tag?
@@ -95,7 +96,8 @@ class AppExtension extends \Twig\Extension\AbstractExtension
                 $html = substr_replace($html, '', 0, strlen($matches[0]));
                 // Add tag to $return:
                 $return .= $matches[0];
-            } elseif (preg_match('/^<\/(\w+)>/', $html, $matches)) { // Does the remaining string start in an end tag?
+            }
+            elseif (preg_match('/^<\/(\w+)>/', $html, $matches)) { // Does the remaining string start in an end tag?
                 // Remove matching opening tag from $open_tags array:
                 $key = array_search($matches[1], $open_tags);
                 if ($key !== false) {
@@ -105,7 +107,8 @@ class AppExtension extends \Twig\Extension\AbstractExtension
                 $html = substr_replace($html, '', 0, strlen($matches[0]));
                 // Add tag to $return:
                 $return .= $matches[0];
-            } else {
+            }
+            else {
                 // Extract text up to next tag as $segment:
                 if (preg_match('/^([^<]+)(<\/?(\w+)[^>]*>)?/', $html, $matches)) {
                     $segment = $matches[1];
@@ -117,11 +120,12 @@ class AppExtension extends \Twig\Extension\AbstractExtension
                         $remainder = $length - $total;
                         $entities_length = 0;
                         if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', $segment, $entities, PREG_OFFSET_CAPTURE)) {
-                            foreach($entities[0] as $entity) {
+                            foreach ($entities[0] as $entity) {
                                 if ($entity[1] + 1 - $entities_length <= $remainder) {
                                     $remainder--;
                                     $entities_length += mb_strlen($entity[0]);
-                                } else {
+                                }
+                                else {
                                     break;
                                 }
                             }
@@ -129,14 +133,16 @@ class AppExtension extends \Twig\Extension\AbstractExtension
                         // Otherwise truncate $segment and set as $final_segment:
                         $finished = true;
                         $final_segment = mb_substr($segment, 0, $remainder + $entities_length);
-                    } else {
+                    }
+                    else {
                         // Add $segment to $return and increase $total:
                         $return .= $segment;
                         $total += $segment_length;
                         // Remove $segment from $html:
                         $html = substr_replace($html, '', 0, strlen($segment));
                     }
-                } else {
+                }
+                else {
                     $finshed = true;
                 }
             }
@@ -150,7 +156,8 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             if ($key !== false) {
                 unset($open_tags[$key]);
             }
-        } else { // Otherwise, truncate $final_segment to last space and add to $return:
+        }
+        else { // Otherwise, truncate $final_segment to last space and add to $return:
             // $spacepos = strrpos($final_segment, ' ');
             $return .= mb_substr($final_segment, 0, mb_strrpos($final_segment, ' '));
         }
@@ -170,7 +177,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
         // Add closing tags:
         $closing_tags = array_reverse($open_tags);
         $ending_added = false;
-        foreach($closing_tags as $tag) {
+        foreach ($closing_tags as $tag) {
             if (!in_array($tag, $inline_containers) && !$ending_added) {
                 $return .= $ending;
                 $ending_added = true;

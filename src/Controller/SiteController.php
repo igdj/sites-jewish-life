@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -20,22 +19,26 @@ class SiteController extends AbstractController
                 ->createQueryBuilder();
 
         if ('de' == $request->getLocale()) {
-            $sortExpression = sprintf("JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s'))",
-                                      $request->getLocale());
+            $sortExpression = sprintf(
+                "JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s'))",
+                $request->getLocale()
+            );
         }
         else {
-            $sortExpression = sprintf("CONCAT(COALESCE(JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s')), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de'))), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de')))",
-                                      $request->getLocale());
+            $sortExpression = sprintf(
+                "CONCAT(COALESCE(JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.%s')), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de'))), JSON_UNQUOTE(JSON_EXTRACT(S.title, '$.de')))",
+                $request->getLocale()
+            );
         }
 
         $qb->select([
-                'S',
-                $sortExpression . " HIDDEN nameSort",
-            ])
+            'S',
+            $sortExpression . " HIDDEN nameSort",
+        ])
             ->from('\App\Entity\Site', 'S')
             // ->where("S.status IN (0,1)")
             ->orderBy('nameSort')
-            ;
+        ;
 
         $query = $qb->getQuery();
         $sites = $query->getResult();
