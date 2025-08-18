@@ -145,7 +145,7 @@ class Site
     /**
      * Gets localized title.
      *
-     * @return string
+     * @return string|null
      */
     public function getTitleLocalized($locale = 'de')
     {
@@ -165,7 +165,7 @@ class Site
     /**
      * Gets localized description.
      *
-     * @return string
+     * @return string|null
      */
     public function getDescriptionLocalized($locale = 'de')
     {
@@ -207,13 +207,13 @@ class Site
             return $this->marker;
         }
 
-        return $this->id;
+        return (string) $this->id;
     }
 
     /**
      * Sets flags.
      *
-     * @param int $falgs
+     * @param int $flags
      *
      * @return $this
      */

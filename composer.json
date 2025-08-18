@@ -75,7 +75,8 @@
     },
     "require-dev": {
         "doctrine/annotations": "^2.0",
-        "friendsofphp/php-cs-fixer": "^3.69"
+        "friendsofphp/php-cs-fixer": "^3.69",
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
