@@ -82,5 +82,12 @@
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
     }
 }
