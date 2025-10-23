@@ -11,6 +11,7 @@ $finder = (new PhpCsFixer\Finder())
 
 return (new PhpCsFixer\Config())
     ->setRules([
+        '@Symfony' => true,
         '@PER-CS' => true,
         '@PHP82Migration' => true,
         'control_structure_continuation_position' => ['position' => 'next_line'],

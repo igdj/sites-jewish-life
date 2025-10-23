@@ -5,13 +5,10 @@
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use OpenSpout\Reader\Common\Creator\ReaderFactory;
@@ -153,10 +150,10 @@ class ImportCommand extends Command
                                     $currentValues = [];
                                 }
 
-                                if ($key == 'related') {
+                                if ('related' == $key) {
                                     $currentValues[$key] =  preg_split('/\s*,\s*/', $value);
                                 }
-                                else if ($key == 'keydocuments') {
+                                else if ('keydocuments' == $key) {
                                     $currentValues[$key] = $this->buildKeydocuments(preg_split('/\s*;\s*/', $value));
                                 }
                                 else {
@@ -188,13 +185,13 @@ class ImportCommand extends Command
                                 $captions = preg_split('/\s*;\s*/', $value);
                                 $captions_en = preg_split('/\s*;\s*/', $row['rights_1_eng']);
 
-                                for ($i = 0; $i < count($captions); $i++) {
+                                for ($i = 0; $i < count($captions); ++$i) {
                                     $append = '';
                                     if (1 == $i) {
                                         $append = 'b';
                                     }
                                     else if ($i > 1) {
-                                        die('TODO: Handle multiple images in ' . $row['ID']);
+                                        exit('TODO: Handle multiple images in ' . $row['ID']);
                                     }
 
                                     $fname = sprintf(
@@ -203,7 +200,7 @@ class ImportCommand extends Command
                                         $append
                                     );
                                     if (!file_exists($this->rootDir . $mediaPath . $fname)) {
-                                        die($fname . ' does not exist');
+                                        exit($fname . ' does not exist');
                                     }
 
                                     $media[] = [
@@ -265,7 +262,7 @@ class ImportCommand extends Command
             $info = [];
 
             if (preg_match('/^jgo\:((article|source)\-\d+)$/', $uid, $matches)) {
-                foreach ([ 'de', 'en' ] as $locale) {
+                foreach (['de', 'en'] as $locale) {
                     $pathParts = [
                         array_key_exists($locale, $prefixes)
                         && array_key_exists($matches[2], $prefixes[$locale])
@@ -279,7 +276,7 @@ class ImportCommand extends Command
 
                     $schema = json_decode($apiResponse->getContent(), true);
                     if (false === $schema) {
-                        die('Lookup for ' . $path . '.jsonld' . ' failed');
+                        exit('Lookup for ' . $path . '.jsonld failed');
                     }
 
                     if (array_key_exists('author', $schema)) {
@@ -301,7 +298,7 @@ class ImportCommand extends Command
                 $ret[] = $articleInfo[$uid] = $info;
             }
             else {
-                die('Invalid keydocuments uid: ' . $uid);
+                exit('Invalid keydocuments uid: ' . $uid);
             }
         }
 

@@ -7,7 +7,6 @@
 namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -18,8 +17,6 @@ class Builder
     private $requestStack;
 
     /**
-     * @param FactoryInterface $factory
-     * @param TranslatorInterface $translator
      * @param RequestStack $requestStack
      *
      * Add any other dependency you need

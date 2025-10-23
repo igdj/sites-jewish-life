@@ -40,75 +40,74 @@ class Site
     protected $id;
 
     /**
-     * @var string The latitude of the site.
+     * @var string the latitude of the site
      */
     #[ORM\Column(type: 'decimal', precision: 8, scale: 6, nullable: true)]
     public $latitude;
 
     /**
-     * @var string The longitude of the site.
+     * @var string the longitude of the site
      */
     #[ORM\Column(type: 'decimal', precision: 8, scale: 6, nullable: true)]
     public $longitude;
 
     /**
-     * @var string The (optional) marker of the item.
+     * @var string the (optional) marker of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $marker;
 
     /**
-     * @var string The title of the item.
+     * @var string the title of the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $title;
 
     /**
-     * @var string The street-address of the item.
+     * @var string the street-address of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $street;
 
     /**
-     * @var string Override (german) street.
+     * @var string override (german) street
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $streetOverride;
 
     /**
-     * @var string The description of the item.
+     * @var string the description of the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $description;
 
     /**
-     * @var string The author of the description.
+     * @var string the author of the description
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $author;
 
     /**
-     * @var string URL of the item.
+     * @var string URL of the item
      */
     #[Assert\Url]
     #[ORM\Column(nullable: true, length: 511)]
     public $url;
 
     /**
-     * @var string The topic of the item.
+     * @var string the topic of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $topic;
 
     /**
-     * @var array Additional info about the item.
+     * @var array additional info about the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $additional;
 
     /**
-     * @var array Related Site.
-     *
+     * @var array related Site
      */
     public $related = [];
 
@@ -312,7 +311,7 @@ class Site
         }
 
         // don't return own id amongst related
-        return array_diff($this->additional['related'], [ $this->id ]);
+        return array_diff($this->additional['related'], [$this->id]);
     }
 
     /**
@@ -338,6 +337,6 @@ class Site
      */
     public function isPhysical()
     {
-        return 0 <> ($this->flags & self::FLAG_PHYSICAL);
+        return 0 != ($this->flags & self::FLAG_PHYSICAL);
     }
 }

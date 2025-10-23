@@ -7,9 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
-/**
- *
- */
 class SiteController extends AbstractController
 {
     #[Route(path: '/places', name: 'places')]
@@ -33,7 +30,7 @@ class SiteController extends AbstractController
 
         $qb->select([
             'S',
-            $sortExpression . " HIDDEN nameSort",
+            $sortExpression . ' HIDDEN nameSort',
         ])
             ->from('\App\Entity\Site', 'S')
             // ->where("S.status IN (0,1)")

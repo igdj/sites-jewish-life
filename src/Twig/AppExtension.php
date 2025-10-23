@@ -31,7 +31,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
     public function truncateHtmlFilter($html, $length = 100, $ending = '...')
     {
         /**
-         * truncate_html()
+         * truncate_html().
          *
          * https://gist.github.com/andykirk/b304a3c84594515677e6
          *
@@ -42,13 +42,14 @@ class AppExtension extends \Twig\Extension\AbstractExtension
          * This function allows you to limit the visible/content length whilst preserving any HTML formatting.
          *
          * @param string $html
-         * @param int $length
+         * @param int    $length
          * @param string $ending
+         *
          * @return string
-         * @access public
          */
         if (!is_string($html)) {
             trigger_error('Function \'truncate_html\' expects argument 1 to be an string', E_USER_ERROR);
+
             return false;
         }
 
@@ -100,7 +101,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             elseif (preg_match('/^<\/(\w+)>/', $html, $matches)) { // Does the remaining string start in an end tag?
                 // Remove matching opening tag from $open_tags array:
                 $key = array_search($matches[1], $open_tags);
-                if ($key !== false) {
+                if (false !== $key) {
                     unset($open_tags[$key]);
                 }
                 // Remove tag from $html:
@@ -122,7 +123,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
                         if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', $segment, $entities, PREG_OFFSET_CAPTURE)) {
                             foreach ($entities[0] as $entity) {
                                 if ($entity[1] + 1 - $entities_length <= $remainder) {
-                                    $remainder--;
+                                    --$remainder;
                                     $entities_length += mb_strlen($entity[0]);
                                 }
                                 else {
@@ -148,12 +149,12 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             }
         }
         // Check for spaces in $final_segment:
-        if (strpos($final_segment, ' ') === false && preg_match('/<(\w+)[^>]*>$/', $return)) { // If none and $return ends in an opening tag: (we ignore $final_segment)
+        if (false === strpos($final_segment, ' ') && preg_match('/<(\w+)[^>]*>$/', $return)) { // If none and $return ends in an opening tag: (we ignore $final_segment)
             // Remove opening tag from end of $return:
             $return = preg_replace('/<(\w+)[^>]*>$/', '', $return);
             // Remove opening tag from $open_tags:
             $key = array_search($matches[3], $open_tags);
-            if ($key !== false) {
+            if (false !== $key) {
                 unset($open_tags[$key]);
             }
         }
@@ -187,11 +188,12 @@ class AppExtension extends \Twig\Extension\AbstractExtension
         if (!$ending_added) {
             $return .= $ending;
         }
+
         return $return;
     }
 
     /**
-     * Chop of protocol as well as / for root path
+     * Chop of protocol as well as / for root path.
      */
     public function prettifyurlFilter($url)
     {
@@ -201,7 +203,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
     }
 
     /**
-     * Return the name of the extension
+     * Return the name of the extension.
      */
     public function getName()
     {
