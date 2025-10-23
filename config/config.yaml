@@ -7,7 +7,7 @@ parameters:
     locales: [de, en]
     default_locale: de  # for routing
     fallback_locale: en # for translation
-    
+
 framework:
     secret: '%kernel.secret%'
     annotations:
@@ -22,6 +22,8 @@ framework:
         utf8: true
     php_errors:
         log: true # Not setting the "framework.php_errors.log" config option is deprecated. It will default to "true" in 7.0
+    property_info:
+        with_constructor_extractor: false
 
     handle_all_throwables: false # Not setting the "framework.handle_all_throwables" config option is deprecated. It will default to "true" in 7.0
     http_method_override: false # Not setting the "framework.http_method_override" config option is deprecated. It will default to "false" in 7.0
@@ -44,7 +46,7 @@ twig:
         locales: "%locales%"
     exception_controller: null
     strict_variables: "%kernel.debug%"
-        
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -105,7 +107,7 @@ jms_i18n_routing:
         de: '%jms_i18n_routing.hosts.de%'
         en: '%jms_i18n_routing.hosts.en%'
     redirect_to_host: true
-    
+
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
     twig:

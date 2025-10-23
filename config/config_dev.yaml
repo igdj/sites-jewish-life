@@ -5,6 +5,7 @@ framework:
     profiler:
         enabled: true # true by default
         only_exceptions: false
+        collect_serializer_data: true
 
 web_profiler:
     toolbar: true
