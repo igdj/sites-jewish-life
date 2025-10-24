@@ -52,13 +52,13 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/monolog-bridge": "^7.1",
         "knplabs/knp-menu-bundle": "^3.3",
-        "symfony/asset": "^7.1",
+        "symfony/asset": "^7.3",
         "armin/scssphp-bundle": "dev-master",
 
-        "doctrine/doctrine-bundle": "^2.11",
-        "doctrine/orm": "^2.11",
-        "stof/doctrine-extensions-bundle": "^1.11",
-        "scienta/doctrine-json-functions": "6.0",
+        "doctrine/doctrine-bundle": "^2.12",
+        "doctrine/orm": "^3.0",
+        "stof/doctrine-extensions-bundle": "^1.14",
+        "scienta/doctrine-json-functions": "6.3",
 
         "cocur/slugify": "^4.5",
         "liip/url-auto-converter-bundle": "dev-master",
