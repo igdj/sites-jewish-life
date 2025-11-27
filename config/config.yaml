@@ -44,7 +44,6 @@ twig:
     globals:
         slugify: "@cocur_slugify"
         locales: "%locales%"
-    exception_controller: null
     strict_variables: "%kernel.debug%"
 
 # Doctrine Configuration

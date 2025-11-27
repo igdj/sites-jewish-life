@@ -24,21 +24,21 @@
         "ext-iconv": "*",
         "ext-intl": "*",
 
-        "symfony/config": "^7.3",
-        "symfony/finder": "^7.3",
-        "symfony/filesystem": "^7.3",
-        "symfony/yaml": "^7.3",
-        "symfony/expression-language": "^7.3",
-        "symfony/console": "^7.3",
-        "symfony/framework-bundle": "^7.3",
+        "symfony/config": "^7.4",
+        "symfony/finder": "^7.4",
+        "symfony/filesystem": "^7.4",
+        "symfony/yaml": "^7.4",
+        "symfony/expression-language": "^7.4",
+        "symfony/console": "^7.4",
+        "symfony/framework-bundle": "^7.4",
 
-        "symfony/http-foundation": "^7.3",
-        "symfony/event-dispatcher": "^7.3",
-        "symfony/cache": "^7.3",
-        "symfony/routing": "^7.3",
+        "symfony/http-foundation": "^7.4",
+        "symfony/event-dispatcher": "^7.4",
+        "symfony/cache": "^7.4",
+        "symfony/routing": "^7.4",
 
         "gjuric/i18n-routing-bundle": "^3.2",
-        "symfony/security-core": "^7.3",
+        "symfony/security-core": "^7.4",
         "jms/translation-bundle": "^2.6",
 
         "symfony/twig-bundle": "@stable",
@@ -46,13 +46,13 @@
         "twig/intl-extra": "^3.20",
         "twig/extra-bundle": "^3.20",
 
-        "symfony/validator": "^7.3",
-        "symfony/property-access": "^7.3",
+        "symfony/validator": "^7.4",
+        "symfony/property-access": "^7.4",
 
         "symfony/monolog-bundle": "^3.10",
         "symfony/monolog-bridge": "^7.1",
         "knplabs/knp-menu-bundle": "^3.3",
-        "symfony/asset": "^7.3",
+        "symfony/asset": "^7.4",
         "armin/scssphp-bundle": "dev-master",
 
         "doctrine/doctrine-bundle": "^2.12",
@@ -63,13 +63,13 @@
         "cocur/slugify": "^4.5",
         "liip/url-auto-converter-bundle": "dev-master",
 
-        "symfony/dom-crawler": "^7.3",
-        "symfony/css-selector": "^7.3",
+        "symfony/dom-crawler": "^7.4",
+        "symfony/css-selector": "^7.4",
 
-        "symfony/web-profiler-bundle": "^7.3",
-        "symfony/debug-bundle": "^7.3",
+        "symfony/web-profiler-bundle": "^7.4",
+        "symfony/debug-bundle": "^7.4",
 
-        "symfony/http-client": "^7.3",
+        "symfony/http-client": "^7.4",
 
         "openspout/openspout": "^4.0"
     },
