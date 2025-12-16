@@ -4,13 +4,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
 class SiteController extends AbstractController
 {
     #[Route(path: '/places', name: 'places')]
-    public function indexAction(EntityManagerInterface $em, Request $request)
+    public function indexAction(EntityManagerInterface $em, Request $request): Response
     {
         $qb = $em
                 ->createQueryBuilder();

@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
 class DefaultController extends AbstractController
 {
     #[Route(path: '/', name: 'home')]
-    public function homeAction(EntityManagerInterface $em)
+    public function homeAction(EntityManagerInterface $em): Response
     {
         $sites = $em
                 ->getRepository('\App\Entity\Site')
