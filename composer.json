@@ -43,7 +43,7 @@
 
         "gjuric/i18n-routing-bundle": "dev-master",
         "symfony/security-core": "^7.4",
-        "jms/translation-bundle": "^2.6",
+        "jms/translation-bundle": "2.x-dev as 2.6",
 
         "symfony/twig-bundle": "@stable",
         "twig/string-extra": "^3.20",
