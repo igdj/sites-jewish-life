@@ -282,7 +282,9 @@ class ImportCommand extends Command
                     if (array_key_exists('author', $schema)) {
                         $creator = array_key_exists('name', $schema['author'])
                             ? $schema['author']['name']
-                            : join(', ', array_map(function ($author) { return $author['name']; }, $schema['author']));
+                            : join(', ', array_map(function ($author) {
+                                return $author['name'];
+                            }, $schema['author']));
                     }
                     else {
                         $creator = $schema['creator'];
