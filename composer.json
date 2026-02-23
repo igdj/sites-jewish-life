@@ -53,8 +53,9 @@
         "symfony/validator": "^7.4",
         "symfony/property-access": "^7.4",
 
-        "symfony/monolog-bundle": "^3.10",
         "symfony/monolog-bridge": "^7.4",
+        "symfony/monolog-bundle": "^4.0",
+
         "knplabs/knp-menu-bundle": "^3.7",
         "symfony/asset": "^7.4",
         "armin/scssphp-bundle": "dev-master",
