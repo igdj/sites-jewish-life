@@ -45,17 +45,17 @@
         "symfony/security-core": "^7.4",
         "jms/translation-bundle": "2.x-dev as 2.6",
 
-        "symfony/twig-bundle": "@stable",
-        "twig/string-extra": "^3.20",
-        "twig/intl-extra": "^3.20",
-        "twig/extra-bundle": "^3.20",
+        "symfony/twig-bundle": "^7.4",
+        "twig/string-extra": "^3.23",
+        "twig/intl-extra": "^3.23",
+        "twig/extra-bundle": "^3.23",
 
         "symfony/validator": "^7.4",
         "symfony/property-access": "^7.4",
 
         "symfony/monolog-bundle": "^3.10",
-        "symfony/monolog-bridge": "^7.1",
-        "knplabs/knp-menu-bundle": "^3.3",
+        "symfony/monolog-bridge": "^7.4",
+        "knplabs/knp-menu-bundle": "^3.7",
         "symfony/asset": "^7.4",
         "armin/scssphp-bundle": "dev-master",
 
