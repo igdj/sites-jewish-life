@@ -65,9 +65,7 @@ doctrine:
         mapping_types:
             enum: string
     orm:
-        auto_generate_proxy_classes: '%kernel.debug%'
         auto_mapping: true
-        enable_lazy_ghost_objects: true # Not setting "enable_lazy_ghost_objects" to true is deprecated
         mappings:
             App:
                 is_bundle: false
