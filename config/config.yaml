@@ -10,8 +10,6 @@ parameters:
 
 framework:
     secret: '%kernel.secret%'
-    annotations:
-        enabled: false
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
     validation:
         email_validation_mode: 'html5' # Not setting the "framework.validation.email_validation_mode" config option is deprecated. It will default to "html5" in 7.0
