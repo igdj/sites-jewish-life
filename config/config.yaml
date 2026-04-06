@@ -97,16 +97,6 @@ scssphp:
 #            variables:
 #                primary: '#ff0066'
 
-jms_i18n_routing:
-    default_locale: de
-    locales: [de, en]
-    # strategy: prefix_except_default
-    strategy: custom
-    hosts:
-        de: '%jms_i18n_routing.hosts.de%'
-        en: '%jms_i18n_routing.hosts.en%'
-    redirect_to_host: true
-
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
     twig:

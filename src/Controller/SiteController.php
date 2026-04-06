@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class SiteController extends AbstractController
 {
-    #[Route(path: '/places', name: 'places')]
+    #[Route(path: ['en' => '/places', 'de' => '/orte'], name: 'places')]
     public function indexAction(EntityManagerInterface $em, Request $request): Response
     {
         $qb = $em

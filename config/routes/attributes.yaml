@@ -2,3 +2,6 @@
 controllers:
     resource: ../../src/Controller/
     type: attribute
+    host:
+        de: '%app.hosts.de%'
+        en: '%app.hosts.en%'

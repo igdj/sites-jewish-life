@@ -55,8 +55,6 @@ class Kernel extends BaseKernel
 
             new \Symfony\Bundle\MonologBundle\MonologBundle(), // required by JMS\TranslationBundle\JMSTranslationBundle
 
-            // translate routes
-            new \JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             // not required, but recommended for better extraction
             new \JMS\TranslationBundle\JMSTranslationBundle(),
 

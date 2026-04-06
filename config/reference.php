@@ -1205,26 +1205,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         },
  *     }>,
  * }
- * @psalm-type JmsI18nRoutingConfig = array{
- *     default_locale?: scalar|Param|null,
- *     locales?: list<scalar|Param|null>,
- *     catalogue?: scalar|Param|null, // Default: "routes"
- *     strategy?: scalar|Param|null, // Default: "custom"
- *     prefix_with_locale?: bool|Param, // Default: false
- *     omit_prefix_when_default?: bool|Param, // Default: true
- *     hosts?: array<string, scalar|Param|null>,
- *     redirect_to_host?: bool|Param, // Default: true
- *     use_cookie?: bool|Param, // DEPRECATED! Please use: cookie.enabled // Default: true
- *     cookie?: array{
- *         enabled?: bool|Param, // Default: true
- *         name?: scalar|Param|null, // Default: "hl"
- *         lifetime?: scalar|Param|null, // Default: 31536000
- *         path?: scalar|Param|null, // Default: null
- *         domain?: scalar|Param|null, // Default: null
- *         secure?: bool|Param, // Default: false
- *         httponly?: bool|Param, // Default: false
- *     },
- * }
  * @psalm-type ScssphpConfig = array{
  *     enabled?: bool|Param, // When disabled, ScssPHP will not compile SCSS sources automatically, by user's request. Compiling with CLI tool will still work. // Default: true
  *     autoUpdate?: bool|Param, // Automatically re-compile SCSS sources on updates, when enabled. // Default: true
@@ -1279,7 +1259,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *     cocur_slugify?: CocurSlugifyConfig,
  *     monolog?: MonologConfig,
- *     jms_i18n_routing?: JmsI18nRoutingConfig,
  *     scssphp?: ScssphpConfig,
  *     knp_menu?: KnpMenuConfig,
  *     liip_url_auto_converter?: LiipUrlAutoConverterConfig,
