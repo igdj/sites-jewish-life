@@ -5,7 +5,7 @@
     "prefer-stable": true,
     "config": {
         "platform": {
-            "php": "8.4.0"
+            "php": "8.4.1"
         }
     },
     "repositories": [
@@ -23,41 +23,41 @@
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": ">=8.4.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
 
-        "symfony/config": "^8.0",
-        "symfony/finder": "^8.0",
-        "symfony/filesystem": "^8.0",
-        "symfony/yaml": "^8.0",
-        "symfony/expression-language": "^8.0",
-        "symfony/console": "^8.0",
-        "symfony/framework-bundle": "^8.0",
-        "symfony/dependency-injection": "^8.0",
+        "symfony/config": "^8.1",
+        "symfony/finder": "^8.1",
+        "symfony/filesystem": "^8.1",
+        "symfony/yaml": "^8.1",
+        "symfony/expression-language": "^8.1",
+        "symfony/console": "^8.1",
+        "symfony/framework-bundle": "^8.1",
+        "symfony/dependency-injection": "^8.1",
 
-        "symfony/http-foundation": "^8.0",
-        "symfony/event-dispatcher": "^8.0",
-        "symfony/cache": "^8.0",
-        "symfony/routing": "^8.0",
+        "symfony/http-foundation": "^8.1",
+        "symfony/event-dispatcher": "^8.1",
+        "symfony/cache": "^8.1",
+        "symfony/routing": "^8.1",
 
-        "symfony/security-core": "^8.0",
+        "symfony/security-core": "^8.1",
         "jms/translation-bundle": "dev-symfony-8",
 
-        "symfony/twig-bundle": "^8.0",
+        "symfony/twig-bundle": "^8.1",
         "twig/string-extra": "^3.23",
         "twig/intl-extra": "^3.23",
         "twig/extra-bundle": "^3.23",
 
-        "symfony/validator": "^8.0",
-        "symfony/property-access": "^8.0",
+        "symfony/validator": "^8.1",
+        "symfony/property-access": "^8.1",
 
-        "symfony/monolog-bridge": "^8.0",
+        "symfony/monolog-bridge": "^8.1",
         "symfony/monolog-bundle": "^4.0",
 
         "knplabs/knp-menu-bundle": "^3.7",
-        "symfony/asset": "^8.0",
+        "symfony/asset": "^8.1",
         "armin/scssphp-bundle": "dev-master",
 
         "doctrine/doctrine-bundle": "^3.0",
@@ -66,15 +66,15 @@
         "scienta/doctrine-json-functions": "6.3",
 
         "cocur/slugify": "^4.5",
-        "liip/url-auto-converter-bundle": "dev-master",
+        "liip/url-auto-converter-bundle": "dev-symfony-8",
 
-        "symfony/dom-crawler": "^8.0",
-        "symfony/css-selector": "^8.0",
+        "symfony/dom-crawler": "^8.1",
+        "symfony/css-selector": "^8.1",
 
-        "symfony/web-profiler-bundle": "^8.0",
-        "symfony/debug-bundle": "^8.0",
+        "symfony/web-profiler-bundle": "^8.1",
+        "symfony/debug-bundle": "^8.1",
 
-        "symfony/http-client": "^8.0",
+        "symfony/http-client": "^8.1",
 
         "openspout/openspout": "^4.0"
     },
