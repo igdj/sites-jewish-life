@@ -7,6 +7,7 @@ namespace App\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -21,9 +22,9 @@ class ImportCommand extends Command
 
     public function __construct(
         EntityManagerInterface $em,
-        HttpClientInterface $deClient,
-        HttpClientInterface $enClient,
-        HttpClientInterface $dasjuedischehamburgClient,
+        #[Target('de.client')] HttpClientInterface $deClient,
+        #[Target('en.client')] HttpClientInterface $enClient,
+        #[Target('dasjuedischehamburg.client')] HttpClientInterface $dasjuedischehamburgClient,
         $rootDir
     ) {
         parent::__construct();
