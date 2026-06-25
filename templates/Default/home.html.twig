@@ -1,9 +1,8 @@
 {% extends 'Default/base.html.twig' %}
 
 {% block head %}
-    {# leaflet.js includes, 1.6.x due to https://github.com/Leaflet/Leaflet/issues/7255 #}
-    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.css" />
-    <script src="{{ app.request.basepath }}/vendor/leaflet-1.6.0/leaflet.js"></script>
+    <link rel="stylesheet" href="{{ app.request.basepath }}/vendor/leaflet-1.9.4/leaflet.css" />
+    <script src="{{ app.request.basepath }}/vendor/leaflet-1.9.4/leaflet.js"></script>
 
 
     {# https://github.com/coryasilva/Leaflet.ExtraMarkers #}
@@ -47,6 +46,11 @@
 
     .popup-fixed .leaflet-popup-tip-container {
         display: none;
+    }
+
+    /* hide ukranian flag */
+    #map .leaflet-control-attribution svg {
+        display: none !important;
     }
 
     .leaflet-fixed-pane {
