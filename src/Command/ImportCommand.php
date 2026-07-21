@@ -22,9 +22,12 @@ class ImportCommand extends Command
 
     public function __construct(
         EntityManagerInterface $em,
-        #[Target('de.client')] HttpClientInterface $deClient,
-        #[Target('en.client')] HttpClientInterface $enClient,
-        #[Target('dasjuedischehamburg.client')] HttpClientInterface $dasjuedischehamburgClient,
+        #[Target('de.client')]
+        HttpClientInterface $deClient,
+        #[Target('en.client')]
+        HttpClientInterface $enClient,
+        #[Target('dasjuedischehamburg.client')]
+        HttpClientInterface $dasjuedischehamburgClient,
         $rootDir
     ) {
         parent::__construct();
