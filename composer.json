@@ -61,7 +61,7 @@
         "armin/scssphp-bundle": "dev-master",
 
         "doctrine/doctrine-bundle": "^3.0",
-        "doctrine/orm": "^3.0",
+        "doctrine/orm": "^3.7",
         "stof/doctrine-extensions-bundle": "^1.15",
         "scienta/doctrine-json-functions": "^6.5",
 
