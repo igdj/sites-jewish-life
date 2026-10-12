@@ -65,7 +65,7 @@ Convert to JPG and scale down images
 
     mogrify -resize 1280x1280\> *.jpg
 
-Translate routes
+Translate messages
 
     ./bin/console jms:translation:extract de --dir=./src/ --dir=./templates/ --output-dir=./translations
 
@@ -74,7 +74,7 @@ Update schema
     ./bin/console doctrine:schema:update --force
 
 If you get errors due to var not being writable, adjust directory permissions as
-described in https://symfony.com/doc/7.2/setup/file_permissions.html
+described in https://symfony.com/doc/current/setup/file_permissions.html
 
 - sudo setfacl -R -m u:www-data:rwX /path/to/var
 - sudo setfacl -dR -m u:www-data:rwX /path/to/var
