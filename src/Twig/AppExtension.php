@@ -56,6 +56,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
         if (mb_strlen(strip_tags($html)) <= $length) {
             return $html;
         }
+
         $total = mb_strlen($ending);
         $open_tags = [];
         $return = '';
@@ -87,8 +88,10 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             'sub',
             'sup',
         ];
+
         while (!$finished) {
-            if (preg_match('/^<(\w+)[^>]*>/', $html, $matches)) { // Does the remaining string start in an opening tag?
+            if (preg_match('/^<(\w+)[^>]*>/', $html, $matches)) {
+                // Does the remaining string start in an opening tag?
                 // If not self-closing, place tag in $open_tags array:
                 if (!in_array($matches[1], $self_closing_elements)) {
                     $open_tags[] = $matches[1];
@@ -162,6 +165,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             // $spacepos = strrpos($final_segment, ' ');
             $return .= mb_substr($final_segment, 0, mb_strrpos($final_segment, ' '));
         }
+
         $return = trim($return);
 
         /*
@@ -185,6 +189,7 @@ class AppExtension extends \Twig\Extension\AbstractExtension
             }
             $return .= '</' . $tag . '>';
         }
+
         if (!$ending_added) {
             $return .= $ending;
         }
