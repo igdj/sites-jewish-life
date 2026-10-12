@@ -14,21 +14,19 @@ class Builder
 {
     private $factory;
     private $translator;
-    private $requestStack;
 
     /**
-     * @param RequestStack $requestStack
+     * @param FactoryInterface $factory
+     * @param TranslatorInterface $translator
      *
      * Add any other dependency you need
      */
     public function __construct(
         FactoryInterface $factory,
-        TranslatorInterface $translator,
-        RequestStack $requestStack
+        TranslatorInterface $translator
     ) {
         $this->factory = $factory;
         $this->translator = $translator;
-        $this->requestStack = $requestStack;
     }
 
     public function createMainMenu(array $options)
