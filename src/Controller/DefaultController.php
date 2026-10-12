@@ -18,7 +18,7 @@ class DefaultController extends AbstractController
                     [
                         /* 'status' => [ 0, 1 ] */
                     ],
-                    ['id' => 'ASC']
+                    ['id' => \SortDirection::Ascending]
                 );
 
         \App\Entity\Site::setRelated($sites);
