@@ -56,7 +56,7 @@
         "symfony/monolog-bridge": "^8.1",
         "symfony/monolog-bundle": "^4.0",
 
-        "knplabs/knp-menu-bundle": "^3.7",
+        "knplabs/knp-menu-bundle": "^3.8",
         "symfony/asset": "^8.1",
         "armin/scssphp-bundle": "dev-master",
 
@@ -76,7 +76,7 @@
 
         "symfony/http-client": "^8.1",
 
-        "openspout/openspout": "^4.32"
+        "openspout/openspout": "^5.12"
     },
     "require-dev": {
         "doctrine/annotations": "^2.0",
