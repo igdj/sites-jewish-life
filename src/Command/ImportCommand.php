@@ -12,7 +12,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use OpenSpout\Reader\Common\Creator\ReaderFactory;
+use OpenSpout\Reader\XLSX\Reader;
 
 class ImportCommand extends Command
 {
@@ -62,10 +62,10 @@ class ImportCommand extends Command
                 $fname
             ));
 
-            return 1;
+            return Command::FAILURE;
         }
 
-        $reader = ReaderFactory::createFromFile($fname);
+        $reader = new Reader();
 
         $reader->open($fname);
 
@@ -241,7 +241,7 @@ class ImportCommand extends Command
 
         $this->em->flush();
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function buildKeydocuments($uids)
