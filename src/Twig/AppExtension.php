@@ -49,8 +49,6 @@ class AppExtension extends \Twig\Extension\AbstractExtension
          */
         if (!is_string($html)) {
             trigger_error('Function \'truncate_html\' expects argument 1 to be an string', E_USER_ERROR);
-
-            return false;
         }
 
         if (mb_strlen(strip_tags($html)) <= $length) {

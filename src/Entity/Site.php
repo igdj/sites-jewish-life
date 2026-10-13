@@ -33,75 +33,75 @@ class Site
     }
 
     /**
-     * @var int
+     * @var string|null
      */
     #[ORM\Column(type: 'integer')]
     #[ORM\Id]
     protected $id;
 
     /**
-     * @var string the latitude of the site
+     * @var string|float|null the latitude of the site
      */
     #[ORM\Column(type: 'decimal', precision: 8, scale: 6, nullable: true)]
     public $latitude;
 
     /**
-     * @var string the longitude of the site
+     * @var string|float|null the longitude of the site
      */
     #[ORM\Column(type: 'decimal', precision: 8, scale: 6, nullable: true)]
     public $longitude;
 
     /**
-     * @var string the (optional) marker of the item
+     * @var string|null the (optional) marker of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $marker;
 
     /**
-     * @var string the title of the item
+     * @var array|null the title of the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $title;
 
     /**
-     * @var string the street-address of the item
+     * @var string|null the street-address of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $street;
 
     /**
-     * @var string override (german) street
+     * @var array|null override (german) street
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $streetOverride;
 
     /**
-     * @var string the description of the item
+     * @var array|null the description of the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $description;
 
     /**
-     * @var string the author of the description
+     * @var string|null the author of the description
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $author;
 
     /**
-     * @var string URL of the item
+     * @var string|null URL of the item
      */
     #[Assert\Url]
     #[ORM\Column(nullable: true, length: 511)]
     public $url;
 
     /**
-     * @var string the topic of the item
+     * @var string|null the topic of the item
      */
     #[ORM\Column(type: 'string', nullable: true)]
     public $topic;
 
     /**
-     * @var array additional info about the item
+     * @var array|null additional info about the item
      */
     #[ORM\Column(type: 'json', nullable: true)]
     public $additional;
@@ -120,7 +120,7 @@ class Site
     /**
      * Sets id.
      *
-     * @param int $id
+     * @param string|null $id
      *
      * @return $this
      */
@@ -134,7 +134,7 @@ class Site
     /**
      * Gets id.
      *
-     * @return int
+     * @return string|null
      */
     public function getId()
     {
@@ -149,7 +149,8 @@ class Site
     public function getTitleLocalized($locale = 'de')
     {
         if (is_null($this->title)
-            || !is_array($this->title)) {
+            || !is_array($this->title) // @phpstan-ignore booleanNot.alwaysFalse
+        ) {
             return null;
         }
 
@@ -169,7 +170,8 @@ class Site
     public function getDescriptionLocalized($locale = 'de')
     {
         if (is_null($this->description)
-            || !is_array($this->description)) {
+            || !is_array($this->description)    // @phpstan-ignore booleanNot.alwaysFalse
+        ) {
             return null;
         }
 
@@ -198,7 +200,7 @@ class Site
     /**
      * Gets marker.
      *
-     * @return string
+     * @return string|null
      */
     public function getMarker()
     {
@@ -317,12 +319,12 @@ class Site
     /**
      * Gets localized name.
      *
-     * @return string
+     * @return string|null
      */
     public function getStreetLocalized($locale = 'de')
     {
         if (!is_null($this->streetOverride)
-            && is_array($this->streetOverride)
+            && is_array($this->streetOverride)  // @phpstan-ignore booleanAnd.rightAlwaysTrue
             && !empty($this->streetOverride[$locale])) {
             return $this->streetOverride[$locale];
         }

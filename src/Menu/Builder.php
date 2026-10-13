@@ -7,7 +7,6 @@
 namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Builder
@@ -16,7 +15,6 @@ class Builder
     private $translator;
 
     /**
-     * @param FactoryInterface $factory
      * @param TranslatorInterface $translator
      *
      * Add any other dependency you need
